@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TEMA INLINE DO TAILWIND 4
+   (cores, fonts e variáveis globais do site)
+============================================================ */
+@theme inline {
+  /* Cores padrão do site */
+  --color-background: #ffffff;   /* fundo branco */
+  --color-foreground: #0d746d;   /* verde BIO-X */
+
+  /* fontes vindas do layout.tsx (Geist) */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ============================================================
+   ESTILOS GLOBAIS DO SITE
+============================================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #0d746d;
+  font-family: var(--font-geist-sans), system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Ajuste geral de box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   ANIMAÇÃO SLIDE-UP PARA O TEXTO DO SOBRE
+   (usada na seção #sobreTextoColuna)
+============================================================ */
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease-out;
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": 1762949330361,
+      "email": "pedrohenrique.dp05@gmail.com",
+      "password": "$2b$10$7FGGgUMAQDRVdTR4lr8QYed68Zf04XeBC/I068LksmoX4z.6HxcCy",
+      "phone": "31997200932",
+      "countryCode": "+55",
+      "name": "Pedro",
+      "avatar": "/avatars/biox2.png",
+      "acceptedTerms": true,
+      "timestamp": "2025-11-12T12:08:50.361Z"
+    }
+  ]
+}
