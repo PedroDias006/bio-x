@@ -4,7 +4,7 @@ import ClientLayoutWrapper from "./ClientLayoutWrapper";
 import { CartProvider } from "./context/CartContext"; // 1. Importando o Provider
 
 export const metadata: Metadata = {
-  title: "BIO-X Microrganismos",
+  title: "AETHERIS",
   description: "Soluções vivas para um futuro sustentável.",
 };
 
