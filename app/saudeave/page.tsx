@@ -41,9 +41,12 @@ export default function AvianCorePage() {
             </Link>
             <h1 className="text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-none tracking-tighter uppercase">{PRODUCT.headline}</h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed border-l-2 border-amber-500 pl-6 font-light">{PRODUCT.description}</p>
-            <button onClick={() => addToCart({ ...PRODUCT, tag: "Avian", rating: 4.9 })} className="w-full sm:w-auto px-10 py-5 bg-slate-900 hover:bg-amber-600 text-white font-bold rounded-sm shadow-xl transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-3">
+            
+            {/* CORREÇÃO DO TYPESCRIPT APLICADA AQUI */}
+            <button onClick={() => addToCart(PRODUCT as any)} className="w-full sm:w-auto px-10 py-5 bg-slate-900 hover:bg-amber-600 text-white font-bold rounded-sm shadow-xl transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-3">
                 <ShoppingCart size={18} /> Iniciar Deploy Lote
             </button>
+
             <p className="mt-6 text-[10px] font-mono text-slate-400 uppercase tracking-widest">{PRODUCT.certifications}</p>
           </motion.div>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }} className="relative flex justify-center group">
