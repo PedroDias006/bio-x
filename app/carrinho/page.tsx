@@ -9,10 +9,12 @@ import Link from "next/link";
 export default function CarrinhoPage() {
   const { items, removeFromCart, cartTotal, totalItems } = useCart();
 
-  // Mensagem para o WhatsApp com o resumo do pedido
-  const checkoutMessage = `Ol%C3%A1%2C%20gostaria%20de%20finalizar%20meu%20pedido%20na%20Bio-X%3A%0A%0A${items
+  // Correção 1: Geração limpa e blindada do link do WhatsApp
+  const messageText = `Olá, gostaria de finalizar meu pedido na Bio-X:\n\n${items
     .map((i) => `• ${i.quantity}x ${i.name}`)
-    .join("%0A")}%0A%0ATotal%20Estimado%3A%20R$%20${cartTotal.toFixed(2)}`;
+    .join("\n")}\n\nTotal Estimado: R$ ${cartTotal.toFixed(2)}`;
+    
+  const checkoutMessage = encodeURIComponent(messageText);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] pt-32 pb-20 px-6 font-sans">
@@ -48,7 +50,7 @@ export default function CarrinhoPage() {
             {/* Lista de Produtos */}
             <div className="lg:col-span-8 space-y-6">
               <AnimatePresence>
-                {items.map((item) => (
+                {items.map((item: any) => (
                   <motion.div
                     key={item.id}
                     layout
@@ -58,8 +60,9 @@ export default function CarrinhoPage() {
                     className="flex flex-col sm:flex-row items-center gap-6 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:border-cyan-100 transition-colors"
                   >
                     <div className="relative w-24 h-24 bg-slate-50 rounded-2xl p-2 shrink-0">
+                      {/* Correção 2: Mudando de item.img para item.image */}
                       <Image 
-                        src={item.img} 
+                        src={item.image} 
                         alt={item.name} 
                         width={96} 
                         height={96} 
@@ -69,7 +72,8 @@ export default function CarrinhoPage() {
                     
                     <div className="flex-1 text-center sm:text-left">
                       <h3 className="text-lg font-bold text-slate-900">{item.name}</h3>
-                      <p className="text-sm text-slate-500 line-clamp-1">{item.desc}</p>
+                      {/* Correção 3: Mudando de item.desc para item.description */}
+                      <p className="text-sm text-slate-500 line-clamp-1">{item.description}</p>
                     </div>
 
                     <div className="flex items-center gap-8">
