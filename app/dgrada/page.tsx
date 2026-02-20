@@ -82,8 +82,9 @@ export default function DGradePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
+              {/* CORREÇÃO DO TYPESCRIPT APLICADA AQUI */}
               <button 
-                  onClick={() => addToCart({ ...PRODUCT, tag: "D-Grade", rating: 5.0 })}
+                  onClick={() => addToCart(PRODUCT as any)}
                   className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-lg shadow-[0_0_30px_rgba(147,51,234,0.4)] hover:shadow-[0_0_50px_rgba(147,51,234,0.6)] hover:-translate-y-1 transition-all"
               >
                   <ShoppingCart size={20} /> Inicializar Compra <span className="opacity-70 text-sm font-mono ml-2">| {PRODUCT.price} Credits</span>
