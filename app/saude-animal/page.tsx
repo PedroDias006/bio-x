@@ -52,8 +52,12 @@ const PROCESS_STEPS = [
   }
 ];
 
+// Tipagem automática baseada na estrutura dos seus dados (A Vacina do TypeScript)
+type ProcessStepType = typeof PROCESS_STEPS[0];
+
 export default function AetherisBioZootecnia() {
-  const containerRef = useRef(null);
+  // Correção 1: Avisando ao TypeScript que a referência é de uma DIV
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
 
   const scaleX = useSpring(scrollYProgress, {
@@ -239,7 +243,8 @@ export default function AetherisBioZootecnia() {
 /* =========================================================================
    SUB-COMPONENTES: STICKY CARD (EXPANDABLE HUB)
    ========================================================================= */
-function StickyCard({ step, index }: { step: any, index: number }) {
+// Correção 2: Substituindo o 'any' pela tipagem real dos passos
+function StickyCard({ step, index }: { step: ProcessStepType, index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

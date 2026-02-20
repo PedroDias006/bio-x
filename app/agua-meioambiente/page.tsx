@@ -10,10 +10,8 @@ import {
    Cpu,
    Droplets,
    FileText,
-   Microscope, // Adicionado para dar o tom tech
-   Network // Adicionado
-   ,
-
+   Microscope,
+   Network,
    Phone,
    ShieldCheck,
    Zap
@@ -62,7 +60,8 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 );
 
 export default function AetherisHydro() {
-  const containerRef = useRef(null);
+  // A VACINA APLICADA AQUI: Avisando que é uma referência de DIV
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   
   // Parallax e Progresso
@@ -227,7 +226,7 @@ export default function AetherisHydro() {
                       </div>
                    </div>
 
-                   {/* Grid de Propriedades */}
+                   {/* Grid de Propiedades */}
                    <div className="grid grid-cols-2 gap-4">
                       {[
                         { label: "Estabilidade pH", val: "Nível 6.5 - 7.5" },
