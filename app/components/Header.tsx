@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const AVATARS = [
-  "/avatars/biox1.png",
-  "/avatars/biox2.png",
-  "/avatars/biox3.png",
-  "/avatars/biox4.png",
-  "/avatars/biox5.png",
+  "/avatars/aetheris1.png",
+  "/avatars/aetheris2.png",
+  "/avatars/aetheris3.png",
+  "/avatars/aetheris4.png",
+  "/avatars/aetheris5.png",
 ];
 
 export default function Header() {
@@ -62,12 +62,12 @@ export default function Header() {
             onClick={() => router.push("/")}
           >
             <img
-              src="/logo-biox.png"
-              alt="BIO-X"
+              src="/images/logo-aetheris.png"
+              alt="Aetheris"
               className="w-9 h-9 rounded-md"
             />
             <span className="font-bold text-[#0D746D] text-lg tracking-tight">
-              BIO-X Microorganismos
+              Aetheris Genoma
             </span>
           </motion.div>
 
@@ -128,7 +128,7 @@ export default function Header() {
               exit={{ scale: 0.9, opacity: 0 }}
             >
               <h2 className="text-xl font-bold mb-4 text-center">
-                Entrar no BIO-X
+                Entrar na Aetheris
               </h2>
 
               <input

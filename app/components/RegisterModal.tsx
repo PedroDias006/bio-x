@@ -15,12 +15,13 @@ const COUNTRY_CODES = allCountries
   })
   .sort((a, b) => a.code.localeCompare(b.code));
 
+// MUDANÇA: Atualizado o nome dos arquivos de avatar para aetheris
 const AVATARS = [
-  "/avatars/biox1.png",
-  "/avatars/biox2.png",
-  "/avatars/biox3.png",
-  "/avatars/biox4.png",
-  "/avatars/biox5.png",
+  "/avatars/aetheris1.png",
+  "/avatars/aetheris2.png",
+  "/avatars/aetheris3.png",
+  "/avatars/aetheris4.png",
+  "/avatars/aetheris5.png",
 ];
 
 export default function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -88,7 +89,6 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          // MUDANÇA: Fundo sólido (preto 90%), sem blur
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/90 overflow-y-auto"
         >
           <div className="absolute inset-0" onClick={onClose} />
@@ -98,7 +98,6 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            // MANTIDO BLUR SÓ NO CARD
             className="relative w-full max-w-lg bg-[#0B0C10]/95 backdrop-blur-sm border border-white/10 rounded-3xl shadow-2xl overflow-hidden z-10 my-8"
           >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-1 bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.5)] rounded-b-full" />
@@ -113,10 +112,10 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
             <div className="p-8 pt-10">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-serif text-white mb-2 tracking-tight">
-                  Criar Conta <span className="text-cyan-400">Bio-X</span>
+                  Criar Credencial <span className="text-cyan-400">Aetheris</span>
                 </h2>
                 <p className="text-gray-400 text-sm font-light">
-                  Junte-se à revolução biotecnológica.
+                  Junte-se à operação em engenharia molecular.
                 </p>
               </div>
 
@@ -155,7 +154,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                       </div>
                       <input
                         type="text"
-                        placeholder="Nome Completo"
+                        placeholder="Nome do Agente"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all"
@@ -168,7 +167,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                       </div>
                       <input
                         type="email"
-                        placeholder="E-mail"
+                        placeholder="E-mail Corporativo"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all"
@@ -198,7 +197,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                          </div>
                          <input
                            type="tel"
-                           placeholder="Telefone"
+                           placeholder="Comlink (Telefone)"
                            value={phone}
                            onChange={(e) => setPhone(e.target.value)}
                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all"
@@ -212,7 +211,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                       </div>
                       <input
                         type="password"
-                        placeholder="Senha"
+                        placeholder="Chave de Criptografia (Senha)"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all"
@@ -232,7 +231,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                          <Check size={12} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black opacity-0 peer-checked:opacity-100 pointer-events-none" />
                       </div>
                       <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors leading-snug">
-                         Li e aceito os <a href="#" className="text-cyan-400 hover:underline">Termos de Uso</a> e <a href="#" className="text-cyan-400 hover:underline">Política de Privacidade</a> da Bio-X.
+                         Li e aceito as <a href="#" className="text-cyan-400 hover:underline">Diretrizes Operacionais</a> e a <a href="#" className="text-cyan-400 hover:underline">Política de Tratamento de Dados</a> da Aetheris.
                       </span>
                    </label>
 
@@ -258,7 +257,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                   {loading ? (
                     <Loader2 className="animate-spin" size={20} />
                   ) : (
-                    "Criar Conta"
+                    "Registrar Credencial"
                   )}
                 </button>
 
@@ -268,7 +267,7 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
                      onClick={onClose}
                      className="text-sm text-gray-500 hover:text-white transition-colors hover:underline"
                    >
-                     Já tenho uma conta
+                     Já possuo credenciais ativas
                    </button>
                 </div>
 

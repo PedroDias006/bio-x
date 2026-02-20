@@ -1,15 +1,15 @@
 "use client";
 
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    XAxis,
-    YAxis,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
 } from "recharts";
 
-export default function ChartBioX() {
+export default function ChartAetheris() {
   const data = [
     { year: "2021", small: 3, big: 6 },
     { year: "2022", small: 8, big: 14 },

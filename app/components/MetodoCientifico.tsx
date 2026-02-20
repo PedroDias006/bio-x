@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 
-export default function MetodoCientifico() {
+export default function AetherisProtocol() {
 
   const steps = [
-    { title: "Raiz no Agro", desc: "Tecnologia aplicada diretamente às necessidades reais do campo." },
-    { title: "Base Científica", desc: "Formulações testadas, pesquisa contínua e rigor técnico." },
-    { title: "Sustentabilidade", desc: "Soluções naturais que regeneram e preservam o solo." },
-    { title: "Validação em Campo", desc: "Resultados comprovados com produtores de várias regiões." },
+    { title: "Deploy de Bioma", desc: "Tecnologia molecular aplicada diretamente às necessidades estruturais do ecossistema." },
+    { title: "Core Científico", desc: "Algoritmos genéticos, pesquisa contínua e rigor analítico em ambientes controlados." },
+    { title: "Regeneração Ativa", desc: "Nanovetores biológicos que estabilizam e reconfiguram a matriz orgânica do substrato." },
+    { title: "Telemetria de Campo", desc: "Métricas de alta performance comprovadas em múltiplas zonas de operação." },
   ];
 
   return (
@@ -21,7 +21,7 @@ export default function MetodoCientifico() {
         transition={{ duration: 0.8 }}
         className="text-4xl md:text-5xl font-bold text-center"
       >
-        O Método Científico BIO-X
+        O Protocolo Aetheris
       </motion.h2>
 
       <motion.p
@@ -30,7 +30,7 @@ export default function MetodoCientifico() {
         transition={{ delay: 0.3, duration: 1 }}
         className="text-zinc-300 text-center mt-4 max-w-2xl"
       >
-        Uma jornada simples, validada e construída para transformar o solo e o desempenho no campo.
+        Um pipeline lógico, validado e desenvolvido para otimizar o código biológico e o output produtivo.
       </motion.p>
 
       {/* CARDS */}

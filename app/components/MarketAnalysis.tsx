@@ -1,12 +1,12 @@
 "use client";
 
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    XAxis,
-    YAxis
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  XAxis,
+  YAxis
 } from "recharts";
 
 const data = [
@@ -18,7 +18,7 @@ const data = [
   { year: "2024", value2: 20 }
 ];
 
-export default function MarketAnalysis() {
+export default function AetherisMarketAnalysis() {
   return (
     <section className="relative w-full h-[900px] overflow-hidden bg-[#05080A]">
 
@@ -41,7 +41,7 @@ export default function MarketAnalysis() {
         <div className="flex flex-col justify-center w-[50%]">
 
           <h1 className="text-white text-[90px] font-bold leading-[90px] mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-            Market Analysis
+            System Analysis
           </h1>
 
           <div className="w-[580px] h-[340px]">
@@ -79,9 +79,7 @@ export default function MarketAnalysis() {
         <div className="w-[45%] text-white">
 
           <p className="text-gray-300 text-[18px] leading-relaxed max-w-[480px] mb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Vestibulum sed orci in risus hendrerit malesuada.
-            Nunc laoreet eu quam eu.
+            A Aetheris Genoma apresenta um crescimento exponencial na adoção de seus nanovetores biológicos. Nossos sistemas substituem insumos sintéticos pesados, garantindo máxima eficiência e regeneração celular do ecossistema.
           </p>
 
           {/* DESCRIPTION 01 */}
@@ -89,11 +87,10 @@ export default function MarketAnalysis() {
             <div className="w-5 h-5 bg-[#45E0D1] rounded-sm mt-1"></div>
             <div>
               <h4 className="text-[#FFD84D] text-lg font-semibold">
-                DESCRIPTION 01
+                EXPANSÃO DE RENDIMENTO
               </h4>
               <p className="text-gray-300 mt-2 max-w-[380px] leading-snug">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum sed orci in risus hendrerit malesuada.
+                A adoção do protocolo Aetheris gera um aumento direto na densidade de biomassa e rentabilidade operacional nas principais áreas de cultivo.
               </p>
             </div>
           </div>
@@ -103,11 +100,10 @@ export default function MarketAnalysis() {
             <div className="w-5 h-5 bg-[#45E0D1] rounded-sm mt-1"></div>
             <div>
               <h4 className="text-[#FFD84D] text-lg font-semibold">
-                DESCRIPTION 02
+                OTIMIZAÇÃO DE RECURSOS
               </h4>
               <p className="text-gray-300 mt-2 max-w-[380px] leading-snug">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum sed orci in risus hendrerit malesuada.
+                Integração contínua na infraestrutura existente, reduzindo drasticamente o déficit operacional, custos de maquinário e de logística.
               </p>
             </div>
           </div>
@@ -119,7 +115,7 @@ export default function MarketAnalysis() {
             hover:bg-[#FFD84D] hover:text-black
             transition-all duration-300
           ">
-            INCREASE PROFIT
+            MAXIMIZE OUTPUT
           </button>
         </div>
       </div>

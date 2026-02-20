@@ -31,18 +31,18 @@ import {
 } from "lucide-react";
 
 /* =========================================================================
-   DADOS E CONSTANTES
+   DADOS E CONSTANTES (REBRANDING: AETHERIS)
    ========================================================================= */
 
 const PRODUCT_BENEFITS = [
   {
-    title: "Bio-Ativação Solo",
-    desc: "Reativa a microbiologia nativa em 72h.",
+    title: "Neuro-Link de Solo",
+    desc: "Estabelece rede neural na rizosfera em 72h.",
     icon: <Sprout size={24} />,
   },
   {
-    title: "Proteção Sistêmica",
-    desc: "Cria escudo imunológico contra pragas.",
+    title: "Escudo Cripto-Biótico",
+    desc: "Firewall biológico contra patógenos invasores.",
     icon: <ShieldCheck size={24} />,
   },
 ];
@@ -121,7 +121,7 @@ const StatCard: React.FC<StatCardProps> = React.memo(
 );
 
 /* =========================================================================
-   SUB-COMPONENTE: VISUAL OFFER SECTION ("Agricultura Visível")
+   SUB-COMPONENTE: VISUAL OFFER SECTION ("Bio-Scan Analytics")
    ========================================================================= */
 
 const VisualOfferSection: React.FC = React.memo(() => {
@@ -161,34 +161,34 @@ const VisualOfferSection: React.FC = React.memo(() => {
       {/* Título da Seção */}
       <div className="text-center mb-16 relative z-10">
          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase shadow-sm"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase shadow-sm"
          >
-            <Scan size={14} /> Análise Visual de Campo
+            <Scan size={14} /> Scanner Bio-Espectral
          </motion.div>
          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.1 }}
+           className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight"
          >
-            O que os olhos veem, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">
-              o bolso sente.
-            </span>
+           Dados invisíveis, <br />
+           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">
+             evolução tangível.
+           </span>
          </motion.h2>
          <p className="text-gray-500 max-w-2xl mx-auto">
-            Não é mágica, é fisiologia vegetal. Veja os indicadores visuais que comprovam a eficácia do Bio-X antes mesmo da colheita.
+           Não é adivinhação, é computação biológica. Nossos sensores revelam a reprogramação celular da Aetheris antes mesmo da fase fenológica.
          </p>
       </div>
 
       {/* --- BENTO GRID VISUAL --- */}
       <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
         
-        {/* CARD 1: HERO IMAGE (EQUIPE + SOJA) - 8 COLUNAS */}
+        {/* CARD 1: HERO IMAGE - 8 COLUNAS */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -198,7 +198,7 @@ const VisualOfferSection: React.FC = React.memo(() => {
         >
           <img 
             src="/images/equipe-biox-soja.jpg" 
-            alt="Especialista Bio-X em campo" 
+            alt="Operador Aetheris em Campo" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
@@ -214,20 +214,20 @@ const VisualOfferSection: React.FC = React.memo(() => {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
              </div>
              <div className="bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                Engalhamento Lateral
+               Nó de Processamento
              </div>
           </motion.div>
 
           <div className="absolute bottom-10 left-10 z-10 max-w-lg">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/90 border border-emerald-400 backdrop-blur-md mb-4 text-white">
               <ShieldCheck className="w-3 h-3 text-white" />
-              <span className="text-xs font-bold tracking-wider uppercase">Vigor Monitorado</span>
+              <span className="text-xs font-bold tracking-wider uppercase">Status: Otimizado</span>
             </div>
             <h3 className="text-3xl font-serif text-white mb-2 drop-shadow-lg">
-               Arquitetura de Planta
+               Arquitetura Sintética
             </h3>
             <p className="text-gray-100 text-sm leading-relaxed drop-shadow-md font-medium">
-              Note o fechamento das entrelinhas e a coloração verde-intenso. Sinais claros de fotossíntese maximizada e sanidade total.
+               Geometria fractal perfeita. Observe a maximização da captura de fótons e a ausência total de entropia biológica no setor tratado.
             </p>
           </div>
         </motion.div>
@@ -244,17 +244,17 @@ const VisualOfferSection: React.FC = React.memo(() => {
            >
               <img 
                 src="/images/comparativo-batata.jpg" 
-                alt="Comparação Batatas" 
+                alt="Comparação Genética" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/20 transition-colors" />
               
               <div className="absolute bottom-6 left-6 right-6">
                  <div className="flex items-center justify-between mb-2">
-                    <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Padrão</span>
-                    <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase shadow-lg">Bio-X</span>
+                    <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Legacy</span>
+                    <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase shadow-lg">Aetheris</span>
                  </div>
-                 <h3 className="text-lg font-bold text-white">Padronização</h3>
+                 <h3 className="text-lg font-bold text-white">Mutação Controlada</h3>
               </div>
            </motion.div>
 
@@ -268,7 +268,7 @@ const VisualOfferSection: React.FC = React.memo(() => {
            >
               <img 
                 src="/images/colheita-batata.jpg" 
-                alt="Colheita" 
+                alt="Extração de Biomassa" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
@@ -276,9 +276,9 @@ const VisualOfferSection: React.FC = React.memo(() => {
               <div className="absolute bottom-6 left-6">
                  <div className="flex items-center gap-2 mb-1">
                     <TrendingUp className="text-emerald-400 w-4 h-4" />
-                    <span className="text-emerald-300 text-xs font-bold uppercase">Produtividade</span>
+                    <span className="text-emerald-300 text-xs font-bold uppercase">Output</span>
                  </div>
-                 <h3 className="text-xl font-bold text-white">Volume Real</h3>
+                 <h3 className="text-xl font-bold text-white">Volume Bruto</h3>
               </div>
            </motion.div>
         </div>
@@ -288,63 +288,63 @@ const VisualOfferSection: React.FC = React.memo(() => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-100 pt-16">
          {/* Detalhes ... */}
          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex gap-4 items-start group"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="flex gap-4 items-start group"
          >
             <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition-colors">
                <Sprout className="text-emerald-600 w-8 h-8" />
             </div>
             <div>
                <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                  Sistema Radicular
+                  Grid Subterrâneo
                   <CheckCircle2 size={16} className="text-emerald-500" />
                </h4>
                <p className="text-sm text-gray-500 leading-relaxed">
-                  Estimula o crescimento de raízes secundárias e pelos absorventes, aumentando a boca da planta para buscar água.
+                  Expansão da rede de micélio e raízes sintéticas, criando uma "internet" de absorção de nutrientes.
                </p>
             </div>
          </motion.div>
 
          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex gap-4 items-start group"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.1 }}
+           className="flex gap-4 items-start group"
          >
             <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
                <Leaf className="text-blue-600 w-8 h-8" />
             </div>
             <div>
                <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                  Índice Foliar
+                  Painéis Fotônicos
                   <CheckCircle2 size={16} className="text-blue-500" />
                </h4>
                <p className="text-sm text-gray-500 leading-relaxed">
-                  Folhas maiores e mais verdes (mais clorofila) garantem taxa fotossintética superior mesmo em dias nublados.
+                  Folhas reconfiguradas para absorver espectros de luz UV e Infravermelho, garantindo energia extra.
                </p>
             </div>
          </motion.div>
 
          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex gap-4 items-start group"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.2 }}
+           className="flex gap-4 items-start group"
          >
             <div className="w-16 h-16 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0 group-hover:bg-amber-100 transition-colors">
                <CircleDot className="text-amber-600 w-8 h-8" />
             </div>
             <div>
                <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                  Enchimento de Grão
+                  Densidade Molecular
                   <CheckCircle2 size={16} className="text-amber-500" />
                </h4>
                <p className="text-sm text-gray-500 leading-relaxed">
-                  Translocação eficiente de nutrientes das folhas para os frutos/grãos nos estágios finais, aumentando o peso.
+                  Translocação de carbono puro para os frutos, resultando em polímeros biológicos de ultra-peso.
                </p>
             </div>
          </motion.div>
@@ -355,7 +355,7 @@ const VisualOfferSection: React.FC = React.memo(() => {
 });
 
 /* =========================================================================
-   SUB-COMPONENTE: PRODUCT HERO ("Tecnologia Regenerativa" - OTIMIZADO)
+   SUB-COMPONENTE: PRODUCT HERO ("Terraforming Engine")
    ========================================================================= */
 
 const ProductHeroSection: React.FC = React.memo(() => {
@@ -392,10 +392,8 @@ const ProductHeroSection: React.FC = React.memo(() => {
       id="produto"
       className="relative py-32 md:py-48 px-6 bg-[#FAFAFA] overflow-hidden text-[#020617]"
     >
-      {/* OTIMIZAÇÃO: Substituição de Blur Pesado por Gradiente Sutil */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00E0FF]/5 rounded-full blur-[80px] pointer-events-none opacity-50" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#003B5C]/5 rounded-full blur-[80px] pointer-events-none opacity-50" />
-      {/* REMOVIDO NOISE SVG DAQUI TAMBÉM */}
 
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
         <motion.div
@@ -415,7 +413,7 @@ const ProductHeroSection: React.FC = React.memo(() => {
             <div className="absolute inset-2 rounded-[2.5rem] overflow-hidden bg-gray-100 translate-z-10">
               <img
                 src="/images/fundo-produto.jpg"
-                alt="Plantação"
+                alt="Ambiente Controlado"
                 decoding="async"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700 ease-out"
@@ -425,11 +423,10 @@ const ProductHeroSection: React.FC = React.memo(() => {
               style={{ translateZ: 60 }}
               className="absolute inset-0 flex items-center justify-center z-40 pointer-events-none"
             >
-              {/* Otimizado: Sombra estática ao invés de animação pesada */}
               <div className="absolute bottom-20 w-32 h-8 bg-black/20 blur-xl rounded-[100%]" />
               <img
                 src="/images/agricultura.png"
-                alt="Bio-X"
+                alt="Aetheris Unit"
                 decoding="async"
                 loading="lazy"
                 className="w-72 md:w-80 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:-translate-y-6"
@@ -440,18 +437,18 @@ const ProductHeroSection: React.FC = React.memo(() => {
               className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg z-50 flex justify-between items-center"
             >
               <div>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Concentração</p>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Densidade Nanobot</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-[#003B5C]">10⁹</span>
-                  <span className="text-xs text-gray-400 font-mono">UFC/mL</span>
+                  <span className="text-2xl font-bold text-[#003B5C]">10¹²</span>
+                  <span className="text-xs text-gray-400 font-mono">Units/mL</span>
                 </div>
               </div>
               <div className="h-8 w-px bg-gray-200" />
               <div>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Rendimento</p>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Raio de Ação</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-[#003B5C]">10</span>
-                  <span className="text-xs text-gray-400 font-mono">Hectares</span>
+                  <span className="text-2xl font-bold text-[#003B5C]">50</span>
+                  <span className="text-xs text-gray-400 font-mono">Acres</span>
                 </div>
               </div>
             </motion.div>
@@ -478,7 +475,7 @@ const ProductHeroSection: React.FC = React.memo(() => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-xs font-bold text-[#003B5C] tracking-widest uppercase">
-              Tecnologia Regenerativa 4.0
+              System Version 4.0
             </span>
           </motion.div>
 
@@ -489,9 +486,9 @@ const ProductHeroSection: React.FC = React.memo(() => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-[#020617] mb-4 leading-[0.95] tracking-tight"
           >
-            Mais que insumo. <br />
+            Além da Biologia. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#4ADE80]">
-              Um legado.
+              Vida Inteligente.
             </span>
           </motion.h2>
 
@@ -508,18 +505,18 @@ const ProductHeroSection: React.FC = React.memo(() => {
               ))}
             </div>
             <p className="text-sm text-gray-600 font-medium">
-              <span className="font-bold text-[#020617]">4.9/5</span> aprovado
-              por +500 produtores
+              <span className="font-bold text-[#020617]">Classificação AAA</span> certificada
+              pelo Conselho Global.
             </p>
           </motion.div>
 
           <motion.p
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             viewport={{ once: true }}
-             className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg"
           >
-             A Agricultura Única não apenas nutre a planta, ela <strong className="text-[#003B5C]">reprograma biologicamente</strong> o seu solo para atingir patamares produtivos nunca antes explorados.
+             O soro Aetheris não apenas nutre a planta, ele <strong className="text-[#003B5C]">reprograma o código genético</strong> do seu ambiente para atingir patamares produtivos teóricos.
           </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
@@ -554,16 +551,14 @@ const ProductHeroSection: React.FC = React.memo(() => {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            {/* BOTÃO GARANTIR LOTE AGORA (WPP) */}
+            {/* BOTÃO AÇÃO */}
             <a
-              href="https://wa.me/5531995235778?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20lote%20atual%20de%20Agricultura%20%C3%9Anica."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               className="group relative w-full sm:w-auto px-10 py-5 bg-[#15803D] hover:bg-[#166534] overflow-hidden rounded-xl shadow-[0_20px_40px_-15px_rgba(21,128,61,0.5)] transition-transform hover:-translate-y-1"
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
               <div className="relative flex items-center justify-center gap-3 text-white text-lg font-bold tracking-wide">
-                GARANTIR LOTE ATUAL{" "}
+                SOLICITAR BETA ACESS
                 <ArrowRight
                   className="group-hover:translate-x-1 transition-transform"
                   size={20}
@@ -593,13 +588,13 @@ const DocumentarySection: React.FC = React.memo(() => {
                className="text-center mb-12"
             >
                <span className="text-[#4ADE80] font-mono text-xs uppercase tracking-[0.3em] mb-4 block">
-                  Produção Original
+                  Arquivos Classificados
                </span>
                <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">
-                  A Revolução em Detalhes
+                  Protocolo Genesis
                </h2>
                <p className="text-gray-400 text-sm md:text-base max-w-lg mx-auto">
-                  Veja como a Bio-X está transformando lavouras estagnadas em recordistas de produtividade.
+                  Veja como a Aetheris está transformando setores estagnados através da engenharia reversa da natureza.
                </p>
             </motion.div>
 
@@ -664,13 +659,12 @@ export default function AgriculturaMasterpiece() {
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4ADE80] to-[#22c55e] z-[100] origin-left shadow-[0_0_20px_rgba(74,222,128,0.5)]"
       />
 
-      {/* 1. HERO - OTIMIZADO (SEM NOISE PESADO) */}
+      {/* 1. HERO - AETHERIS */}
       <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#020617] overflow-hidden">
         <motion.div
           style={{ y: yHero, opacity: opacityHero }}
           className="absolute inset-0 z-0 will-change-transform"
         >
-          {/* REMOVIDO O NOISE DAQUI PARA PARAR O TRAVAMENTO */}
           <div className="absolute inset-0 bg-[#020617]/20 z-10 pointer-events-none" />
           <video
             src="/videos/agricultura-hero.mp4"
@@ -696,41 +690,39 @@ export default function AgriculturaMasterpiece() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ADE80]"></span>
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-gray-200 font-semibold">
-                Bio-X Advanced Tech
+                Aetheris Deep-Tech
               </span>
             </div>
 
             <h1 className="text-5xl md:text-8xl font-bold text-white uppercase flex flex-col items-center gap-2 mb-8 tracking-tighter">
               <span className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
                 <span className="tracking-widest font-light opacity-80">
-                  BIO-X
+                  AETHERIS
                 </span>
-                <span className="text-white drop-shadow-2xl">AGRICULTURA</span>
+                <span className="text-white drop-shadow-2xl">SYNTHETIC</span>
               </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] via-[#86EFAC] to-[#4ADE80] bg-[200%_auto] animate-[shimmer_3s_infinite]">
-                ÚNICA
+                GENESIS
               </span>
             </h1>
 
             <h2 className="text-lg md:text-2xl font-light text-gray-300 max-w-2xl mx-auto leading-relaxed mb-12">
-              A única tecnologia capaz de destravar o{" "}
+              A única tecnologia capaz de quebrar o{" "}
               <span className="text-white font-medium border-b border-[#4ADE80]/50 pb-0.5">
-                teto produtivo
+                código biológico
               </span>{" "}
-              da sua lavoura com inteligência biológica.
+              da matéria orgânica com inteligência evolutiva.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-5 w-full justify-center">
-              {/* BOTÃO QUERO COMPRAR (WPP) */}
+              {/* BOTÃO DEPLOY */}
               <a
-                href="https://wa.me/5531995235778?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20o%20produto%20de%20Agricultura%20%C3%9Anica."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="group relative px-8 py-4 bg-[#4ADE80] text-[#020617] font-bold text-lg rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(74,222,128,0.6)] flex items-center justify-center gap-3 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
                 <span className="relative z-10 flex items-center gap-2">
-                  QUERO COMPRAR <ArrowRight size={20} />
+                  INICIAR DEPLOY <ArrowRight size={20} />
                 </span>
               </a>
 
@@ -741,7 +733,7 @@ export default function AgriculturaMasterpiece() {
                 <div className="w-8 h-8 rounded-full bg-[#4ADE80]/20 flex items-center justify-center">
                    <Play size={14} className="text-[#4ADE80] fill-[#4ADE80]" />
                 </div>
-                <span>DOCUMENTÁRIO</span>
+                <span>CONFIDENTIAL FILES</span>
               </a>
             </div>
           </motion.div>
@@ -756,23 +748,23 @@ export default function AgriculturaMasterpiece() {
         </motion.div>
       </section>
 
-      {/* AUTHORITY BAR - OTIMIZADA (LEVE, SEM SOMBRAS PESADAS, Z-INDEX CORRIGIDO) */}
+      {/* AUTHORITY BAR - PARCEIROS FICTÍCIOS */}
       <div className="bg-[#0B1120] py-6 relative z-10 border-t border-white/5 shadow-none">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-6">
           <span className="text-xs font-mono uppercase tracking-widest text-gray-400">
-            Validado por:
+            Powered By:
           </span>
           <div className="text-2xl font-bold font-serif text-white tracking-widest opacity-80 hover:opacity-100 transition-opacity">
-            UFV
+            NEO-GEN LABS
           </div>
           <div className="text-2xl font-bold font-serif text-white tracking-widest opacity-80 hover:opacity-100 transition-opacity">
-            FINEP
+            TERRA-CORP
           </div>
           <div className="text-2xl font-bold font-serif text-white tracking-widest opacity-80 hover:opacity-100 transition-opacity">
-            EMBRAPA
+            SYNTH-BIO
           </div>
           <span className="text-xs font-mono uppercase tracking-widest text-gray-400 hidden md:block border-l border-white/10 pl-6">
-            Patente Nº 9283-BR
+            Patent ID #X99-ALPHA
           </span>
         </div>
       </div>
@@ -808,13 +800,13 @@ export default function AgriculturaMasterpiece() {
               <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-[#15803D]/10 text-[#15803D] border border-[#15803D]/20">
                 <Microscope size={14} />
                 <span className="font-bold tracking-widest uppercase text-[10px]">
-                  Relatório de Auditoria 2024
+                  Relatório de Auditoria A.I.
                 </span>
               </div>
               <h2 className="text-4xl md:text-6xl font-bold text-[#020617] tracking-tight leading-[1.1]">
                 Resultados que desafiam <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#15803D] to-[#4ADE80]">
-                  a lógica convencional.
+                  a termodinâmica.
                 </span>
               </h2>
             </motion.div>
@@ -831,22 +823,22 @@ export default function AgriculturaMasterpiece() {
               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#4ADE80] opacity-20 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
               <img
                 src="/images/agricultura.png"
-                alt="Bio-X Agricultura Única Logo"
+                alt="Aetheris Logo"
                 className="absolute top-8 right-8 w-28 md:w-40 object-contain drop-shadow-lg"
               />
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6 text-[#4ADE80]">
                   <BarChart3 />
                   <span className="font-mono uppercase tracking-widest text-xs">
-                    Métrica Principal
+                    KPI Principal
                   </span>
                 </div>
                 <h3 className="text-2xl font-light text-gray-300 mb-2">
-                  Produtividade Global
+                  Eficiência Sintética
                 </h3>
                 <div className="flex items-end gap-4">
                   <span className="text-7xl md:text-8xl font-bold tracking-tighter text-white leading-none">
-                    +29,6
+                    +42,8
                   </span>
                   <span className="text-3xl md:text-4xl font-bold text-[#4ADE80] mb-2">
                     %
@@ -870,18 +862,18 @@ export default function AgriculturaMasterpiece() {
             </motion.div>
 
             <StatCard
-              label="Eficiência Soja"
-              value={29.1}
+              label="Taxa de Carbono"
+              value={98.2}
               unit="%"
-              subtext="Incremento direto em sacas/ha."
+              subtext="Conversão atmosférica direta."
               delay={0.2}
               color="text-[#16A34A]"
             />
             <StatCard
-              label="Enraizamento"
-              value={45.0}
-              unit="%"
-              subtext="Volume de massa radicular."
+              label="Rede Neural"
+              value={64.0}
+              unit="TB"
+              subtext="Dados coletados por hectare."
               delay={0.3}
               color="text-[#0D9488]"
             />
@@ -898,10 +890,10 @@ export default function AgriculturaMasterpiece() {
               </div>
               <div>
                 <h4 className="text-xl font-bold text-[#020617] mb-2">
-                  Recuperação de Solo
+                  Regeneração de Substrato
                 </h4>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Redução de adubação química em <strong className="text-[#059669]">até 15%</strong> na próxima safra.
+                  Eliminação de aditivos químicos externos em <strong className="text-[#059669]">até 95%</strong> no próximo ciclo.
                 </p>
               </div>
             </motion.div>

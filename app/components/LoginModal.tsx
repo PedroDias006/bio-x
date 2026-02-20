@@ -85,10 +85,10 @@ export default function LoginModal({ open, onClose }: { open: boolean; onClose: 
               <div className="p-8 pt-12">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-serif text-white mb-2 tracking-tight">
-                    Bem-vindo à <span className="text-cyan-400">Bio-X</span>
+                    Bem-vindo à <span className="text-cyan-400">Aetheris</span>
                   </h2>
                   <p className="text-gray-400 text-sm font-light">
-                    Acesse seu painel de controle biotecnológico.
+                    Acesse seu terminal de controle biotecnológico.
                   </p>
                 </div>
 
@@ -104,7 +104,7 @@ export default function LoginModal({ open, onClose }: { open: boolean; onClose: 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all"
-                        placeholder="nome@exemplo.com"
+                        placeholder="agente@aetheris.com"
                       />
                     </div>
                   </div>
@@ -150,7 +150,7 @@ export default function LoginModal({ open, onClose }: { open: boolean; onClose: 
                       <Loader2 className="animate-spin" size={20} />
                     ) : (
                       <>
-                        Entrar na Plataforma <ArrowRight size={18} />
+                        Autenticar Acesso <ArrowRight size={18} />
                       </>
                     )}
                   </button>
@@ -173,7 +173,7 @@ export default function LoginModal({ open, onClose }: { open: boolean; onClose: 
                     <span className="p-2 bg-white/5 rounded-lg group-hover:bg-white/10 transition-colors">
                         <UserPlus size={16} className="text-cyan-500" />
                     </span>
-                    <span className="text-sm">Não tem uma conta? <span className="text-cyan-400 font-bold group-hover:underline underline-offset-4">Criar agora</span></span>
+                    <span className="text-sm">Não tem credenciais? <span className="text-cyan-400 font-bold group-hover:underline underline-offset-4">Criar agora</span></span>
                   </button>
                 </div>
               </div>

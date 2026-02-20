@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-// Tipos
+// Definição de Tipos de Matéria
 type Product = {
   id: number;
   name: string;
@@ -29,15 +29,16 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  // Carregar do LocalStorage ao iniciar
+  // [SISTEMA] Inicializar protocolo de persistência local
   useEffect(() => {
-    const saved = localStorage.getItem("biox-cart");
+    // MUDANÇA: Chave de armazenamento atualizada para a nova empresa
+    const saved = localStorage.getItem("aetheris-containment-unit");
     if (saved) setItems(JSON.parse(saved));
   }, []);
 
-  // Salvar no LocalStorage sempre que mudar
+  // [SISTEMA] Sincronizar inventário com o banco de dados local
   useEffect(() => {
-    localStorage.setItem("biox-cart", JSON.stringify(items));
+    localStorage.setItem("aetheris-containment-unit", JSON.stringify(items));
   }, [items]);
 
   const addToCart = (product: Product) => {
@@ -58,6 +59,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = () => setItems([]);
 
+  // Cálculo de Carga Total e Créditos
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const cartTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -70,6 +72,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within a CartProvider");
+  if (!context) throw new Error("Erro de Sistema: useCart deve ser usado dentro de um CartProvider.");
   return context;
 };

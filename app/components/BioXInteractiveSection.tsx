@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export default function BioXInteractiveSection() {
+export default function AetherisInteractiveSection() {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const [activeTopic, setActiveTopic] = useState<any>(null);
@@ -56,8 +56,8 @@ export default function BioXInteractiveSection() {
       alpha: number;
 
       constructor() {
-        this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
+        this.x = canvas!.width / 2;
+        this.y = canvas!.height / 2;
         this.speedX = (Math.random() - 0.5) * (open ? 3 : 1);
         this.speedY = (Math.random() - 0.5) * (open ? 3 : 1);
         this.size = Math.random() * 2 + 1;
@@ -72,7 +72,7 @@ export default function BioXInteractiveSection() {
 
       draw() {
         ctx!.globalAlpha = this.alpha;
-        ctx!.fillStyle = "#45f2ff";
+        ctx!.fillStyle = "#06b6d4"; // Aetheris Cyan
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -105,77 +105,77 @@ export default function BioXInteractiveSection() {
     };
   }, [open]);
 
-  // ======= TOPICOS =======
+  // ======= TOPICOS (AETHERIS DATA) =======
   const topics = [
     {
-      title: "Raiz no Agro",
-      desc: "A BIO-X nasce do campo, construída por produtores que conhecem profundamente a realidade agrícola e os desafios do solo brasileiro.",
+      title: "Origem Genética",
+      desc: "A Aetheris nasce da necessidade de reescrever o código de ecossistemas degradados, combinando inteligência de dados com microbiologia de campo.",
       img: "/images/cards/raiz.jpg",
       points: [
-        "Fundação construída por produtores experientes",
-        "Soluções criadas a partir da vivência no campo",
-        "Compreensão real dos desafios do solo brasileiro",
-        "Tecnologia aplicada de forma prática e eficiente",
-        "Visão biológica integrada à rotina do produtor",
+        "Arquitetura construída por bio-engenheiros",
+        "Protocolos criados a partir da análise de dados reais",
+        "Compreensão sintética dos desafios do bioma",
+        "Tecnologia aplicada via algoritmos de precisão",
+        "Visão integrada à rotina operacional do produtor",
       ],
       indicators: [
-        { label: "Conexão com o produtor", value: "100%", bar: "100%" },
-        { label: "Relevância prática", value: "95%", bar: "95%" },
-        { label: "Aplicabilidade imediata", value: "90%", bar: "90%" },
+        { label: "Sincronia Operacional", value: "100%", bar: "100%" },
+        { label: "Relevância Prática", value: "95%", bar: "95%" },
+        { label: "Velocidade de Deploy", value: "90%", bar: "90%" },
       ],
     },
     {
-      title: "Base Científica",
-      desc: "Desenvolvimento científico avançado com microbiologia, análises laboratoriais e validação rigorosa de cada cepa utilizada.",
+      title: "Core Científico",
+      desc: "Desenvolvimento baseado em engenharia molecular avançada e validação rigorosa de cada nanovetor biológico utilizado.",
       img: "/images/cards/ciencia.jpg",
       points: [
-        "Pesquisa contínua em microbiologia aplicada",
-        "Isolamento e cultivo de cepas de alta performance",
-        "Validação em laboratório e ambientes controlados",
-        "Protocolos científicos auditáveis",
-        "Equipe técnica multidisciplinar",
-        "Tecnologia baseada em evidências",
+        "Pesquisa contínua em biologia sintética",
+        "Isolamento de cepas de performance extrema",
+        "Validação em laboratórios de biossegurança",
+        "Protocolos auditáveis por IA",
+        "Esquadrão técnico multidisciplinar",
+        "Tecnologia baseada em Data Science",
       ],
       indicators: [
-        { label: "Rigor científico", value: "98%", bar: "98%" },
-        { label: "Taxa de validação", value: "92%", bar: "92%" },
-        { label: "Precisão das análises", value: "96%", bar: "96%" },
+        { label: "Rigor Analítico", value: "98%", bar: "98%" },
+        { label: "Taxa de Sobrevivência (Cepa)", value: "92%", bar: "92%" },
+        { label: "Precisão Genômica", value: "96%", bar: "96%" },
       ],
     },
     {
-      title: "Sustentabilidade",
-      desc: "Tecnologias que regeneram o solo, aumentam biodiversidade microbiana e reduzem dependência de insumos tradicionais.",
+      title: "Regeneração Ativa",
+      desc: "Tecnologias que não apenas preservam, mas otimizam e expandem o limite de suporte dos sistemas biológicos hospedeiros.",
       img: "/images/cards/sustentabilidade.jpg",
       points: [
-        "Regeneração ativa do solo",
-        "Estímulo à biodiversidade microbiana",
-        "Redução de insumos químicos",
-        "Ciclagem natural de nutrientes",
-        "Baixo impacto ambiental",
-        "Promove agricultura regenerativa",
+        "Reconfiguração ativa do substrato",
+        "Estímulo à biodiversidade molecular",
+        "Substituição de dependências químicas",
+        "Ciclagem autônoma de energia",
+        "Impacto ambiental negativo (Carbon Negative)",
+        "Promove evolução de biomas estáticos",
       ],
       indicators: [
-        { label: "Regeneração do solo", value: "93%", bar: "93%" },
-        { label: "Sustentabilidade do sistema", value: "90%", bar: "90%" },
-        { label: "Redução de impacto", value: "85%", bar: "85%" },
+        { label: "Recuperação de Área", value: "93%", bar: "93%" },
+        { label: "Estabilidade do Sistema", value: "90%", bar: "90%" },
+        { label: "Redução de Entropia", value: "85%", bar: "85%" },
       ],
     },
     {
-      title: "Validação em Campo",
-      desc: "Resultados reais comprovados em propriedades rurais, reforçando a eficiência microbiológica em diversos tipos de solo.",
+      title: "Telemetria Global",
+      desc: "Milhares de data points coletados em operações reais, reforçando a eficiência do protocolo em qualquer variável ambiental.",
       img: "/images/cards/campo.jpg",
       points: [
-        "Testes realizados em múltiplas regiões",
-        "Resultados acompanhados por técnicos",
-        "Comparativos com áreas controle",
-        "Aumento real de produtividade",
-        "Alta estabilidade dos resultados",
-        "Evidências coletadas em diferentes culturas",
+        "Testes executados em múltiplas matrizes de solo",
+        "Resultados rastreados via satélite",
+        "Comparativos rigorosos com zonas Legacy (Controle)",
+        "Aumento escalável de output produtivo",
+        "Alta estabilidade contra stress térmico",
+        "Evidências computadas em 15+ culturas",
       ],
       indicators: [
-        { label: "Eficiência em campo", value: "94%", bar: "94%" },
-        { label: "Consistência dos resultados", value: "91%", bar: "91%" },
-        { label: "Aumento médio de produtividade", value: "+12%", bar: "82%" },
+        { label: "Eficiência de Interface", value: "94%", bar: "94%" },
+        { label: "Consistência de Dados", value: "91%", bar: "91%" },
+        { label: "Aumento de Yield Médio", value: "+12%", bar: "82%" },
       ],
     },
   ];
@@ -201,8 +201,8 @@ export default function BioXInteractiveSection() {
       {/* LOGO */}
       <div className="relative z-20 flex flex-col items-center mt-[-35px]">
         <motion.img
-          src="/images/logo-biox.png"
-          className="w-[260px] cursor-pointer select-none drop-shadow-[0_0_35px_rgba(69,242,255,0.5)]"
+          src="/images/logo-aetheris.png" // MUDANÇA: Atualize a imagem da logo
+          className="w-[260px] cursor-pointer select-none drop-shadow-[0_0_35px_rgba(6,182,212,0.5)]"
           onMouseEnter={() => {
             setHover(true);
             play(hoverSound.current);
@@ -223,12 +223,12 @@ export default function BioXInteractiveSection() {
             open ? play(collapseSound.current) : play(expandSound.current);
             setOpen(!open);
           }}
-          className="mt-6 px-9 py-3 text-base font-semibold rounded-full 
+          className="mt-6 px-9 py-3 text-base font-bold tracking-widest uppercase rounded-full 
                      bg-white/10 hover:bg-white/20 border border-white/30 
-                     text-white transition backdrop-blur-sm"
+                     text-white transition backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.2)]"
           animate={{ opacity: hover || open ? 1 : 0 }}
         >
-          {open ? "Recolher" : "Expandir"}
+          {open ? "Fechar Interface" : "Acessar Núcleo"}
         </motion.button>
       </div>
 
@@ -240,11 +240,13 @@ export default function BioXInteractiveSection() {
               data={topics[0]}
               direction="left"
               setActiveTopic={setActiveTopic}
+              index={1}
             />
             <TopicCard
               data={topics[1]}
               direction="right"
               setActiveTopic={setActiveTopic}
+              index={2}
             />
           </div>
 
@@ -253,11 +255,13 @@ export default function BioXInteractiveSection() {
               data={topics[2]}
               direction="left"
               setActiveTopic={setActiveTopic}
+              index={3}
             />
             <TopicCard
               data={topics[3]}
               direction="right"
               setActiveTopic={setActiveTopic}
+              index={4}
             />
           </div>
         </>
@@ -277,19 +281,19 @@ export default function BioXInteractiveSection() {
 }
 
 /* ======= CARD ======= */
-function TopicCard({ data, direction, setActiveTopic, index }: any) {
+function TopicCard({ data, setActiveTopic, index }: any) {
   return (
     <motion.div
       onClick={() => setActiveTopic(data)}
       className="
         w-[210px] py-4 px-6
         flex items-center justify-center
-        text-[16px] font-semibold cursor-pointer select-none
-        bg-white/25
-        border border-[#45F2FF]/40
-        text-[#003B5C]
-        rounded-xl backdrop-blur-md
-        shadow-[0_8px_22px_rgba(0,0,0,0.15)]
+        text-[14px] font-bold tracking-wider uppercase cursor-pointer select-none
+        bg-white/10
+        border border-[#06b6d4]/40
+        text-white
+        rounded-sm backdrop-blur-lg
+        shadow-[0_8px_30px_rgba(0,0,0,0.5)]
       "
       initial={{
         opacity: 0,
@@ -302,13 +306,13 @@ function TopicCard({ data, direction, setActiveTopic, index }: any) {
       transition={{
         duration: 0.45,
         ease: "easeOut",
-        delay: 0.06 * index, // stagger real, leve e suave
+        delay: 0.06 * index, 
       }}
       whileHover={{
         scale: 1.06,
-        boxShadow: "0 0 22px rgba(69,242,255,0.30)",
-        borderColor: "#45F2FF",
-        backgroundColor: "rgba(255,255,255,0.35)",
+        boxShadow: "0 0 25px rgba(6,182,212,0.50)",
+        borderColor: "#06b6d4",
+        backgroundColor: "rgba(6,182,212,0.15)",
       }}
       whileTap={{
         scale: 0.96,
@@ -324,7 +328,7 @@ function ScientificSidePanel({ data, close }: any) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/35 z-[80] flex"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80] flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -333,58 +337,59 @@ function ScientificSidePanel({ data, close }: any) {
       >
         <motion.div
           className="
-            w-[440px] max-w-[90%] h-full bg-white 
-            shadow-xl border-r border-gray-200 overflow-y-auto
+            w-[440px] max-w-[90%] h-full bg-[#020617] 
+            shadow-[20px_0_50px_rgba(0,0,0,0.8)] border-r border-white/10 overflow-y-auto
             will-change-transform
           "
           initial={{ x: -24, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -24, opacity: 0 }}
-          transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }} // material ease-out
+          transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* FOTO */}
-          <div className="w-full h-[240px] overflow-hidden rounded-b-2xl">
-            <img src={data.img} className="w-full h-full object-cover" />
+          <div className="w-full h-[240px] overflow-hidden rounded-b-sm border-b border-white/5 relative">
+            <div className="absolute inset-0 bg-cyan-500/20 mix-blend-overlay z-10" />
+            <img src={data.img} className="w-full h-full object-cover grayscale contrast-125" />
           </div>
 
-          <div className="p-7">
-            <h2 className="text-3xl font-bold text-[#0D746D] mb-3">
+          <div className="p-8">
+            <h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">
               {data.title}
             </h2>
 
-            <p className="text-gray-700 text-[15px] leading-relaxed mb-6">
+            <p className="text-slate-400 text-sm font-mono leading-relaxed mb-8">
               {data.desc}
             </p>
 
-            <ul className="space-y-2 mb-8">
+            <ul className="space-y-3 mb-10">
               {data.points?.map((p: string, i: number) => (
                 <li
                   key={i}
-                  className="text-gray-700 text-[15px] flex items-start gap-2"
+                  className="text-slate-300 text-xs font-mono uppercase tracking-wide flex items-start gap-3"
                 >
-                  <span className="text-[#0D746D] mt-[2px]">•</span>
+                  <span className="text-cyan-500 mt-[2px] shadow-[0_0_10px_cyan]">■</span>
                   {p}
                 </li>
               ))}
             </ul>
 
-            <div className="space-y-5 mb-10">
+            <div className="space-y-6 mb-12">
               {data.indicators?.map((ind: any, i: number) => (
                 <div key={i}>
-                  <div className="flex justify-between text-gray-700 text-sm mb-1 font-medium">
+                  <div className="flex justify-between text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-2">
                     <span>{ind.label}</span>
-                    <span className="text-[#0D746D] font-semibold">
+                    <span className="text-cyan-400 font-black">
                       {ind.value}
                     </span>
                   </div>
 
-                  <div className="w-full h-[7px] bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-slate-900 rounded-sm overflow-hidden">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-[#00C6FF] to-[#00F7A4]"
+                      className="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 shadow-[0_0_10px_cyan]"
                       initial={{ width: 0 }}
                       animate={{ width: ind.bar }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     />
                   </div>
                 </div>
@@ -392,10 +397,10 @@ function ScientificSidePanel({ data, close }: any) {
             </div>
 
             <button
-              className="px-6 py-2 rounded-lg bg-[#0D746D] hover:bg-[#095A52] text-white font-medium transition shadow-md"
+              className="w-full py-4 rounded-sm bg-white/5 hover:bg-cyan-600 border border-white/10 hover:border-cyan-500 text-white font-bold uppercase tracking-widest text-xs transition-all shadow-lg"
               onClick={close}
             >
-              Fechar
+              Encerrar Processo
             </button>
           </div>
         </motion.div>

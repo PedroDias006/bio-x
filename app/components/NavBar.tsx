@@ -53,48 +53,47 @@ export default function NavBar() {
     setShowDropdown(false);
   };
 
-  // --- CORREÇÃO DOS LINKS AQUI ---
   const navLinks = [
     { 
-      name: "Agricultura", 
-      href: "/agricultura", // Página geral (se existir)
+      name: "Genoma Agro", 
+      href: "/agricultura", 
       icon: <Leaf size={14} />, 
       parentColor: "group-hover:text-green-400",
       barColor: "bg-green-500",
       childHoverColor: "hover:text-green-400",
       childBorderColor: "hover:border-green-500",
       subItems: [
-        { name: "Compostagem", href: "/compostagem" } // Corrigido para app/compostagem
+        { name: "Sintetização de Matéria", href: "/compostagem" } 
       ]
     },
     { 
-      name: "Saúde Animal", 
-      href: "/saude-animal", // Página geral (se existir)
+      name: "Bio-Zootecnia", 
+      href: "/saude-animal", 
       icon: <Beef size={14} />, 
       parentColor: "group-hover:text-amber-400",
       barColor: "bg-amber-500",
       childHoverColor: "hover:text-amber-400",
       childBorderColor: "hover:border-amber-500",
       subItems: [
-        { name: "Saúde do Gado", href: "/saudegado" },   // Corrigido para app/saudegado
-        { name: "Saúde Única Aves", href: "/saudeave" }, // Corrigido para app/saudeave
-        { name: "Saúde Única Suínos", href: "/saudesuino" } // Corrigido para app/saudesuino
+        { name: "Blindagem Bovina", href: "/saudegado" },   
+        { name: "Núcleo Aviário", href: "/saudeave" }, 
+        { name: "Modulador Suíno", href: "/saudesuino" } 
       ]
     },
     { 
-      name: "Água & Ambiente", 
-      href: "/agua-meioambiente", // Página geral (se existir)
+      name: "Divisão Hídrica", 
+      href: "/agua-meioambiente", 
       icon: <Droplets size={14} />, 
       parentColor: "group-hover:text-cyan-400",
       barColor: "bg-cyan-500",
       childHoverColor: "hover:text-cyan-400",
       childBorderColor: "hover:border-cyan-500",
       subItems: [
-        { name: "Saneamento DGRADA", href: "/dgrada" } // Corrigido para app/dgrada
+        { name: "Protocolo D-Grade", href: "/dgrada" } 
       ]
     },
-    { name: "Seja Revendedor", href: "/revendedor", icon: <Handshake size={14} />, parentColor: "group-hover:text-emerald-400 text-emerald-500 font-bold", highlight: true },
-    { name: "Sobre Nós", href: "/sobre", icon: <Info size={14} />, parentColor: "group-hover:text-white" },
+    { name: "Rede de Parceiros", href: "/revendedor", icon: <Handshake size={14} />, parentColor: "group-hover:text-emerald-400 text-emerald-500 font-bold", highlight: true },
+    { name: "Nossa Gênese", href: "/sobre", icon: <Info size={14} />, parentColor: "group-hover:text-white" },
     { name: "Contato", href: "/contato", icon: <Phone size={14} />, parentColor: "group-hover:text-white" },
   ];
 
@@ -108,8 +107,17 @@ export default function NavBar() {
         <div className="relative bg-[#020617]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-[2rem] overflow-visible">
           
           <div className="flex items-center justify-between px-6 md:px-8 h-20 relative z-20">
-            <Link href="/" className="relative z-10 group shrink-0">
-              <Image src="/images/logowhite.png" alt="BIO-X" width={120} height={40} className="object-contain" priority unoptimized />
+            {/* LOGO CORRIGIDA: Travando a altura para não estourar a barra */}
+            <Link href="/" className="relative z-10 group shrink-0 flex items-center h-full">
+              <Image 
+                src="/images/logo-aetheris.png" 
+                alt="AETHERIS" 
+                width={120} 
+                height={48} 
+                className="h-10 md:h-12 w-auto object-contain" 
+                priority 
+                unoptimized 
+              />
             </Link>
 
             <div className="hidden lg:flex flex-1 max-w-md mx-8 group">
@@ -117,7 +125,7 @@ export default function NavBar() {
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Search className="h-4 w-4 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
                 </div>
-                <input type="text" placeholder="Pesquisar soluções..." className="w-full bg-white/5 border border-white/5 text-white text-sm rounded-full py-2.5 pl-10 pr-4 focus:outline-none focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-slate-500" />
+                <input type="text" placeholder="Pesquisar protocolos..." className="w-full bg-white/5 border border-white/5 text-white text-sm rounded-full py-2.5 pl-10 pr-4 focus:outline-none focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-slate-500" />
               </div>
             </div>
 
@@ -157,7 +165,7 @@ export default function NavBar() {
                         <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-[#020617] rounded-full"></div>
                       </div>
                       <div className="text-left">
-                        <p className="text-[10px] text-slate-400 uppercase tracking-wider leading-none mb-0.5">Olá,</p>
+                        <p className="text-[10px] text-slate-400 uppercase tracking-wider leading-none mb-0.5">Agente,</p>
                         <p className="text-sm font-bold text-white leading-none max-w-[80px] truncate">{user.name.split(" ")[0]}</p>
                       </div>
                       <ChevronDown size={14} className="text-slate-500 group-hover:text-white transition-colors ml-1" />
@@ -176,7 +184,7 @@ export default function NavBar() {
                             <ShoppingCart size={16} /> Meus Pedidos
                           </Link>
                           <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors text-left mt-2 border-t border-white/5">
-                            <LogOut size={16} /> Sair
+                            <LogOut size={16} /> Sair da Conta
                           </button>
                         </motion.div>
                       )}
@@ -184,7 +192,7 @@ export default function NavBar() {
                   </div>
                 ) : (
                   <button onClick={() => setShowLogin(true)} className="bg-white text-black hover:bg-emerald-50 text-sm font-bold px-6 py-2.5 rounded-full transition-all hover:scale-105 shadow-lg shadow-white/10">
-                    Entrar
+                    Acessar Conta
                   </button>
                 )}
               </div>
@@ -297,11 +305,11 @@ export default function NavBar() {
                   </Link>
                   {user ? (
                      <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="flex items-center gap-4 p-3 rounded-xl hover:bg-red-500/10 text-red-400 w-full text-left">
-                        <LogOut size={18} /> Sair
+                        <LogOut size={18} /> Sair da Conta
                      </button>
                   ) : (
                      <button onClick={() => { setShowLogin(true); setMenuOpen(false); }} className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl mt-2">
-                        Entrar na Conta
+                        Acessar Conta
                      </button>
                   )}
                 </div>
