@@ -1,41 +1,47 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Fingerprint, Globe2, Microscope, ShieldCheck } from "lucide-react";
+import { ArrowRight, FlaskConical, Globe2, Leaf, Sprout, Tractor } from "lucide-react";
 
 /* =========================================================================
-   DADOS CORPORATIVOS COM IMAGENS REAIS
+   DADOS CORPORATIVOS - PRIDE BIOSOLUTIONS
    ========================================================================= */
-const BOARD_MEMBERS = [
+const AREAS_ATUACAO = [
   {
-    name: "Dra. Helena Rostova",
-    role: "Chief Executive Officer (CEO)",
-    bio: "Ex-diretora de biotecnologia em conglomerados europeus. Lidera a visão estratégica global da Aetheris na transição para a agricultura regenerativa sintética.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+    name: "Agricultura Regenerativa",
+    role: "Linha Pride Solos",
+    bio: "Potencializamos a eficiência biológica do solo e a produtividade agrícola, nutrindo os sistemas existentes e favorecendo microbiotas benéficas.",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop"
   },
   {
-    name: "Dr. Arthur Valente",
-    role: "Chief Science Officer (CSO)",
-    bio: "Ph.D. em Genética Molecular. Detentor de 12 patentes em bio-otimização celular. Comanda o R&D (Pesquisa e Desenvolvimento) nos laboratórios Alpha.",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop"
+    name: "Águas e Efluentes",
+    role: "Linha Pride Clean",
+    bio: "Tratamento focado no equilíbrio ecológico. Melhoramos a qualidade das águas e efluentes, promovendo ambientes aquáticos revitalizados.",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800&auto=format&fit=crop"
   },
   {
-    name: "Eng. Marcelo Diniz",
-    role: "Chief Operating Officer (COO)",
-    bio: "Mestre em Agronomia de Precisão. Especialista em escalar a produção em biorreatores de alta densidade e garantir a integração exata no campo.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
+    name: "Suinocultura e Avicultura",
+    role: "Pride Swine & Chicken",
+    bio: "Contribuição ativa para a redução de resíduos, controle de odores e melhoria expressiva do bem-estar animal nos galpões.",
+    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    name: "Bovinocultura",
+    role: "Linha Pride Cattle",
+    bio: "Aprimoramos a gestão de dejetos e a estabilidade do ambiente, apoiando uma produção mais saudável e sustentável na pecuária.",
+    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
-const GLOBAL_STATS = [
-  { value: "2.4M+", label: "Hectares Operados", colSpan: "md:col-span-2 lg:col-span-1" },
-  { value: "04", label: "Polos de R&D (Globais)", colSpan: "md:col-span-1 lg:col-span-1" },
-  { value: "18", label: "Patentes Moleculares", colSpan: "md:col-span-1 lg:col-span-1" },
-  { value: "99.9%", label: "Pureza Cepal Certificada", colSpan: "md:col-span-2 lg:col-span-1" },
+const PRIDE_PILLARS = [
+  { value: "100%", label: "Matérias-Primas Naturais", colSpan: "md:col-span-2 lg:col-span-1" },
+  { value: "04", label: "Setores de Atuação", colSpan: "md:col-span-1 lg:col-span-1" },
+  { value: "Eco", label: "Equilíbrio Ambiental", colSpan: "md:col-span-1 lg:col-span-1" },
+  { value: "Prática", label: "Foco no Impacto Real", colSpan: "md:col-span-2 lg:col-span-1" },
 ];
 
 /* =========================================================================
-   ANIMAÇÕES REUTILIZÁVEIS (BLINDADAS COM ": any")
+   ANIMAÇÕES REUTILIZÁVEIS
    ========================================================================= */
 const fadeInUp: any = {
   hidden: { opacity: 0, y: 40 },
@@ -50,21 +56,19 @@ const staggerContainer: any = {
   }
 };
 
-export default function AetherisCorporateAbout() {
+export default function PrideAboutPage() {
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden selection:bg-cyan-100 selection:text-cyan-900">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden selection:bg-slate-900 selection:text-white">
       
-      {/* 1. HERO SECTION INSTITUCIONAL (HIGH-END) */}
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-end pb-24 pt-40 px-6">
-        {/* Imagem de Fundo de Alta Qualidade */}
+      {/* 1. HERO SECTION INSTITUCIONAL */}
+      <section className="relative w-full h-[80vh] min-h-[600px] flex items-end pb-24 pt-40 px-6 bg-slate-100">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2000&auto=format&fit=crop" 
-            alt="Infraestrutura Aetheris" 
-            className="w-full h-full object-cover object-center"
+            src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=2000&auto=format&fit=crop" 
+            alt="Laboratório e Campo Pride BioSolutions" 
+            className="w-full h-full object-cover object-center opacity-70"
           />
-          {/* Gradiente branco suave que "apaga" a imagem na parte inferior para mesclar com a página */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -74,30 +78,30 @@ export default function AetherisCorporateAbout() {
             variants={staggerContainer}
             className="max-w-4xl"
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
-              <Globe2 size={14} /> Presença Global. Impacto Molecular.
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-950 text-[10px] font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
+              <Globe2 size={14} /> Gênese Corporativa
             </motion.div>
             
             <motion.div variants={fadeInUp}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-6">
-                A Engenharia da <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-emerald-500">
-                  Nova Biologia.
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] mb-6">
+                Ciência, Prática <br />
+                <span className="text-slate-500">
+                  e Sustentabilidade.
                 </span>
               </h1>
             </motion.div>
 
             <motion.div variants={fadeInUp}>
               <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed max-w-2xl">
-                Redefinimos o teto produtivo do agronegócio mundial através de nanovetores biológicos de ultra-alta precisão.
+                A <strong className="font-bold text-slate-950">Pride BioSolutions Ltda.</strong> nasceu da urgência por soluções reais para agricultura, saneamento e pecuária. Transformamos ciência em impacto prático.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. O MANIFESTO CORPORATIVO (TIPOGRAFIA ELEGANTE) */}
-      <section className="py-24 bg-white relative z-10">
+      {/* 2. O MANIFESTO PRIDE */}
+      <section className="py-24 bg-slate-50 relative z-10">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -105,23 +109,23 @@ export default function AetherisCorporateAbout() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            <Microscope size={40} className="text-cyan-600 mx-auto mb-10 opacity-80" strokeWidth={1.5} />
+            <Sprout size={40} className="text-slate-900 mx-auto mb-10 opacity-80" strokeWidth={1.5} />
             <h2 className="text-3xl md:text-5xl font-medium text-slate-900 leading-tight tracking-tight mb-10">
-              "Não acreditamos que o futuro da produção alimentar dependa de máquinas maiores ou químicos mais agressivos. O futuro já está escrito no código genético da terra; <strong className="font-black text-cyan-700">nós apenas o otimizamos.</strong>"
+              "Identificamos que o caminho não era apenas introduzir micro-organismos ou insumos isolados, mas <strong className="font-black text-slate-950 underline decoration-slate-300 decoration-4 underline-offset-8">criar condições ideais para que os processos naturais prosperem.</strong>"
             </h2>
-            <p className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]">
-              — Diretriz Executiva, Aetheris Corp.
+            <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em]">
+              — O Propósito Pride
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 3. BENTO GRID DE NÚMEROS GLOBAIS (ESTILO APPLE/VERCEL) */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* 3. BENTO GRID DOS PILARES */}
+      <section className="py-20 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16">
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Aetheris em Números</h3>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Escala e Precisão Absoluta</h2>
+            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Nossa Abordagem</h3>
+            <h2 className="text-3xl font-black text-slate-950 tracking-tight">Equilíbrio entre Produção e Ambiente</h2>
           </div>
 
           <motion.div 
@@ -131,16 +135,16 @@ export default function AetherisCorporateAbout() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {GLOBAL_STATS.map((stat, i) => (
+            {PRIDE_PILLARS.map((stat, i) => (
               <motion.div 
                 key={i}
                 variants={fadeInUp}
-                className={`bg-white rounded-[2rem] p-10 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 ${stat.colSpan} flex flex-col justify-between`}
+                className={`bg-slate-50 rounded-[2rem] p-10 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-500 ${stat.colSpan} flex flex-col justify-between`}
               >
-                <h4 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-900 to-slate-500 mb-6 tracking-tighter">
+                <h4 className="text-5xl md:text-6xl font-black text-slate-950 mb-6 tracking-tighter">
                   {stat.value}
                 </h4>
-                <div className="w-full h-px bg-slate-100 mb-6" />
+                <div className="w-full h-px bg-slate-200 mb-6" />
                 <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">{stat.label}</p>
               </motion.div>
             ))}
@@ -148,8 +152,8 @@ export default function AetherisCorporateAbout() {
         </div>
       </section>
 
-      {/* 4. INFRAESTRUTURA E QUALIDADE (CORPORATE CARDS) */}
-      <section className="py-32 bg-white">
+      {/* 4. OS TRÊS FUNDAMENTOS */}
+      <section className="py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial="hidden"
@@ -159,35 +163,34 @@ export default function AetherisCorporateAbout() {
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
           >
             {[
-              { icon: Fingerprint, title: "Isolamento Genômico", desc: "Laboratórios de nível de biossegurança BSL-3 garantem a seleção exclusiva das cepas mais agressivas e eficientes do mercado global." },
-              { icon: BarChart3, title: "Telemetria de Dados", desc: "Cada lote produzido é monitorado por inteligência artificial, cruzando dados climáticos e de solo para prever a viabilidade em campo." },
-              { icon: ShieldCheck, title: "Compliance e ISO", desc: "Operação estritamente regulamentada pelas normas internacionais de biotecnologia. Qualidade auditada em todas as etapas da cadeia." }
+              { icon: Leaf, title: "Matérias-Primas", desc: "Utilizamos derivados naturais e extratos vegetais selecionados, garantindo soluções que respeitam a biologia dos sistemas." },
+              { icon: FlaskConical, title: "Ciência Avançada", desc: "Nossas formulações são baseadas em pesquisa e entendimento profundo de microbiologia, solo e comportamento animal." },
+              { icon: Tractor, title: "Prática de Campo", desc: "A teoria testada na terra. Desenvolvemos soluções com aplicação simples e resultados comprovados pelo produtor no dia a dia." }
             ].map((item, i) => (
               <motion.div key={i} variants={fadeInUp} className="group cursor-default">
-                <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-700 mb-8 group-hover:bg-cyan-50 group-hover:text-cyan-600 group-hover:border-cyan-200 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-900 mb-8 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 shadow-sm">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed font-light">{item.desc}</p>
+                <h3 className="text-2xl font-bold text-slate-950 mb-4">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed font-light">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* 5. CONSELHO EXECUTIVO (C-LEVEL BOARD) */}
-      <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
-        {/* Glow de fundo corporativo escuro */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-900 to-slate-900 z-0" />
+      {/* 5. ÁREAS DE ATUAÇÃO COM CORES ORIGINAIS */}
+      <section className="py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950 z-0" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-slate-800 pb-8">
             <div className="max-w-2xl">
-              <h3 className="text-cyan-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Liderança Global</h3>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight">Conselho de Administração</h2>
+              <h3 className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Escopo Global</h3>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">Nossas Áreas de Atuação</h2>
             </div>
             <p className="text-slate-400 text-sm max-w-sm md:text-right font-light leading-relaxed">
-              Guiando a Aetheris Corp através da interseção entre ciência rigorosa, escalabilidade industrial e excelência operacional.
+              Soluções tecnológicas que nutrem sistemas, otimizam o bem-estar animal e promovem a sustentabilidade em toda a cadeia.
             </p>
           </div>
 
@@ -196,27 +199,28 @@ export default function AetherisCorporateAbout() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {BOARD_MEMBERS.map((member, i) => (
+            {AREAS_ATUACAO.map((area, i) => (
               <motion.div key={i} variants={fadeInUp} className="group">
-                {/* Imagem do Executivo usando tag <img> normal para evitar erros do next.config */}
-                <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-slate-800 mb-8 border border-white/10 group-hover:border-cyan-500/50 transition-colors duration-500">
+                <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-slate-900 mb-8 border border-slate-800 group-hover:border-slate-500 transition-colors duration-500">
                   <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 group-hover:scale-105"
+                    src={area.image} 
+                    alt={area.name} 
+                    className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
                   />
-                  {/* Gradiente escuro em baixo da foto */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90 pointer-events-none" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                     <h3 className="text-xl font-bold mb-1 text-white leading-tight">{area.name}</h3>
+                     <p className="text-slate-300 text-xs font-bold uppercase tracking-[0.1em]">{area.role}</p>
+                  </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-cyan-400 text-xs font-bold uppercase tracking-[0.1em] mb-4">{member.role}</p>
-                  <div className="w-8 h-px bg-white/20 mb-4 group-hover:bg-cyan-500 transition-colors" />
+                  <div className="w-8 h-px bg-slate-700 mb-4 group-hover:bg-white transition-colors" />
                   <p className="text-slate-400 text-sm font-light leading-relaxed">
-                    {member.bio}
+                    {area.bio}
                   </p>
                 </div>
               </motion.div>
@@ -225,7 +229,7 @@ export default function AetherisCorporateAbout() {
         </div>
       </section>
 
-      {/* 6. INVESTOR / COMPLIANCE CALL TO ACTION */}
+      {/* 6. RESPONSABILIDADE & CALL TO ACTION */}
       <section className="py-24 bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div 
@@ -234,16 +238,16 @@ export default function AetherisCorporateAbout() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-black text-slate-900 mb-6 tracking-tight">
-              Transparência e Conformidade Institucional
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-black text-slate-950 mb-6 tracking-tight">
+              O Orgulho de Fazer a Diferença
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-slate-500 mb-10 text-lg leading-relaxed font-light">
-              Acesse nosso portal de governança para relatórios de sustentabilidade (ESG), laudos laboratoriais independentes e diretrizes de compliance global.
+              O nome <strong>Pride</strong> reflete nossa responsabilidade de entregar tecnologias que restabelecem o equilíbrio entre produção, ambiente e eficiência econômica para um futuro próspero.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <button className="bg-slate-900 text-white hover:bg-cyan-700 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all shadow-xl hover:shadow-cyan-700/20 hover:-translate-y-1 flex items-center gap-3 mx-auto">
-                Portal de Relações Corporativas <ArrowRight size={16} />
-              </button>
+              <a href="/contato" className="inline-flex items-center justify-center gap-3 bg-slate-950 text-white hover:bg-slate-800 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all shadow-lg hover:-translate-y-1">
+                Junte-se à nossa Jornada <ArrowRight size={16} />
+              </a>
             </motion.div>
           </motion.div>
         </div>

@@ -1,7 +1,13 @@
 import "@/globals.css";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google"; // 1. Importação da fonte
 import ClientLayoutWrapper from "./ClientLayoutWrapper";
-import { CartProvider } from "./context/CartContext"; // 1. Importando o Provider
+
+// 2. Configuração da fonte
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: "swap", // Garante que o texto apareça rápido enquanto a fonte carrega
+});
 
 export const metadata: Metadata = {
   title: "AETHERIS",
@@ -11,11 +17,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>
-        {/* 2. Envolvendo a aplicação inteira com o CartProvider */}
-        <CartProvider>
-          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
-        </CartProvider>
+      {/* 3. Aplicação da fonte na tag body */}
+      <body className={inter.className}>
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
   );

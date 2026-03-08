@@ -1,325 +1,266 @@
 "use client";
 
-import { useCart } from "@/app/context/CartContext";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Beef,
-  ChevronDown,
-  Droplets,
-  Handshake,
-  Info,
-  Leaf,
-  LogOut,
-  Menu,
-  MessageCircle,
-  Phone,
-  Search,
-  ShoppingCart,
-  User,
-  X
-} from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import LoginModal from "./LoginModal";
+
+const NAV = [
+  { name: "Pride Solus", href: "/agricultura" },
+  { name: "VitalPride", href: "/saude-animal" },
+  { name: "Pride Clean", href: "/agua-meioambiente" },
+  { name: "Nossa Gênese", href: "/sobre" },
+];
 
 export default function NavBar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [user, setUser] = useState<any>(null);
-  const [showDropdown, setShowDropdown] = useState(false);
-  
-  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
-
-  const pathname = usePathname(); 
-  const { totalItems } = useCart();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("userData");
-    if (stored) setUser(JSON.parse(stored));
-
-    const handleLogin = () => {
-      const updated = localStorage.getItem("userData");
-      if (updated) setUser(JSON.parse(updated));
-    };
-    window.addEventListener("userLogin", handleLogin);
-    return () => window.removeEventListener("userLogin", handleLogin);
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userData");
-    setUser(null);
-    setShowDropdown(false);
-  };
-
-  const navLinks = [
-    { 
-      name: "Genoma Agro", 
-      href: "/agricultura", 
-      icon: <Leaf size={14} />, 
-      parentColor: "group-hover:text-green-400",
-      barColor: "bg-green-500",
-      childHoverColor: "hover:text-green-400",
-      childBorderColor: "hover:border-green-500",
-      subItems: [
-        { name: "Sintetização de Matéria", href: "/compostagem" } 
-      ]
-    },
-    { 
-      name: "Bio-Zootecnia", 
-      href: "/saude-animal", 
-      icon: <Beef size={14} />, 
-      parentColor: "group-hover:text-amber-400",
-      barColor: "bg-amber-500",
-      childHoverColor: "hover:text-amber-400",
-      childBorderColor: "hover:border-amber-500",
-      subItems: [
-        { name: "Blindagem Bovina", href: "/saudegado" },   
-        { name: "Núcleo Aviário", href: "/saudeave" }, 
-        { name: "Modulador Suíno", href: "/saudesuino" } 
-      ]
-    },
-    { 
-      name: "Divisão Hídrica", 
-      href: "/agua-meioambiente", 
-      icon: <Droplets size={14} />, 
-      parentColor: "group-hover:text-cyan-400",
-      barColor: "bg-cyan-500",
-      childHoverColor: "hover:text-cyan-400",
-      childBorderColor: "hover:border-cyan-500",
-      subItems: [
-        { name: "Protocolo D-Grade", href: "/dgrada" } 
-      ]
-    },
-    { name: "Rede de Parceiros", href: "/revendedor", icon: <Handshake size={14} />, parentColor: "group-hover:text-emerald-400 text-emerald-500 font-bold", highlight: true },
-    { name: "Nossa Gênese", href: "/sobre", icon: <Info size={14} />, parentColor: "group-hover:text-white" },
-    { name: "Contato", href: "/contato", icon: <Phone size={14} />, parentColor: "group-hover:text-white" },
-  ];
-
-  if (pathname && pathname.startsWith("/forum")) {
-    return null;
-  }
-
   return (
-    <>
-      <header className="absolute top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1400px]">
-        <div className="relative bg-[#020617]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-[2rem] overflow-visible">
-          
-          <div className="flex items-center justify-between px-6 md:px-8 h-20 relative z-20">
-            {/* LOGO CORRIGIDA: Travando a altura para não estourar a barra */}
-            <Link href="/" className="relative z-10 group shrink-0 flex items-center h-full">
-              <Image 
-                src="/images/logo-aetheris.png" 
-                alt="AETHERIS" 
-                width={120} 
-                height={48} 
-                className="h-10 md:h-12 w-auto object-contain" 
-                priority 
-                unoptimized 
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-[1240px]">
+      <motion.div
+        layout
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className={`
+          relative overflow-hidden rounded-[36px]
+          border border-black/[0.07]
+          bg-white/95 backdrop-blur-xl
+          ${
+            scrolled
+              ? "shadow-[0_20px_50px_rgba(0,0,0,0.10),0_6px_20px_rgba(0,0,0,0.05)]"
+              : "shadow-[0_12px_34px_rgba(0,0,0,0.08),0_3px_10px_rgba(0,0,0,0.04)]"
+          }
+        `}
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.72)_28%,rgba(255,255,255,0.96)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-black/12 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-20 bottom-0 h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
+
+        <div className="relative flex items-center justify-between px-6 md:px-8 lg:px-10 h-[78px]">
+          <Link
+            href="/"
+            className="flex items-center shrink-0 select-none outline-none focus:outline-none"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+          >
+            <motion.div
+              whileHover={{ y: -1.5, scale: 1.02 }}
+              transition={{ duration: 0.22 }}
+              className="relative h-[68px] w-[250px] md:h-[82px] md:w-[310px] lg:h-[96px] lg:w-[380px]"
+            >
+              <Image
+                src="/images/logo-pride-dark.png"
+                alt="Pride Biosolutions"
+                fill
+                priority
+                className="object-contain"
               />
-            </Link>
+            </motion.div>
+          </Link>
 
-            <div className="hidden lg:flex flex-1 max-w-md mx-8 group">
-              <div className="relative w-full transition-all duration-300 group-hover:scale-[1.02]">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-4 w-4 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
-                </div>
-                <input type="text" placeholder="Pesquisar protocolos..." className="w-full bg-white/5 border border-white/5 text-white text-sm rounded-full py-2.5 pl-10 pr-4 focus:outline-none focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-slate-500" />
-              </div>
-            </div>
+          <nav className="hidden lg:flex items-center gap-1.5">
+            {NAV.map((item) => (
+              <motion.div
+                key={item.name}
+                whileHover={{
+                  y: -2,
+                  scale: 1.01,
+                }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="relative"
+              >
+                <Link
+                  href={item.href}
+                  className="
+                    group relative flex items-center justify-center
+                    rounded-full px-4 py-2.5
+                    text-[14px] font-medium tracking-[-0.01em]
+                    text-neutral-800
+                    outline-none focus:outline-none
+                    focus-visible:outline-none
+                    focus-visible:ring-0
+                    active:bg-transparent
+                    transition-all duration-300
+                    select-none
+                  "
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  <span
+                    className="
+                      pointer-events-none absolute inset-0 rounded-full
+                      border border-transparent
+                      bg-transparent
+                      transition-all duration-300
+                      group-hover:border-black/[0.08]
+                      group-hover:shadow-[0_10px_24px_rgba(0,0,0,0.08)]
+                    "
+                  />
 
-            <nav className="hidden md:flex items-center gap-6">
-              <div className="flex items-center gap-6 mr-6 border-r border-white/10 pr-6 h-10">
-                <Link href="/forum" className="flex flex-col items-center gap-0.5 text-slate-400 hover:text-emerald-400 transition-colors group">
-                  <MessageCircle size={18} className="group-hover:-translate-y-0.5 transition-transform" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Fórum</span>
+                  <span
+                    className="
+                      pointer-events-none absolute left-1/2 bottom-[7px] h-[1.5px] w-0
+                      -translate-x-1/2 rounded-full bg-black
+                      transition-all duration-300
+                      group-hover:w-[52%]
+                    "
+                  />
+
+                  <span className="relative z-10 text-neutral-800">
+                    {item.name}
+                  </span>
                 </Link>
-                <Link href="/carrinho" className="flex flex-col items-center gap-0.5 text-slate-400 hover:text-emerald-400 transition-colors group relative">
-                  <div className="relative">
-                      <ShoppingCart size={18} className="group-hover:-translate-y-0.5 transition-transform" />
-                      <AnimatePresence>
-                        {totalItems > 0 && (
-                          <motion.span
-                            key={totalItems}
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0 }}
-                            className="absolute -top-2 -right-2 bg-emerald-500 text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full shadow-sm border border-[#020617]"
-                          >
-                            {totalItems}
-                          </motion.span>
-                        )}
-                      </AnimatePresence>
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Carrinho</span>
-                </Link>
-              </div>
-
-              <div>
-                {user ? (
-                  <div className="relative">
-                    <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-3 bg-white/5 hover:bg-white/10 px-1.5 py-1.5 pr-4 rounded-full border border-white/5 transition-all group">
-                      <div className="relative">
-                        <img src={user.avatar || "/avatars/default.png"} alt="avatar" className="w-9 h-9 rounded-full border border-white/10 group-hover:border-emerald-500/50 transition-colors object-cover" />
-                        <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-[#020617] rounded-full"></div>
-                      </div>
-                      <div className="text-left">
-                        <p className="text-[10px] text-slate-400 uppercase tracking-wider leading-none mb-0.5">Agente,</p>
-                        <p className="text-sm font-bold text-white leading-none max-w-[80px] truncate">{user.name.split(" ")[0]}</p>
-                      </div>
-                      <ChevronDown size={14} className="text-slate-500 group-hover:text-white transition-colors ml-1" />
-                    </button>
-                    <AnimatePresence>
-                      {showDropdown && (
-                        <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute right-0 mt-2 w-56 bg-[#0B0C10] border border-white/10 rounded-2xl shadow-xl py-2 z-50 overflow-hidden">
-                          <div className="px-4 py-3 border-b border-white/5 mb-2 bg-white/5">
-                             <p className="text-[10px] text-emerald-500 font-bold uppercase tracking-wider">Conta Conectada</p>
-                             <p className="text-xs text-slate-300 truncate mt-1">{user.email}</p>
-                          </div>
-                          <Link href="/perfil" className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">
-                            <User size={16} /> Meu Perfil
-                          </Link>
-                          <Link href="/pedidos" className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">
-                            <ShoppingCart size={16} /> Meus Pedidos
-                          </Link>
-                          <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors text-left mt-2 border-t border-white/5">
-                            <LogOut size={16} /> Sair da Conta
-                          </button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
-                  <button onClick={() => setShowLogin(true)} className="bg-white text-black hover:bg-emerald-50 text-sm font-bold px-6 py-2.5 rounded-full transition-all hover:scale-105 shadow-lg shadow-white/10">
-                    Acessar Conta
-                  </button>
-                )}
-              </div>
-            </nav>
-
-            <button className="md:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors z-50 relative" onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-
-          <div className="hidden md:block border-t border-white/5 bg-black/20">
-             <nav className="flex justify-center">
-                {navLinks.map((link) => (
-                   <div key={link.name} className="relative group">
-                     {link.subItems ? (
-                       <button className={`flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 border-b-2 border-transparent transition-all duration-300 hover:bg-white/5 group-hover:border-white/20 ${link.parentColor}`}>
-                          {link.icon}
-                          {link.name}
-                          <ChevronDown size={12} className="transition-transform duration-300 group-hover:rotate-180" />
-                       </button>
-                     ) : (
-                       <Link 
-                          href={link.href}
-                          className={`flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 border-b-2 border-transparent transition-all duration-300 ${link.parentColor} hover:bg-white/5`}
-                       >
-                          {link.icon}
-                          {link.name}
-                       </Link>
-                     )}
-
-                     {link.subItems && (
-                       <div className="absolute top-full left-0 mt-0 w-64 bg-[#020617] border border-white/10 rounded-xl shadow-2xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
-                          <div className={`h-1 w-full ${link.barColor}`} />
-                          <div className="py-2">
-                            {link.subItems.map((sub) => (
-                              <Link 
-                                key={sub.name} 
-                                href={sub.href}
-                                className={`block px-6 py-4 text-base text-slate-300 hover:bg-white/5 transition-all font-medium border-l-4 border-transparent ${link.childHoverColor} ${link.childBorderColor}`}
-                              >
-                                {sub.name}
-                              </Link>
-                            ))}
-                          </div>
-                       </div>
-                     )}
-                   </div>
-                ))}
-             </nav>
-          </div>
-
-          <AnimatePresence>
-            {menuOpen && (
-              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="md:hidden border-t border-white/10 bg-[#020617] overflow-hidden rounded-b-[2rem]">
-                <div className="flex flex-col p-6 space-y-2">
-                  {navLinks.map((link) => (
-                     <div key={link.name}>
-                        {link.subItems ? (
-                          <div>
-                            <button 
-                              onClick={() => setMobileSubmenu(mobileSubmenu === link.name ? null : link.name)}
-                              className={`flex items-center justify-between w-full gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors font-medium ${mobileSubmenu === link.name ? 'text-white' : 'text-slate-300'}`}
-                            >
-                              <div className="flex items-center gap-4">
-                                <span>{link.icon}</span> 
-                                {link.name}
-                              </div>
-                              <ChevronDown size={16} className={`transition-transform ${mobileSubmenu === link.name ? "rotate-180" : ""}`} />
-                            </button>
-                            
-                            <AnimatePresence>
-                              {mobileSubmenu === link.name && (
-                                <motion.div 
-                                  initial={{ height: 0, opacity: 0 }} 
-                                  animate={{ height: "auto", opacity: 1 }} 
-                                  exit={{ height: 0, opacity: 0 }} 
-                                  className="overflow-hidden ml-10 border-l border-white/10"
-                                >
-                                  {link.subItems.map((sub) => (
-                                    <Link 
-                                      key={sub.name} 
-                                      href={sub.href} 
-                                      onClick={() => setMenuOpen(false)}
-                                      className={`block pl-4 py-3 text-sm text-slate-400 transition-colors ${link.childHoverColor}`}
-                                    >
-                                      {sub.name}
-                                    </Link>
-                                  ))}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        ) : (
-                          <Link 
-                            href={link.href} 
-                            onClick={() => setMenuOpen(false)} 
-                            className={`flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors font-medium text-slate-300 ${link.parentColor ? link.parentColor.replace('group-hover:', '') : ''}`}
-                          >
-                             <span>{link.icon}</span> 
-                             {link.name}
-                          </Link>
-                        )}
-                     </div>
-                  ))}
-                  
-                  <div className="h-px bg-white/10 my-4" />
-                  
-                  <Link href="/carrinho" onClick={() => setMenuOpen(false)} className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 text-slate-300">
-                     <ShoppingCart size={18} /> Carrinho ({totalItems})
-                  </Link>
-                  {user ? (
-                     <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="flex items-center gap-4 p-3 rounded-xl hover:bg-red-500/10 text-red-400 w-full text-left">
-                        <LogOut size={18} /> Sair da Conta
-                     </button>
-                  ) : (
-                     <button onClick={() => { setShowLogin(true); setMenuOpen(false); }} className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl mt-2">
-                        Acessar Conta
-                     </button>
-                  )}
-                </div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            ))}
+          </nav>
 
+          <div className="hidden md:flex items-center gap-4">
+            <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.2 }}>
+              <Link
+                href="/contato"
+                className="
+                  rounded-full px-3 py-2
+                  text-[14px] font-medium tracking-[-0.01em]
+                  text-neutral-700 hover:text-black
+                  outline-none focus:outline-none
+                  focus-visible:outline-none focus-visible:ring-0
+                  active:bg-transparent
+                  transition-colors duration-300
+                  select-none
+                "
+                style={{ WebkitTapHighlightColor: "transparent" }}
+              >
+                Contato
+              </Link>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -2, scale: 1.02 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                href="/contato"
+                className="
+                  group relative flex items-center gap-2.5
+                  rounded-full px-6 py-3
+                  bg-black text-white
+                  text-[14px] font-semibold tracking-[-0.01em]
+                  outline-none focus:outline-none
+                  focus-visible:outline-none focus-visible:ring-0
+                  active:opacity-100 active:bg-black
+                  shadow-[0_14px_30px_rgba(0,0,0,0.16),inset_0_1px_0_rgba(255,255,255,0.14)]
+                  transition-all duration-300
+                  hover:shadow-[0_18px_38px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.18)]
+                  select-none
+                "
+                style={{ WebkitTapHighlightColor: "transparent" }}
+              >
+                <span className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_100%)]" />
+                <span className="relative z-10">Especialista</span>
+                <ArrowRight
+                  size={15}
+                  className="relative z-10 opacity-80 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+                />
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.button
+            whileTap={{ scale: 0.94 }}
+            className="lg:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
+            onClick={() => setOpen(!open)}
+            aria-label="Abrir menu"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </motion.button>
         </div>
-      </header>
-      <LoginModal open={showLogin} onClose={() => setShowLogin(false)} />
-    </>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0, y: -8 }}
+              animate={{ height: "auto", opacity: 1, y: 0 }}
+              exit={{ height: 0, opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden overflow-hidden border-t border-black/[0.06]"
+            >
+              <div className="px-4 pb-4 pt-3">
+                <div className="rounded-[28px] bg-white/95 p-2">
+                  {NAV.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.04 }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="
+                          flex items-center justify-between
+                          rounded-2xl px-4 py-3.5
+                          text-[15px] font-medium text-neutral-900
+                          transition-all duration-300
+                          hover:bg-neutral-100
+                          outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                        "
+                        style={{ WebkitTapHighlightColor: "transparent" }}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+
+                  <div className="mt-2 grid gap-2 border-t border-black/[0.06] pt-3">
+                    <Link
+                      href="/contato"
+                      onClick={() => setOpen(false)}
+                      className="
+                        rounded-2xl px-4 py-3
+                        text-[15px] font-medium text-neutral-800
+                        transition-all duration-300
+                        hover:bg-neutral-100
+                        outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                      "
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      Contato
+                    </Link>
+
+                    <Link
+                      href="/contato"
+                      onClick={() => setOpen(false)}
+                      className="
+                        group flex items-center justify-center gap-2
+                        rounded-2xl bg-black px-4 py-3.5
+                        text-[15px] font-semibold text-white
+                        shadow-[0_12px_24px_rgba(0,0,0,0.16)]
+                        transition-all duration-300
+                        hover:shadow-[0_16px_30px_rgba(0,0,0,0.22)]
+                        outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                      "
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      Falar com Especialista
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </header>
   );
 }
