@@ -68,7 +68,6 @@ const SECTORS = [
   },
 ];
 
-// COORDENADAS CORRETAS COM AS FOTOS REVISADAS
 const ACTIVE_REGIONS = [
   {
     id: "MA",
@@ -217,24 +216,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAIXA DE AUTORIDADE */}
-      <section className="bg-black border-b border-white/5 py-8 relative z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+      {/* FAIXA DE AUTORIDADE - CORRIGIDA PARA MOBILE */}
+      <section className="bg-black border-b border-white/5 py-8 md:py-10 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <p className="text-center text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-6">
             Resultados Comprovados Em
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60">
-            <div className="flex items-center gap-2 text-emerald-500 font-bold text-xl">
-              <Sprout size={24} /> Soja & Milho
+          {/* Ajuste de gaps e tamanhos de fonte para não quebrar no celular */}
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-16 lg:gap-24 opacity-80">
+            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
+              <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Soja & Milho
             </div>
-            <div className="flex items-center gap-2 text-emerald-500 font-bold text-xl">
-              <Leaf size={24} /> Cana-de-Açúcar
+            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
+              <Leaf className="w-4 h-4 md:w-6 md:h-6" /> Cana-de-Açúcar
             </div>
-            <div className="flex items-center gap-2 text-emerald-500 font-bold text-xl">
-              <Beef size={24} /> Pecuária Intensiva
+            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
+              <Beef className="w-4 h-4 md:w-6 md:h-6" /> Pecuária Intensiva
             </div>
-            <div className="flex items-center gap-2 text-emerald-500 font-bold text-xl">
-              <Droplets size={24} /> Saneamento
+            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
+              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Saneamento
             </div>
           </div>
         </div>
@@ -556,7 +556,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BIOTECNOLOGIA PRIDE (SUBSTITUIU A ANTIGA SESSÃO DE GARANTIA) */}
+      {/* BIOTECNOLOGIA PRIDE */}
       <section className="py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
         {/* Efeito de Luz de Fundo (Glow) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />

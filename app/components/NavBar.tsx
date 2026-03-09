@@ -25,26 +25,29 @@ export default function NavBar() {
   }, []);
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-[1240px]">
+    // Alterado z-50 para z-[999] para garantir que fique acima de TUDO na tela
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1240px]">
       <motion.div
         layout
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className={`
           relative overflow-hidden rounded-[36px]
           border border-black/[0.07]
-          bg-white/95 backdrop-blur-xl
+          /* Alterado de bg-white/95 para bg-white sólido */
+          bg-white shadow-[0_12px_34px_rgba(0,0,0,0.08),0_3px_10px_rgba(0,0,0,0.04)]
           ${
             scrolled
               ? "shadow-[0_20px_50px_rgba(0,0,0,0.10),0_6px_20px_rgba(0,0,0,0.05)]"
-              : "shadow-[0_12px_34px_rgba(0,0,0,0.08),0_3px_10px_rgba(0,0,0,0.04)]"
+              : ""
           }
         `}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.72)_28%,rgba(255,255,255,0.96)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.98)_28%,rgba(255,255,255,1)_100%)]" />
         <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-black/12 to-transparent" />
         <div className="pointer-events-none absolute inset-x-20 bottom-0 h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
 
-        <div className="relative flex items-center justify-between px-6 md:px-8 lg:px-10 h-[78px]">
+        {/* CONTAINER DO MENU SUPERIOR */}
+        <div className="relative flex items-center justify-between px-6 md:px-8 lg:px-10 h-[78px] bg-white z-50">
           <Link
             href="/"
             className="flex items-center shrink-0 select-none outline-none focus:outline-none"
@@ -182,6 +185,7 @@ export default function NavBar() {
           </motion.button>
         </div>
 
+        {/* CONTAINER DO MENU ABERTO (MOBILE) */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -189,10 +193,11 @@ export default function NavBar() {
               animate={{ height: "auto", opacity: 1, y: 0 }}
               exit={{ height: 0, opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden overflow-hidden border-t border-black/[0.06]"
+              // bg-white adicionado aqui para evitar a transparência nos links do menu
+              className="lg:hidden overflow-hidden border-t border-black/[0.06] bg-white relative z-40"
             >
               <div className="px-4 pb-4 pt-3">
-                <div className="rounded-[28px] bg-white/95 p-2">
+                <div className="rounded-[28px] bg-white p-2">
                   {NAV.map((item, index) => (
                     <motion.div
                       key={item.name}
