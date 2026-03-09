@@ -189,7 +189,7 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 text-white leading-[1.1]">
-              A EVOLUÇÃO DO AGRO.
+              Inovações naturais para um futuro sustentável.
             </h1>
 
             <p className="text-slate-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed">

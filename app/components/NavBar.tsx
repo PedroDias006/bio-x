@@ -25,15 +25,13 @@ export default function NavBar() {
   }, []);
 
   return (
-    // Alterado z-50 para z-[999] para garantir que fique acima de TUDO na tela
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1240px]">
       <motion.div
         layout
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className={`
-          relative overflow-hidden rounded-[36px]
+          relative rounded-[36px]
           border border-black/[0.07]
-          /* Alterado de bg-white/95 para bg-white sólido */
           bg-white shadow-[0_12px_34px_rgba(0,0,0,0.08),0_3px_10px_rgba(0,0,0,0.04)]
           ${
             scrolled
@@ -42,33 +40,40 @@ export default function NavBar() {
           }
         `}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.98)_28%,rgba(255,255,255,1)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.98)_28%,rgba(255,255,255,1)_100%)] rounded-[36px]" />
         <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-black/12 to-transparent" />
         <div className="pointer-events-none absolute inset-x-20 bottom-0 h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
 
-        {/* CONTAINER DO MENU SUPERIOR */}
-        <div className="relative flex items-center justify-between px-6 md:px-8 lg:px-10 h-[78px] bg-white z-50">
-          <Link
-            href="/"
-            className="flex items-center shrink-0 select-none outline-none focus:outline-none"
-            style={{ WebkitTapHighlightColor: "transparent" }}
-          >
-            <motion.div
-              whileHover={{ y: -1.5, scale: 1.02 }}
-              transition={{ duration: 0.22 }}
-              className="relative h-[68px] w-[250px] md:h-[82px] md:w-[310px] lg:h-[96px] lg:w-[380px]"
+        {/* CONTAINER DO MENU SUPERIOR - Ajustado px-4 para celular */}
+        <div className="relative flex items-center justify-between px-4 md:px-8 lg:px-10 h-[78px] z-50 rounded-[36px]">
+          
+          {/* LADO ESQUERDO: LOGO ALINHADA À ESQUERDA */}
+          <div className="relative h-full flex items-center shrink-0">
+            <Link
+              href="/"
+              // O -left-2 puxa a logo contra a borda no celular para não ficar no meio
+              className="absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 flex items-center select-none outline-none focus:outline-none"
+              style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              <Image
-                src="/images/logo-pride-dark.png"
-                alt="Pride Biosolutions"
-                fill
-                priority
-                className="object-contain"
-              />
-            </motion.div>
-          </Link>
+              <motion.div
+                whileHover={{ y: -2, scale: 1.02 }}
+                transition={{ duration: 0.22 }}
+                /* Ajuste fino na largura do celular (w-[210px]) para não cobrir o botão do menu lateral */
+                className="relative h-[65px] w-[210px] sm:h-[80px] sm:w-[260px] md:h-[100px] md:w-[360px] lg:h-[120px] lg:w-[420px]"
+              >
+                <Image
+                  src="/images/logo-pride-dark.png"
+                  alt="Pride Biosolutions"
+                  fill
+                  priority
+                  className="object-contain object-left"
+                />
+              </motion.div>
+            </Link>
+          </div>
 
-          <nav className="hidden lg:flex items-center gap-1.5">
+          {/* MEIO: LINKS DESKTOP */}
+          <nav className="hidden lg:flex items-center gap-1.5 ml-auto mr-4">
             {NAV.map((item) => (
               <motion.div
                 key={item.name}
@@ -123,6 +128,7 @@ export default function NavBar() {
             ))}
           </nav>
 
+          {/* LADO DIREITO: BOTÕES DESKTOP */}
           <div className="hidden md:flex items-center gap-4">
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.2 }}>
               <Link
@@ -174,9 +180,10 @@ export default function NavBar() {
             </motion.div>
           </div>
 
+          {/* BOTÃO MENU MOBILE (Com z-index elevado para a logo não ficar por cima) */}
           <motion.button
             whileTap={{ scale: 0.94 }}
-            className="lg:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
+            className="relative z-50 lg:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
             onClick={() => setOpen(!open)}
             aria-label="Abrir menu"
             style={{ WebkitTapHighlightColor: "transparent" }}
@@ -185,7 +192,7 @@ export default function NavBar() {
           </motion.button>
         </div>
 
-        {/* CONTAINER DO MENU ABERTO (MOBILE) */}
+        {/* MENU ABERTO (MOBILE) */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -193,8 +200,7 @@ export default function NavBar() {
               animate={{ height: "auto", opacity: 1, y: 0 }}
               exit={{ height: 0, opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              // bg-white adicionado aqui para evitar a transparência nos links do menu
-              className="lg:hidden overflow-hidden border-t border-black/[0.06] bg-white relative z-40"
+              className="lg:hidden overflow-hidden border-t border-black/[0.06] bg-white relative z-40 rounded-b-[36px]"
             >
               <div className="px-4 pb-4 pt-3">
                 <div className="rounded-[28px] bg-white p-2">
