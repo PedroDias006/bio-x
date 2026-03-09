@@ -352,8 +352,9 @@ const VisualOfferSection: React.FC = React.memo(() => {
 });
 
 /* =========================================================================
-   SUB-COMPONENTE: PRODUCT HERO
+   SUB-COMPONENTE: PRODUCT HERO (ATUALIZADO COM IMAGEM MAIOR E OTIMIZADA)
    ========================================================================= */
+import Image from "next/image"; // <-- ATENÇÃO: Garanta que esta linha esteja lá no topo do seu arquivo junto com os outros imports!
 
 const ProductHeroSection: React.FC = React.memo(() => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -393,56 +394,61 @@ const ProductHeroSection: React.FC = React.memo(() => {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-700/5 rounded-full blur-[80px] pointer-events-none opacity-50" />
 
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+        
+        {/* LADO ESQUERDO: CARD DA IMAGEM DO PRODUTO */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8 }}
-          className="relative h-[600px] w-full flex items-center justify-center perspective-1000"
+          className="relative h-auto md:h-[600px] w-full flex items-center justify-center perspective-1000"
         >
           <motion.div
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="relative w-full max-w-[480px] h-[600px] rounded-[3rem] bg-white shadow-2xl border border-white/50 cursor-pointer group will-change-transform"
+            className="relative w-full max-w-[480px] rounded-[3rem] bg-white shadow-2xl border border-white/50 cursor-pointer group will-change-transform p-8 md:p-12 flex flex-col items-center justify-center overflow-hidden"
           >
-            {/* FUNDO DO CARD: Imagem removida e substituída por um gradiente suave */}
-            <div className="absolute inset-2 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100 translate-z-10" />
+            {/* FUNDO DO CARD */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-100 opacity-60 pointer-events-none" />
 
-            {/* IMAGEM DO PRODUTO (SOZINHO) */}
-            <motion.div
-              style={{ translateZ: 60 }}
-              className="absolute inset-0 flex items-center justify-center z-40 pointer-events-none"
-            >
-              {/* Sombra no chão sob o produto */}
-              <div className="absolute bottom-24 w-40 h-10 bg-black/10 blur-xl rounded-[100%]" />
-              
-              <img
-                src="/images/agricultura.png"
-                alt="Embalagem Pride Solos"
-                decoding="async"
-                loading="lazy"
-                className="w-72 md:w-80 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform transition-transform duration-500 group-hover:-translate-y-6"
-              />
-            </motion.div>
-
-            {/* BARRA INFERIOR COM INFORMAÇÕES */}
+            {/* IMAGEM DO PRODUTO MAIOR E OTIMIZADA */}
             <motion.div
               style={{ translateZ: 40 }}
-              className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg z-50 flex justify-between items-center"
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative z-10 flex flex-col items-center justify-center w-full"
+            >
+              <Image
+                src="/images/agricultura.png" // O nome do arquivo que você enviou antes
+                alt="Embalagem Pride Solos"
+                width={400}
+                height={500}
+                priority
+                className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto object-cover rounded-2xl shadow-lg relative z-20 mb-8 border border-white"
+              />
+              
+              <h3 className="text-4xl font-black text-[#020617] mb-2 tracking-tighter drop-shadow-md">PRIDE SOLOS</h3>
+              <span className="inline-block px-4 py-1.5 mt-2 mb-16 rounded-full bg-green-100 border border-green-200 text-green-800 text-xs font-bold uppercase tracking-widest shadow-sm">Uso Agrícola</span>
+            </motion.div>
+
+            {/* BARRA INFERIOR FLUTUANTE COM INFORMAÇÕES */}
+            <motion.div
+              style={{ translateZ: 60 }}
+              className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-green-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)] z-30 flex justify-between items-center"
             >
               <div>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Aplicação</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-green-800">Prática</span>
+                  <span className="text-2xl font-bold text-green-700">Prática</span>
                 </div>
               </div>
               <div className="h-8 w-px bg-gray-200" />
               <div>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Rendimento</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-green-800">Alto</span>
+                  <span className="text-2xl font-bold text-green-700">Alto</span>
                 </div>
               </div>
             </motion.div>
@@ -459,6 +465,7 @@ const ProductHeroSection: React.FC = React.memo(() => {
           </motion.div>
         </motion.div>
 
+        {/* LADO DIREITO: TEXTOS E DESCRIÇÃO (Mantido igual ao seu) */}
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -661,7 +668,7 @@ export default function AgriculturaMasterpiece() {
         >
           <div className="absolute inset-0 bg-[#020617]/40 z-10 pointer-events-none" />
           <video
-            src="/videos/agricultura-hero.mp4"
+            src="/videos/agricultura.mp4"
             autoPlay
             muted
             loop

@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Feather, Leaf, Minus, Plus, ShieldCheck, Wind } from "lucide-react";
+import Image from "next/image"; // <-- Componente otimizado do Next.js adicionado aqui
 import { useRef, useState } from "react";
 
 /* =========================================================================
@@ -267,17 +268,21 @@ function StickyCard({ step, index }: { step: ProcessStepType, index: number }) {
       className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start"
     >
       <div className={`relative ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+         {/* Container da imagem precisa ser relative para o next/image com layout fill funcionar */}
          <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-slate-100 shadow-2xl group">
             <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-teal-500 z-20" />
             <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-teal-500 z-20" />
             
-            <img 
+            {/* Tag otimizada Image do Next.js */}
+            <Image 
                 src={step.img} 
                 alt={step.title} 
-                className="w-full h-full object-cover transition-all duration-1000 grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-all duration-1000 grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110"
             />
             
-            <div className="absolute bottom-6 left-6 bg-black/90 backdrop-blur px-4 py-1 text-teal-400 font-mono text-[10px] border border-white/10 font-bold uppercase tracking-[0.2em]">
+            <div className="absolute bottom-6 left-6 bg-black/90 backdrop-blur px-4 py-1 text-teal-400 font-mono text-[10px] border border-white/10 font-bold uppercase tracking-[0.2em] z-20">
                 PRODUTO_0{step.id}
             </div>
          </div>

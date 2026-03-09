@@ -15,6 +15,7 @@ import {
    Waves,
    Wind
 } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 
 /* =========================================================================
@@ -78,14 +79,13 @@ export default function PrideCleanPage() {
       ====================================================== */}
       <section className="relative h-screen w-full flex flex-col justify-center items-center px-6 overflow-hidden">
         
-        {/* Background Layered (SEM CORTINA BRANCA) */}
+        {/* Background Layered */}
         <motion.div style={{ y: yHero, opacity: opacityHero }} className="absolute inset-0 z-0">
           <video
             src="/videos/agua-hero.mp4" 
             autoPlay muted loop playsInline
             className="w-full h-full object-cover"
           />
-          {/* Overlay suave na tela toda para garantir leitura do texto escuro sem criar caixas/cards */}
           <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50" />
         </motion.div>
@@ -104,11 +104,10 @@ export default function PrideCleanPage() {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.95]">
               Qualidade e Equilíbrio <br />
               <span className="text-blue-600">
-                para suas águas.
+                para suas Águas.
               </span>
             </h1>
 
-            {/* Texto sem o fundo branco/card que estava antes */}
             <p className="text-slate-800 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium mb-12">
               O aditivo natural que atua na clarificação e redução de impurezas em <strong className="text-blue-800 font-black">lagos, lagoas, tanques e efluentes</strong>, restaurando a saúde e a vitalidade do ambiente aquático.
             </p>
@@ -164,7 +163,7 @@ export default function PrideCleanPage() {
       </section>
 
       {/* ======================================================
-          3. FICHA TÉCNICA (DESTAQUE PRODUTO COM IMAGEM MAIOR)
+          3. FICHA TÉCNICA (DESTAQUE PRODUTO COM IMAGEM)
       ====================================================== */}
       <section className="py-32 bg-white overflow-hidden relative">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-100/50 blur-[120px] rounded-full pointer-events-none" />
@@ -173,25 +172,26 @@ export default function PrideCleanPage() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             
-            {/* Visual do Produto (FOTO) */}
+            {/* Visual do Produto (FOTO MAIOR) */}
             <div className="w-full lg:w-1/2 relative">
               <FadeIn>
                 <div className="relative rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 shadow-xl flex flex-col items-center justify-center p-8 md:p-12 group perspective-1000">
                    
-                   {/* Background Gradient Sutil */}
                    <div className="absolute inset-0 bg-gradient-to-tr from-sky-100/40 via-transparent to-blue-50/50" />
                    
-                   {/* IMAGEM DO PRODUTO - TAMANHO AUMENTADO */}
                    <motion.div
                      whileHover={{ scale: 1.02, y: -5 }}
                      transition={{ duration: 0.5, ease: "easeOut" }}
                      className="relative z-10 flex flex-col items-center justify-center w-full"
                    >
-                     <img
+                     {/* TAG OTIMIZADA DO NEXT.JS COM TAMANHO AUMENTADO */}
+                     <Image
                        src="/images/pride-clean.png"
-                       alt="Resultado Pride Clean"
-                       /* Ajustes feitos aqui: Imagem ocupa quase toda a largura, cantos arredondados, sombra para integrar com o fundo */
-                       className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] object-cover rounded-2xl shadow-lg relative z-20 mb-8 border border-white"
+                       alt="Embalagem Pride Clean"
+                       width={400}
+                       height={500}
+                       priority
+                       className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto object-cover rounded-2xl shadow-lg relative z-20 mb-8 border border-white"
                      />
                      
                      <h3 className="text-4xl font-black text-slate-900 mb-2 tracking-tighter">PRIDE CLEAN</h3>
@@ -225,7 +225,6 @@ export default function PrideCleanPage() {
                  </h2>
                  
                  <div className="space-y-8">
-                   {/* Princípio Ativo Destaque */}
                    <div className="flex gap-6 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors shadow-sm">
                       <div className="shrink-0">
                          <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 border border-slate-100 shadow-sm">
@@ -238,7 +237,6 @@ export default function PrideCleanPage() {
                       </div>
                    </div>
 
-                   {/* Grid de Propiedades */}
                    <div className="grid grid-cols-2 gap-4">
                       {[
                         { label: "Composição", val: "100% Natural" },
