@@ -54,7 +54,7 @@ const NOVIDADES_CARDS = [
 
 const SECTORS = [
   {
-    title: "Solus Pride",
+    title: "Solun`s Pride",
     subtitle: "Biotecnologia de precisão para lavouras de alto rendimento.",
     link: "/agricultura",
     image: "/images/setor-agri.jpg",
@@ -356,7 +356,7 @@ export default function Home() {
                           : 38
                       }
                       height={
-                        sector.title === "SOLUS PRIDE"
+                        sector.title === "SOLUN`S PRIDE"
                           ? 28
                           : sector.title === "CLEAN PRIDE"
                           ? 42
