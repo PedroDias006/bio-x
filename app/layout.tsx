@@ -1,12 +1,20 @@
 import "@/globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // 1. Importação da fonte
+// 1. Importamos a Inter (textos) e a Montserrat (para o título)
+import { Inter, Montserrat } from "next/font/google";
 import ClientLayoutWrapper from "./ClientLayoutWrapper";
 
-// 2. Configuração da fonte
+// Configuração da fonte padrão (Textos)
 const inter = Inter({ 
   subsets: ["latin"],
-  display: "swap", // Garante que o texto apareça rápido enquanto a fonte carrega
+  display: "swap", 
+});
+
+// 2. Configuração da fonte do Título
+const fonteTitulo = Montserrat({ 
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-titulo", // Criamos essa variável para chamar lá na Home
 });
 
 export const metadata: Metadata = {
@@ -17,8 +25,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      {/* 3. Aplicação da fonte na tag body */}
-      <body className={inter.className}>
+      {/* 3. Injetamos a variável da fonte do título junto com a fonte padrão */}
+      <body className={`${inter.className} ${fonteTitulo.variable}`}>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>

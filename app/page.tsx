@@ -1,6 +1,5 @@
 "use client";
 
-import AppleCarouselPro from "@/app/components/AppleCarouselPro";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -11,9 +10,18 @@ import {
   Leaf,
   Sprout,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+
+// Importação Dinâmica do Carrossel (Só carrega quando o usuário chegar perto dele)
+const AppleCarouselPro = dynamic(() => import("@/app/components/AppleCarouselPro"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[460px] w-full animate-pulse bg-slate-200/50 rounded-[28px] max-w-[1400px] mx-auto mt-8"></div>
+  ),
+});
 
 const NOVIDADES_CARDS = [
   {
@@ -26,7 +34,7 @@ const NOVIDADES_CARDS = [
     id: 2,
     tag: "VEM PARA O BIOLÓGICO",
     title: "É muito fácil mudar do químico tradicional para a biotecnologia.",
-    img: "/images/transicao-bio.png",
+    img: "/images/transicao.png",
   },
   {
     id: 3,
@@ -46,21 +54,21 @@ const NOVIDADES_CARDS = [
 
 const SECTORS = [
   {
-    title: "Genoma Agro",
+    title: "Solus Pride",
     subtitle: "Biotecnologia de precisão para lavouras de alto rendimento.",
     link: "/agricultura",
     image: "/images/setor-agri.jpg",
     logo: "/images/icone-agri.png",
   },
   {
-    title: "Divisão Hydro",
+    title: "Clean Pride",
     subtitle: "Saneamento biológico e recuperação de ecossistemas.",
     link: "/agua-meioambiente",
     image: "/images/setor-sanea.jpg",
     logo: "/images/icone-saneamento.png",
   },
   {
-    title: "Bio-Zootecnia",
+    title: "Vital Pride",
     subtitle: "Nutrição avançada e modulação imunológica animal.",
     link: "/saude-animal",
     image: "/images/setor-ani.jpg",
@@ -68,6 +76,7 @@ const SECTORS = [
   },
 ];
 
+// LINKS DE IMAGENS CORRIGIDOS E ESTÁVEIS (100% AGRO)
 const ACTIVE_REGIONS = [
   {
     id: "MA",
@@ -75,7 +84,7 @@ const ACTIVE_REGIONS = [
     top: "25%",
     left: "73%",
     forte: "Expansão de Soja e Milho (Polo Matopiba)",
-    img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "PI",
@@ -83,7 +92,7 @@ const ACTIVE_REGIONS = [
     top: "33%",
     left: "80%",
     forte: "Alta tecnologia em Soja e Algodão",
-    img: "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1595841696650-6e9389e83ec4?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "TO",
@@ -91,7 +100,7 @@ const ACTIVE_REGIONS = [
     top: "42%",
     left: "65%",
     forte: "Soja e Integração Lavoura-Pecuária",
-    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "RO",
@@ -99,7 +108,7 @@ const ACTIVE_REGIONS = [
     top: "40%",
     left: "27%",
     forte: "Pecuária de Corte intensiva e Soja",
-    img: "https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "BA",
@@ -107,7 +116,7 @@ const ACTIVE_REGIONS = [
     top: "44%",
     left: "83%",
     forte: "Referência global em Algodão e Soja",
-    img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "MT",
@@ -115,7 +124,7 @@ const ACTIVE_REGIONS = [
     top: "48%",
     left: "47%",
     forte: "Maior produtor nacional de Soja e Milho",
-    img: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "MG",
@@ -123,7 +132,7 @@ const ACTIVE_REGIONS = [
     top: "60%",
     left: "75%",
     forte: "Liderança em Café e forte produção de Grãos",
-    img: "https://images.unsplash.com/photo-1558350315-8aa00e8e4590?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1495908333425-29a1e0918c5f?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "ES",
@@ -131,7 +140,7 @@ const ACTIVE_REGIONS = [
     top: "61%",
     left: "90%",
     forte: "Referência em Café Conilon e Pimenta",
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1524486361537-8ad15938e1a3?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "MS",
@@ -140,7 +149,7 @@ const ACTIVE_REGIONS = [
     top: "64%",
     left: "50%",
     forte: "Polo de Soja, Milho e Pecuária Integrada",
-    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "SP",
@@ -156,7 +165,7 @@ const ACTIVE_REGIONS = [
     top: "83%",
     left: "66%",
     forte: "Excelência em Suinocultura, Aves e Cereais",
-    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&w=400&q=80",
   },
 ];
 
@@ -168,61 +177,73 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
+      
       {/* HERO */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative w-full h-screen min-h-[500px] md:min-h-[600px] flex flex-col overflow-hidden bg-black pt-[105px] lg:pt-[110px] pb-12 md:pb-20">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
             muted
             loop
             playsInline
+            poster="/images/hero-poster.jpg" // OTIMIZAÇÃO 1: Poster (crie essa imagem depois!)
             className="w-full h-full object-cover opacity-40"
           >
             <source src="/videos/hero-background.mp4" type="video/mp4" />
           </video>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center mt-16">
+        <div className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1">
+          
+          {/* PARTE DE CIMA (Título) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full mt-2 text-left"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 text-white leading-[1.1]">
+            <h1 className="font-[family-name:var(--font-titulo)] text-3xl md:text-5xl lg:text-[40px] xl:text-[46px] lg:ml-[30px] font-normal tracking-normal text-white leading-tight lg:whitespace-nowrap">
               Inovações naturais para um futuro sustentável.
             </h1>
+          </motion.div>
 
-            <p className="text-slate-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-              Biotecnologia avançada para maximizar a rentabilidade da sua safra.
-              Resultados reais baseados em ciência aplicada.
+          {/* PARTE DE BAIXO (Subtítulo e Botões) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="w-full flex flex-col items-center text-center mt-auto"
+          >
+            <p className="text-slate-200 text-base md:text-xl lg:text-[22px] mb-8 max-w-5xl font-semibold leading-relaxed drop-shadow-lg">
+              Biotecnologia avançada que promove soluções econômicas, inteligentes e rentáveis para múltiplos setores. Resultados reais baseados em ciência aplicada e resultados positivos.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
               <button
                 onClick={scrollToDivisoes}
-                className="bg-white text-slate-900 hover:bg-slate-200 font-bold px-10 py-4 rounded-full transition-colors flex items-center justify-center text-sm uppercase tracking-wider w-full sm:w-auto"
+                className="bg-white text-slate-900 hover:bg-slate-200 font-bold px-8 py-3.5 rounded-full transition-colors flex items-center justify-center text-sm uppercase tracking-wider w-full sm:w-auto shadow-lg"
               >
                 Ver Divisões
               </button>
 
               <Link
                 href="/contato"
-                className="bg-transparent border border-white text-white hover:bg-white/10 font-bold px-10 py-4 rounded-full transition-colors flex items-center justify-center text-sm uppercase tracking-wider w-full sm:w-auto"
+                className="bg-transparent border border-white text-white hover:bg-white/10 font-bold px-8 py-3.5 rounded-full transition-colors flex items-center justify-center text-sm uppercase tracking-wider w-full sm:w-auto shadow-lg"
               >
                 Falar com Especialista
               </Link>
             </div>
           </motion.div>
+
         </div>
       </section>
 
-      {/* FAIXA DE AUTORIDADE - CORRIGIDA PARA MOBILE */}
+      {/* FAIXA DE AUTORIDADE */}
       <section className="bg-black border-b border-white/5 py-8 md:py-10 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-center text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-6">
             Resultados Comprovados Em
           </p>
-          {/* Ajuste de gaps e tamanhos de fonte para não quebrar no celular */}
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-16 lg:gap-24 opacity-80">
             <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
               <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Soja & Milho
@@ -247,7 +268,13 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div className="max-w-3xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }} // OTIMIZAÇÃO 2: whileInView
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
+            >
               <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900 mb-4">
                 Nossas divisões.{" "}
                 <span className="text-slate-500 font-medium">
@@ -258,7 +285,7 @@ export default function Home() {
                 Desenvolvemos biotecnologia avançada para resolver os maiores
                 gargalos produtivos do mercado global.
               </p>
-            </div>
+            </motion.div>
 
             <Link
               href="/sobre"
@@ -301,11 +328,11 @@ export default function Home() {
                           : 38
                       }
                       height={
-                        sector.title === "Genoma Agro"
+                        sector.title === "SOLUS PRIDE"
                           ? 28
-                          : sector.title === "Divisão Hydro"
+                          : sector.title === "CLEAN PRIDE"
                           ? 42
-                          : sector.title === "Bio-Zootecnia"
+                          : sector.title === "VITAL PRIDE"
                           ? 42
                           : 38
                       }
@@ -335,6 +362,7 @@ export default function Home() {
                     src={sector.image}
                     alt={sector.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw" // OTIMIZAÇÃO 3: Sizes de imagem
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
@@ -357,11 +385,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MAPA 3D BRANCO - COM CARDS DE INTELIGÊNCIA GEOGRÁFICA (AGORA É A 3ª SESSÃO APÓS DIVISÕES) */}
+      {/* MAPA 3D BRANCO */}
       <section className="py-24 bg-[#F5F5F7] relative z-10 border-t border-black/[0.04]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div className="max-w-3xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
+            >
               <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900 mb-4">
                 Presença Nacional.{" "}
                 <span className="text-slate-500 font-medium">
@@ -373,7 +407,7 @@ export default function Home() {
                 agrícolas do Brasil. Interaja com o mapa para visualizar nossa
                 área de cobertura.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           <div className="bg-white rounded-[40px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-black/[0.02] flex flex-col lg:flex-row min-h-[650px]">
@@ -421,6 +455,7 @@ export default function Home() {
                     src="/images/mapa-brasil.png"
                     alt="Mapa do Brasil"
                     fill
+                    sizes="(max-width: 768px) 100vw, 560px"
                     className="object-contain opacity-60 select-none pointer-events-none"
                     unoptimized
                   />
@@ -452,6 +487,7 @@ export default function Home() {
                             <img
                               src={region.img}
                               alt={region.name}
+                              loading="lazy" // OTIMIZAÇÃO 4: Lazy load nas imagens do mapa (não pesa o carregamento)
                               className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -489,17 +525,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NOVIDADES (AGORA É A 4ª SESSÃO) */}
+      {/* NOVIDADES */}
       <section className="pt-24 pb-16 bg-[#F5F5F7] relative z-10 border-t border-black/[0.04]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-10 px-6 md:px-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-10 px-6 md:px-12"
+          >
             <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900">
               As novidades.{" "}
               <span className="text-slate-500 font-medium">
                 O que há de mais avançado no agro.
               </span>
             </h2>
-          </div>
+          </motion.div>
 
           <AppleCarouselPro
             fadeColorClassName="from-[#F5F5F7]"
@@ -547,6 +589,7 @@ export default function Home() {
                     src={card.img}
                     alt={card.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // OTIMIZAÇÃO 3
                     className="object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
                   />
                 </div>
@@ -558,12 +601,16 @@ export default function Home() {
 
       {/* BIOTECNOLOGIA PRIDE */}
       <section className="py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
-        {/* Efeito de Luz de Fundo (Glow) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Cabeçalho da Sessão */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
               Biotecnologia Pride
             </p>
@@ -572,22 +619,21 @@ export default function Home() {
               <br />
               Regenerando o Futuro.
             </h2>
-          </div>
+          </motion.div>
 
-          {/* Grid de Cards 3D Neon */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
-            {/* Card 1 */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
               whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all duration-500 overflow-hidden"
+              transition={{ duration: 0.5 }}
+              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all overflow-hidden"
             >
-              {/* Efeito 3D do Ícone */}
               <div className="w-20 h-20 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.35)] transition-all duration-500 relative">
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Dna className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
-
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Biotecnologia de Precisão
               </h3>
@@ -597,17 +643,18 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Card 2 */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
               whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all duration-500 overflow-hidden"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all overflow-hidden"
             >
               <div className="w-20 h-20 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.35)] transition-all duration-500 relative">
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Headset className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
-
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Engenharia Agronômica Dedicada
               </h3>
@@ -617,17 +664,18 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Card 3 */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
               whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all duration-500 overflow-hidden"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="group relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 shadow-2xl hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all overflow-hidden"
             >
               <div className="w-20 h-20 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.35)] transition-all duration-500 relative">
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Sprout className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
-
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Soluções Biológicas de Amplo Espectro
               </h3>
@@ -638,7 +686,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Call to Action Final */}
           <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <p className="text-slate-300 text-lg md:text-xl font-medium">
               Fale com um Especialista Pride e transforme sua produção.

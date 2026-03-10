@@ -7,9 +7,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { name: "Pride Solus", href: "/agricultura" },
-  { name: "VitalPride", href: "/saude-animal" },
-  { name: "Pride Clean", href: "/agua-meioambiente" },
+  { name: "Solus Pride", href: "/agricultura" },
+  { name: "Vital Pride", href: "/saude-animal" },
+  { name: "Clean Pride", href: "/agua-meioambiente" },
   { name: "Nossa Gênese", href: "/sobre" },
 ];
 

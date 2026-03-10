@@ -11,25 +11,26 @@ const AREAS_ATUACAO = [
     name: "Agricultura Regenerativa",
     role: "Linha Pride Solos",
     bio: "Potencializamos a eficiência biológica do solo e a produtividade agrícola, nutrindo os sistemas existentes e favorecendo microbiotas benéficas.",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop"
+    // OTIMIZAÇÃO: Reduzido w=500, q=50 e forçado auto=format,compress
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
     name: "Águas e Efluentes",
     role: "Linha Pride Clean",
     bio: "Tratamento focado no equilíbrio ecológico. Melhoramos a qualidade das águas e efluentes, promovendo ambientes aquáticos revitalizados.",
-    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
     name: "Suinocultura e Avicultura",
     role: "Pride Swine & Chicken",
     bio: "Contribuição ativa para a redução de resíduos, controle de odores e melhoria expressiva do bem-estar animal nos galpões.",
-    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
     name: "Bovinocultura",
     role: "Linha Pride Cattle",
     bio: "Aprimoramos a gestão de dejetos e a estabilidade do ambiente, apoiando uma produção mais saudável e sustentável na pecuária.",
-    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format,compress&q=50&w=500&fit=crop"
   }
 ];
 
@@ -41,11 +42,12 @@ const PRIDE_PILLARS = [
 ];
 
 /* =========================================================================
-   ANIMAÇÕES REUTILIZÁVEIS
+   ANIMAÇÕES REUTILIZÁVEIS (OTIMIZADAS PARA PERFORMANCE)
    ========================================================================= */
 const fadeInUp: any = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } }
+  // OTIMIZAÇÃO: Curva mais rápida e leve
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const staggerContainer: any = {
@@ -63,9 +65,12 @@ export default function PrideAboutPage() {
       {/* 1. HERO SECTION INSTITUCIONAL */}
       <section className="relative w-full h-[80vh] min-h-[600px] flex items-end pb-24 pt-40 px-6 bg-slate-100">
         <div className="absolute inset-0 z-0">
+          {/* OTIMIZAÇÃO: fetchPriority high para carregar rápido, w=1600 e forte compressão */}
           <img 
-            src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=2000&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format,compress&q=60&w=1600&fit=crop" 
             alt="Laboratório e Campo Pride BioSolutions" 
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-70"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent" />
@@ -108,6 +113,7 @@ export default function PrideAboutPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
+            style={{ willChange: "transform, opacity" }}
           >
             <Sprout size={40} className="text-slate-900 mx-auto mb-10 opacity-80" strokeWidth={1.5} />
             <h2 className="text-3xl md:text-5xl font-medium text-slate-900 leading-tight tracking-tight mb-10">
@@ -131,7 +137,7 @@ export default function PrideAboutPage() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
@@ -158,7 +164,7 @@ export default function PrideAboutPage() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
           >
@@ -197,17 +203,21 @@ export default function PrideAboutPage() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {AREAS_ATUACAO.map((area, i) => (
               <motion.div key={i} variants={fadeInUp} className="group">
                 <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-slate-900 mb-8 border border-slate-800 group-hover:border-slate-500 transition-colors duration-500">
+                  {/* OTIMIZAÇÃO: loading lazy e decoding async */}
                   <img 
                     src={area.image} 
                     alt={area.name} 
-                    className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
+                    style={{ willChange: "transform" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90 pointer-events-none" />
                   

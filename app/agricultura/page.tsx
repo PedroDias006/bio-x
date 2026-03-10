@@ -11,6 +11,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Image from "next/image"; // Movido para o topo, organizando os imports
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -30,7 +31,7 @@ import {
 } from "lucide-react";
 
 /* =========================================================================
-   DADOS E CONSTANTES (PRIDE SOLOS)
+   DADOS E CONSTANTES (SOLUS PRIDE)
    ========================================================================= */
 
 const PRODUCT_BENEFITS = [
@@ -195,10 +196,13 @@ const VisualOfferSection: React.FC = React.memo(() => {
           transition={{ duration: 0.5 }}
           className="md:col-span-8 relative h-[500px] rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-xl shadow-green-100/30"
         >
-          <img 
+          {/* OTIMIZAÇÃO: Uso de next/image no lugar de tag img nativa */}
+          <Image 
             src="/images/equipe-biox-soja.jpg" 
             alt="Análise de Solo Pride Solos" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, 66vw"
+            className="object-cover transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
           
@@ -241,10 +245,13 @@ const VisualOfferSection: React.FC = React.memo(() => {
              viewport={{ once: true }}
              className="relative flex-1 rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-md"
            >
-              <img 
+              {/* OTIMIZAÇÃO: Uso de next/image */}
+              <Image 
                 src="/images/comparativo-batata.jpg" 
                 alt="Comparação de Raízes" 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/20 transition-colors" />
               
@@ -265,10 +272,13 @@ const VisualOfferSection: React.FC = React.memo(() => {
              transition={{ delay: 0.1 }}
              className="relative flex-1 rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-md"
            >
-              <img 
+              {/* OTIMIZAÇÃO: Uso de next/image */}
+              <Image 
                 src="/images/colheita-batata.jpg" 
                 alt="Colheita Produtiva" 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
               
@@ -352,10 +362,8 @@ const VisualOfferSection: React.FC = React.memo(() => {
 });
 
 /* =========================================================================
-   SUB-COMPONENTE: PRODUCT HERO (ATUALIZADO COM IMAGEM MAIOR E OTIMIZADA)
+   SUB-COMPONENTE: PRODUCT HERO
    ========================================================================= */
-import Image from "next/image"; // <-- ATENÇÃO: Garanta que esta linha esteja lá no topo do seu arquivo junto com os outros imports!
-
 const ProductHeroSection: React.FC = React.memo(() => {
   const ref = useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);
@@ -421,15 +429,16 @@ const ProductHeroSection: React.FC = React.memo(() => {
               className="relative z-10 flex flex-col items-center justify-center w-full"
             >
               <Image
-                src="/images/agricultura.png" // O nome do arquivo que você enviou antes
+                src="/images/agricultura.png" 
                 alt="Embalagem Pride Solos"
                 width={400}
                 height={500}
                 priority
+                sizes="(max-width: 768px) 100vw, 400px" // OTIMIZAÇÃO: Atributo de tamanho configurado
                 className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto object-cover rounded-2xl shadow-lg relative z-20 mb-8 border border-white"
               />
               
-              <h3 className="text-4xl font-black text-[#020617] mb-2 tracking-tighter drop-shadow-md">PRIDE SOLOS</h3>
+              <h3 className="text-4xl font-black text-[#020617] mb-2 tracking-tighter drop-shadow-md">SOLUS PRIDE</h3>
               <span className="inline-block px-4 py-1.5 mt-2 mb-16 rounded-full bg-green-100 border border-green-200 text-green-800 text-xs font-bold uppercase tracking-widest shadow-sm">Uso Agrícola</span>
             </motion.div>
 
@@ -465,7 +474,7 @@ const ProductHeroSection: React.FC = React.memo(() => {
           </motion.div>
         </motion.div>
 
-        {/* LADO DIREITO: TEXTOS E DESCRIÇÃO (Mantido igual ao seu) */}
+        {/* LADO DIREITO: TEXTOS E DESCRIÇÃO */}
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -606,9 +615,12 @@ const DocumentarySection: React.FC = React.memo(() => {
                transition={{ duration: 0.7 }}
                className="w-full aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_-10px_rgba(34,197,94,0.1)] bg-black/50 relative group"
             >
+               {/* OTIMIZAÇÃO: Preload none para não consumir dados e poster adicionado */}
                <video
                  src="/videos/depoimento-pride.mp4" 
                  controls
+                 preload="none"
+                 poster="/images/depoimento-poster.jpg" 
                  className="w-full h-full object-cover"
                />
             </motion.div>
@@ -667,6 +679,8 @@ export default function AgriculturaMasterpiece() {
           className="absolute inset-0 z-0 will-change-transform"
         >
           <div className="absolute inset-0 bg-[#020617]/40 z-10 pointer-events-none" />
+          
+          {/* OTIMIZAÇÃO: Adicionado poster ao vídeo Hero */}
           <video
             src="/videos/agricultura.mp4"
             autoPlay
@@ -674,6 +688,7 @@ export default function AgriculturaMasterpiece() {
             loop
             playsInline
             preload="metadata"
+            poster="/images/hero-agricultura-poster.jpg" 
             className="w-full h-full object-cover scale-105"
           />
         </motion.div>
@@ -698,9 +713,9 @@ export default function AgriculturaMasterpiece() {
             <h1 className="text-5xl md:text-8xl font-bold text-white uppercase flex flex-col items-center gap-2 mb-8 tracking-tighter">
               <span className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
                 <span className="tracking-widest font-light opacity-80">
-                  PRIDE
+                  SOLUS
                 </span>
-                <span className="text-white drop-shadow-2xl">SOLOS</span>
+                <span className="text-white drop-shadow-2xl">PRIDE</span>
               </span>
             </h1>
 
