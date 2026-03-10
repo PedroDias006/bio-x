@@ -18,7 +18,7 @@ const fonteTitulo = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "AETHERIS",
+  title: "Pride BioSolutions | Biotechnology & Agricultural Innovation",
   description: "Soluções vivas para um futuro sustentável.",
 };
 

@@ -26,7 +26,7 @@ export default function Footer() {
           </h3>
 
           <p className="text-slate-500 leading-relaxed text-[15px]">
-            Pioneiros em biologia sintética e engenharia de biomas. Redefinimos o teto produtivo através da otimização molecular e sustentabilidade ativa.
+            Pioneiros em biologia natural e engenharia de biomas. Redefinimos o teto produtivo através da otimização molecular e sustentabilidade ativa.
           </p>
 
           <p className="text-slate-400 text-xs mt-5 uppercase tracking-wider font-semibold">
@@ -47,7 +47,7 @@ export default function Footer() {
           </h3>
 
           <ul className="space-y-3 text-[15px] text-slate-500 font-medium">
-            <li><a href="/produtos" className="hover:text-emerald-600 transition-colors">Matriz de Produtos</a></li>
+            <li><a href="/produtos" className="hover:text-emerald-600 transition-colors">Linha de Produtos</a></li>
             <li><a href="/sobre" className="hover:text-emerald-600 transition-colors">Nossa Gênese</a></li>
             <li><a href="/contato" className="hover:text-emerald-600 transition-colors">Terminal de Uplink</a></li>
             <li><a href="/privacidade" className="hover:text-emerald-600 transition-colors">Protocolo de Privacidade</a></li>
