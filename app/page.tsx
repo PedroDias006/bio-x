@@ -41,7 +41,7 @@ const NOVIDADES_CARDS = [
     tag: "PRIDE INTELLIGENCE",
     title: "Explore a Biologia Molecular Avançada.",
     subtitle: "Venha saber mais sobre como o Pride Alpha transforma sua safra.",
-    img: "/images/agricultura-uni.png",
+    img: "/images/agriculturaa.png",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const NOVIDADES_CARDS = [
 
 const SECTORS = [
   {
-    title: "Solus Pride",
+    title: "Solun`s Pride",
     subtitle: "Biotecnologia de precisão para lavouras de alto rendimento.",
     link: "/agricultura",
     image: "/images/setor-agri.jpg",
@@ -242,7 +242,7 @@ export default function Home() {
                 onClick={scrollToDivisoes}
                 className="bg-white text-slate-900 hover:bg-slate-200 font-bold px-8 py-3.5 rounded-full transition-colors flex items-center justify-center text-sm uppercase tracking-wider w-full sm:w-auto shadow-lg"
               >
-                Ver Divisões
+                Áreas de Atuação
               </button>
 
               <Link
@@ -295,7 +295,7 @@ export default function Home() {
               className="max-w-3xl"
             >
               <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900 mb-4">
-                Nossas divisões.{" "}
+                Áreas de Atuação.{" "}
                 <span className="text-slate-500 font-medium">
                   Protocolos hiper-especializados.
                 </span>
