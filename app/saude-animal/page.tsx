@@ -63,7 +63,7 @@ const PROCESS_STEPS = [
       "Estabilidade do ecossistema e ambiente de criação",
       "Promoção do conforto e bem-estar animal",
       "Composição baseada em ingredientes de origem vegetal",
-      "Isento de complicações e exigências regulatórias",
+      "Isento de complications e exigências regulatórias",
     ],
   },
 ] as const;
@@ -140,29 +140,22 @@ export default function VitalsPage() {
       {/* ======================================================
           1. HERO
       ====================================================== */}
-      {/* TRUQUE CSS NATIVO: Coloca a imagem no style inline. O CSS carrega antes do JS, matando a tela preta. */}
-      <section 
-        className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0A]"
-        style={{
-          backgroundImage: "url('/images/vitals-hero-poster.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundColor: "#0A0A0A"
-        }}
-      >
+      <section className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0A]">
+        
         <motion.div
           style={{ y: yHero, willChange: "transform" }}
           className="absolute inset-0 z-0 bg-[#0A0A0A]"
         >
-          {/* A imagem do Next é redundante mas garante o prefetch no cabeçalho e mantém a qualidade ao resizar */}
-           <Image
-            src="/images/vitals-hero-poster.jpg"
-            alt="Hero Background"
-            fill
-            priority
-            quality={80}
-            className="object-cover opacity-55 grayscale-[16%] contrast-110 pointer-events-none"
-          />
+          {/* TRUQUE INVISÍVEL: Aquece o cache do navegador instantaneamente para matar a tela preta */}
+          <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
+            <Image 
+              src="/images/vitals-hero-poster.jpg" 
+              alt="Preload" 
+              fill 
+              priority 
+              quality={80} 
+            />
+          </div>
 
           <video
             src="/videos/vitals-hero.mp4"
@@ -170,12 +163,13 @@ export default function VitalsPage() {
             muted
             loop
             playsInline
-            preload="auto" /* auto para carregar o mais rápido possível e sobrepor a imagem */
-            className="absolute inset-0 w-full h-full object-cover opacity-55 grayscale-[16%] contrast-110"
+            preload="auto"
+            poster="/images/vitals-hero-poster.jpg" // Como já tá no cache, carrega frame 0 perfeito e some ao dar play
+            className="w-full h-full object-cover opacity-55 grayscale-[16%] contrast-110"
           />
 
           {/* overlay mais leve que backdrop forte */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.42),rgba(0,0,0,0.5),rgba(0,0,0,0.7))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.42),rgba(0,0,0,0.5),rgba(0,0,0,0.7))] pointer-events-none" />
         </motion.div>
 
         <div className="relative z-20 text-center max-w-5xl">
