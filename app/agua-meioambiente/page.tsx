@@ -112,31 +112,53 @@ export default function PrideCleanPage() {
   return (
     <main className="bg-slate-50 text-slate-800 overflow-x-hidden">
       {/* ======================================================
-          HERO
+          HERO (OTIMIZADO CONTRA TELA PRETA)
       ====================================================== */}
       <section className="relative min-h-[90svh] w-full flex items-center justify-center px-4 sm:px-6 bg-white overflow-hidden">
-        {/* Fundo estático para mobile / dados móveis */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-white" />
+        
+        <div className="absolute inset-0 z-0 bg-white">
+          {/* TRUQUE INVISÍVEL: O Next.js vai injetar essa imagem no <head> com prioridade máxima.
+            Quando a página abrir, a foto já está baixada e no cache do navegador.
+          */}
+          <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
+            <Image 
+              src="/images/agua-hero-poster.jpg" 
+              alt="Preload" 
+              fill 
+              priority 
+              quality={80} 
+            />
+          </div>
 
           {/* Vídeo só aparece em md+ */}
           <div className="hidden md:block absolute inset-0">
+            {/* CSS INLINE MATADOR: O background-image CSS roda antes do HTML renderizar o player de vídeo.
+              O backgroundColor '#ffffff' anula a tela preta nativa do HTML5. 
+            */}
             <video
               src="/videos/agua-hero.mp4"
               autoPlay
               muted
               loop
               playsInline
-              preload="metadata"
-              poster="/images/agua-hero-poster.jpg"
+              preload="auto"
+              style={{
+                backgroundImage: "url('/images/agua-hero-poster.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundColor: "#ffffff",
+              }}
               className="w-full h-full object-cover opacity-35"
             />
           </div>
 
-          {/* Poster/imagem para telas pequenas */}
+          {/* Poster/imagem para telas pequenas (Usando o mesmo esquema inline) */}
           <div
             className="md:hidden absolute inset-0 bg-center bg-cover opacity-20"
-            style={{ backgroundImage: "url('/images/agua-hero-poster.jpg')" }}
+            style={{ 
+              backgroundImage: "url('/images/agua-hero-poster.jpg')",
+              backgroundColor: "#ffffff"
+            }}
           />
 
           <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-slate-50" />

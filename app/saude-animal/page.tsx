@@ -140,20 +140,38 @@ export default function VitalsPage() {
       {/* ======================================================
           1. HERO
       ====================================================== */}
-      <section className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0A]">
+      {/* TRUQUE CSS NATIVO: Coloca a imagem no style inline. O CSS carrega antes do JS, matando a tela preta. */}
+      <section 
+        className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0A]"
+        style={{
+          backgroundImage: "url('/images/vitals-hero-poster.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: "#0A0A0A"
+        }}
+      >
         <motion.div
           style={{ y: yHero, willChange: "transform" }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 bg-[#0A0A0A]"
         >
+          {/* A imagem do Next é redundante mas garante o prefetch no cabeçalho e mantém a qualidade ao resizar */}
+           <Image
+            src="/images/vitals-hero-poster.jpg"
+            alt="Hero Background"
+            fill
+            priority
+            quality={80}
+            className="object-cover opacity-55 grayscale-[16%] contrast-110 pointer-events-none"
+          />
+
           <video
             src="/videos/vitals-hero.mp4"
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
-            poster="/images/vitals-hero-poster.jpg"
-            className="w-full h-full object-cover opacity-55 grayscale-[16%] contrast-110"
+            preload="auto" /* auto para carregar o mais rápido possível e sobrepor a imagem */
+            className="absolute inset-0 w-full h-full object-cover opacity-55 grayscale-[16%] contrast-110"
           />
 
           {/* overlay mais leve que backdrop forte */}

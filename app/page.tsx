@@ -178,19 +178,38 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
       
-      {/* HERO */}
+      {/* ======================================================
+          HERO OTIMIZADO (ANTI TELA PRETA)
+      ====================================================== */}
       <section className="relative w-full h-screen min-h-[500px] md:min-h-[600px] flex flex-col overflow-hidden bg-black pt-[105px] lg:pt-[110px] pb-12 md:pb-20">
-        <div className="absolute inset-0 z-0">
+        
+        <div className="absolute inset-0 z-0 bg-black">
+          {/* TRUQUE INVISÍVEL: O Next.js vai injetar essa imagem no <head> com prioridade máxima. */}
+          <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
+            <Image 
+              src="/images/hero-poster.jpg" 
+              alt="Preload" 
+              fill 
+              priority 
+              quality={80} 
+            />
+          </div>
+
           <video
+            src="/videos/hero-background.mp4"
             autoPlay
             muted
             loop
             playsInline
-            poster="/images/hero-poster.jpg" // OTIMIZAÇÃO 1: Poster (crie essa imagem depois!)
+            preload="auto"
+            style={{
+              backgroundImage: "url('/images/hero-poster.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "#000000",
+            }}
             className="w-full h-full object-cover opacity-40"
-          >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
-          </video>
+          />
         </div>
 
         <div className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1">
@@ -270,7 +289,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }} // OTIMIZAÇÃO 2: whileInView
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
@@ -362,7 +381,7 @@ export default function Home() {
                     src={sector.image}
                     alt={sector.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw" // OTIMIZAÇÃO 3: Sizes de imagem
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
@@ -487,7 +506,7 @@ export default function Home() {
                             <img
                               src={region.img}
                               alt={region.name}
-                              loading="lazy" // OTIMIZAÇÃO 4: Lazy load nas imagens do mapa (não pesa o carregamento)
+                              loading="lazy"
                               className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -589,7 +608,7 @@ export default function Home() {
                     src={card.img}
                     alt={card.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // OTIMIZAÇÃO 3
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
                   />
                 </div>
