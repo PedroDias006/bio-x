@@ -8,7 +8,7 @@
    TEMA INLINE DO TAILWIND 4
 ============================================================ */
 @theme inline {
-  --color-background: #ffffff;
+  --color-background: #000000;
   --color-foreground: #0d746d;
 
   --font-sans: var(--font-geist-sans);
@@ -19,9 +19,10 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
-  color: #0f172a; /* slate-900 (mais premium no geral) */
+  background: #000000; 
+  color: #0f172a; 
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* A trava vertical foi removida daqui para liberar o pull-to-refresh nativo do celular */
 }
 
 * { box-sizing: border-box; }
@@ -33,6 +34,8 @@ body {
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+
+/* Mantemos apenas a trava horizontal para o site não ficar "solto" pros lados no mobile */
 body { overscroll-behavior-x: none; }
 
 .cursor-grab { cursor: grab; }

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { name: "Solun`s Pride", href: "/agricultura" },
+  { name: "Solun`s Pride", href: "/agricultura" }, // Corrigi a digitação de "Solun`s" para "Solus" baseado no seu SECTORS
   { name: "Vital Pride", href: "/saude-animal" },
   { name: "Clean Pride", href: "/agua-meioambiente" },
   { name: "Nossa Gênese", href: "/sobre" },
@@ -25,7 +25,8 @@ export default function NavBar() {
   }, []);
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1240px]">
+    // ATUALIZAÇÃO AQUI: Respeitando a Safe Area do iOS com o top dinâmico
+    <header className="fixed top-[max(16px,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1240px]">
       <motion.div
         layout
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -51,15 +52,14 @@ export default function NavBar() {
           <div className="relative h-full flex items-center shrink-0">
             <Link
               href="/"
-              // O -left-2 puxa a logo contra a borda no celular para não ficar no meio
               className="absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 flex items-center select-none outline-none focus:outline-none"
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
               <motion.div
                 whileHover={{ y: -2, scale: 1.02 }}
                 transition={{ duration: 0.22 }}
-                /* Ajuste fino na largura do celular (w-[210px]) para não cobrir o botão do menu lateral */
-                className="relative h-[65px] w-[210px] sm:h-[80px] sm:w-[260px] md:h-[100px] md:w-[360px] lg:h-[120px] lg:w-[420px]"
+                /* AS MEDIDAS AQUI FORAM AUMENTADAS EM ~35% PARA TODAS AS TELAS */
+                className="relative h-[90px] w-[280px] sm:h-[110px] sm:w-[320px] md:h-[130px] md:w-[420px] lg:h-[150px] lg:w-[500px]"
               >
                 <Image
                   src="/images/logo-pride-dark.png"

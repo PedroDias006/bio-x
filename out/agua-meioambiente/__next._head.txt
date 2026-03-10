@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[61179,["/_next/static/chunks/49501e9d7339e2db.js","/_next/static/chunks/2d46d208588e6a57.js"],"ViewportBoundary"]
+3:I[61179,["/_next/static/chunks/49501e9d7339e2db.js","/_next/static/chunks/2d46d208588e6a57.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[37038,["/_next/static/chunks/49501e9d7339e2db.js","/_next/static/chunks/2d46d208588e6a57.js"],"IconMark"]
+0:{"buildId":"QLW3Yr5K-NgIgyCZZBQ7z","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"AETHERIS"}],["$","meta","1",{"name":"description","content":"Soluções vivas para um futuro sustentável."}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.a3b54c9f.ico","sizes":"1536x1024","type":"image/x-icon"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

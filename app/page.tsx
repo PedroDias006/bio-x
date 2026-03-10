@@ -41,7 +41,7 @@ const NOVIDADES_CARDS = [
     tag: "PRIDE INTELLIGENCE",
     title: "Explore a Biologia Molecular Avançada.",
     subtitle: "Venha saber mais sobre como o Pride Alpha transforma sua safra.",
-    img: "/images/agriculturaa.png",
+    img: "/images/agricultura-uni.png",
   },
   {
     id: 4,
@@ -176,15 +176,19 @@ export default function Home() {
     divisoesRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
+    // ATUALIZAÇÃO: Container principal agora é bg-black para a safe area do topo
+    <div className="min-h-screen bg-black text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
       
-      {/* ======================================================
-          HERO OTIMIZADO (ANTI TELA PRETA)
-      ====================================================== */}
-      <section className="relative w-full h-screen min-h-[500px] md:min-h-[600px] flex flex-col overflow-hidden bg-black pt-[105px] lg:pt-[110px] pb-12 md:pb-20">
-        
+      {/* HERO SECTION 100% FULL SCREEN (HACK SAFARI iOS) */}
+      <section 
+        className="relative w-full flex flex-col overflow-hidden bg-black"
+        style={{ 
+          height: "100vh", /* Força a altura exata da tela */
+          minHeight: "-webkit-fill-available" /* Hack supremo que o Safari obedece cegamente */
+        }}
+      >
+        {/* CONTAINER DO VÍDEO - inset-0 faz ele colar nas 4 pontas da tela, ignorando o relógio */}
         <div className="absolute inset-0 z-0 bg-black">
-          {/* TRUQUE INVISÍVEL: O Next.js vai injetar essa imagem no <head> com prioridade máxima. */}
           <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
             <Image 
               src="/images/hero-poster.jpg" 
@@ -207,12 +211,22 @@ export default function Home() {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundColor: "#000000",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover" /* Garante que o vídeo estique sem distorcer */
             }}
-            className="w-full h-full object-cover opacity-40"
+            className="opacity-40"
           />
         </div>
 
-        <div className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1">
+        {/* CONTAINER DOS TEXTOS - Com paddings dinâmicos para desviar do relógio e da barra de baixo */}
+        <div 
+          className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1"
+          style={{
+            paddingTop: "max(130px, env(safe-area-inset-top) + 90px)", // Empurra o título pra baixo da Navbar
+            paddingBottom: "max(40px, env(safe-area-inset-bottom) + 20px)" // Empurra os botões pra cima da barra do Safari
+          }}
+        >
           
           {/* PARTE DE CIMA (Título) */}
           <motion.div
@@ -257,24 +271,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAIXA DE AUTORIDADE */}
-      <section className="bg-black border-b border-white/5 py-8 md:py-10 relative z-10">
+     {/* FAIXA DE AUTORIDADE */}
+      <section className="bg-black border-b border-white/5 py-3 md:py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-center text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-6">
-            Resultados Comprovados Em
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-16 lg:gap-24 opacity-80">
-            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
-              <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Soja & Milho
+          <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
+            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Sprout className="w-3.5 h-3.5 md:w-6 md:h-6" /> Soja & Milho
             </div>
-            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
-              <Leaf className="w-4 h-4 md:w-6 md:h-6" /> Cana-de-Açúcar
+            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Leaf className="w-3.5 h-3.5 md:w-6 md:h-6" /> Cana-de-Açúcar
             </div>
-            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
-              <Beef className="w-4 h-4 md:w-6 md:h-6" /> Pecuária Intensiva
+            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Beef className="w-3.5 h-3.5 md:w-6 md:h-6" /> Pecuária Intensiva
             </div>
-            <div className="flex items-center gap-1.5 md:gap-2 text-emerald-500 font-bold text-sm sm:text-base md:text-xl">
-              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Saneamento
+            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Droplets className="w-3.5 h-3.5 md:w-6 md:h-6" /> Saneamento
             </div>
           </div>
         </div>
@@ -347,7 +358,7 @@ export default function Home() {
                           : 38
                       }
                       height={
-                        sector.title === "SOLUS PRIDE"
+                        sector.title === "SOLUN`S PRIDE"
                           ? 28
                           : sector.title === "CLEAN PRIDE"
                           ? 42
