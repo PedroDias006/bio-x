@@ -13,7 +13,7 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 // Importação Dinâmica do Carrossel (Só carrega quando o usuário chegar perto dele)
 const AppleCarouselPro = dynamic(() => import("@/app/components/AppleCarouselPro"), {
@@ -41,7 +41,7 @@ const NOVIDADES_CARDS = [
     tag: "PRIDE INTELLIGENCE",
     title: "Explore a Biologia Molecular Avançada.",
     subtitle: "Venha saber mais sobre como o Pride Alpha transforma sua safra.",
-    img: "/images/agricultura-uni.png",
+    img: "/images/agriculturaa.png",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const NOVIDADES_CARDS = [
 
 const SECTORS = [
   {
-    title: "Solun`s Pride",
+    title: "Solus Pride",
     subtitle: "Biotecnologia de precisão para lavouras de alto rendimento.",
     link: "/agricultura",
     image: "/images/setor-agri.jpg",
@@ -92,7 +92,7 @@ const ACTIVE_REGIONS = [
     top: "33%",
     left: "80%",
     forte: "Alta tecnologia em Soja e Algodão",
-    img: "https://images.unsplash.com/photo-1595841696650-6e9389e83ec4?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=400&q=80",
   },
   {
     id: "TO",
@@ -171,23 +171,23 @@ const ACTIVE_REGIONS = [
 
 export default function Home() {
   const divisoesRef = useRef<HTMLDivElement>(null);
+  const [activeMapRegion, setActiveMapRegion] = useState<string | null>(null);
 
   const scrollToDivisoes = () =>
     divisoesRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    // ATUALIZAÇÃO: Container principal agora é bg-black para a safe area do topo
     <div className="min-h-screen bg-black text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
       
       {/* HERO SECTION 100% FULL SCREEN (HACK SAFARI iOS) */}
       <section 
         className="relative w-full flex flex-col overflow-hidden bg-black"
         style={{ 
-          height: "100vh", /* Força a altura exata da tela */
+          height: "100lvh", /* Força a altura exata da tela */
           minHeight: "-webkit-fill-available" /* Hack supremo que o Safari obedece cegamente */
         }}
       >
-        {/* CONTAINER DO VÍDEO - inset-0 faz ele colar nas 4 pontas da tela, ignorando o relógio */}
+        {/* CONTAINER DO VÍDEO */}
         <div className="absolute inset-0 z-0 bg-black">
           <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
             <Image 
@@ -213,22 +213,21 @@ export default function Home() {
               backgroundColor: "#000000",
               width: "100%",
               height: "100%",
-              objectFit: "cover" /* Garante que o vídeo estique sem distorcer */
+              objectFit: "cover"
             }}
             className="opacity-40"
           />
         </div>
 
-        {/* CONTAINER DOS TEXTOS - Com paddings dinâmicos para desviar do relógio e da barra de baixo */}
+        {/* CONTAINER DOS TEXTOS */}
         <div 
           className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1"
           style={{
-            paddingTop: "max(130px, env(safe-area-inset-top) + 90px)", // Empurra o título pra baixo da Navbar
-            paddingBottom: "max(40px, env(safe-area-inset-bottom) + 20px)" // Empurra os botões pra cima da barra do Safari
+            paddingTop: "max(130px, env(safe-area-inset-top) + 90px)",
+            paddingBottom: "max(40px, env(safe-area-inset-bottom) + 20px)"
           }}
         >
           
-          {/* PARTE DE CIMA (Título) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -240,7 +239,6 @@ export default function Home() {
             </h1>
           </motion.div>
 
-          {/* PARTE DE BAIXO (Subtítulo e Botões) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -271,7 +269,7 @@ export default function Home() {
         </div>
       </section>
 
-     {/* FAIXA DE AUTORIDADE */}
+      {/* FAIXA DE AUTORIDADE */}
       <section className="bg-black border-b border-white/5 py-3 md:py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
@@ -358,7 +356,7 @@ export default function Home() {
                           : 38
                       }
                       height={
-                        sector.title === "SOLUN`S PRIDE"
+                        sector.title === "SOLUS PRIDE"
                           ? 28
                           : sector.title === "CLEAN PRIDE"
                           ? 42
@@ -474,7 +472,10 @@ export default function Home() {
             </div>
 
             {/* Mapa gigante */}
-            <div className="w-full lg:w-[68%] py-16 px-4 md:px-12 relative bg-[#FBFBFD] flex items-center justify-center rounded-b-[40px] lg:rounded-bl-none lg:rounded-r-[40px]">
+            <div 
+              className="w-full lg:w-[68%] py-16 px-4 md:px-12 relative bg-[#FBFBFD] flex items-center justify-center rounded-b-[40px] lg:rounded-bl-none lg:rounded-r-[40px]"
+              onClick={() => setActiveMapRegion(null)}
+            >
               <div className="absolute inset-0 overflow-hidden rounded-b-[40px] lg:rounded-bl-none lg:rounded-r-[40px]">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
               </div>
@@ -490,64 +491,96 @@ export default function Home() {
                     unoptimized
                   />
 
-                  {ACTIVE_REGIONS.map((region) => (
-                    <motion.div
-                      key={`map-${region.id}`}
-                      className="absolute group/node z-20 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 hover:z-50"
-                      style={{ top: region.top, left: region.left }}
-                      whileHover={{ y: -8, scale: 1.15 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg opacity-0 group-hover/node:opacity-100 transition-opacity duration-300 scale-[2.5]" />
+                  {ACTIVE_REGIONS.map((region) => {
+                    // CÁLCULO INTELIGENTE DE BORDAS PARA O CELULAR
+                    const leftPos = parseInt(region.left);
+                    const isRightEdge = leftPos >= 70; // Estados como ES, BA, PI, MG
+                    const isLeftEdge = leftPos <= 30; // Estados como RO
 
-                      <div className="relative bg-white border border-slate-200 shadow-[0_3px_10px_rgba(0,0,0,0.05)] rounded-full px-2 py-[5px] md:px-2.5 md:py-1 flex items-center justify-center gap-1 transition-all duration-300 cursor-pointer group-hover/node:shadow-[0_10px_18px_rgba(0,0,0,0.10)] group-hover/node:border-emerald-500/50">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.45)]" />
-                        <span className="text-[9px] md:text-[10px] font-bold text-slate-800 select-none tracking-tight">
-                          {region.id}
-                        </span>
-                      </div>
+                    return (
+                      <motion.div
+                        key={`map-${region.id}`}
+                        className="absolute group/node z-20 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 hover:z-50"
+                        style={{ top: region.top, left: region.left }}
+                        whileHover={{ y: -8, scale: 1.15 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveMapRegion(activeMapRegion === region.id ? null : region.id);
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg opacity-0 group-hover/node:opacity-100 transition-opacity duration-300 scale-[2.5]" />
 
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 opacity-0 pointer-events-none group-hover/node:opacity-100 transition-all duration-300 translate-y-3 group-hover/node:translate-y-0 w-[240px] z-50">
-                        <div className="bg-white/95 backdrop-blur-xl border border-black/5 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col">
-                          <div className="relative w-full h-28 bg-slate-200">
-                            <img
-                              src={region.img}
-                              alt={region.name}
-                              loading="lazy"
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                            <span className="absolute bottom-3 left-4 text-white font-bold text-[16px] tracking-tight drop-shadow-md">
-                              {region.name}
-                            </span>
-                          </div>
-
-                          <div className="p-4 flex flex-col bg-white">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-600 mb-1.5">
-                              Polo Agrícola
-                            </span>
-                            <span className="text-[13px] font-medium text-slate-700 leading-snug">
-                              {region.forte}
-                            </span>
-
-                            {region.detail && (
-                              <div className="mt-3 border-t border-slate-100 pt-3">
-                                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                  {region.detail}
-                                </span>
-                              </div>
-                            )}
-                          </div>
+                        <div className="relative bg-white border border-slate-200 shadow-[0_3px_10px_rgba(0,0,0,0.05)] rounded-full px-2 py-[5px] md:px-2.5 md:py-1 flex items-center justify-center gap-1 transition-all duration-300 cursor-pointer group-hover/node:shadow-[0_10px_18px_rgba(0,0,0,0.10)] group-hover/node:border-emerald-500/50">
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.45)]" />
+                          <span className="text-[9px] md:text-[10px] font-bold text-slate-800 select-none tracking-tight">
+                            {region.id}
+                          </span>
                         </div>
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-[8px] border-transparent border-t-white" />
-                      </div>
-                    </motion.div>
-                  ))}
+
+                        {/* CARD COM ALINHAMENTO DINÂMICO PARA NÃO SER "COMIDO" */}
+                        <div 
+                          className={`absolute bottom-full mb-4 transition-all duration-300 w-[240px] z-50 ${
+                            activeMapRegion === region.id 
+                              ? "opacity-100 translate-y-0 pointer-events-auto" 
+                              : "opacity-0 translate-y-3 pointer-events-none group-hover/node:opacity-100 group-hover/node:translate-y-0"
+                          } ${
+                            isRightEdge 
+                              ? "right-[-16px]" // Puxa pra esquerda se estiver na borda direita
+                              : isLeftEdge 
+                                ? "left-[-16px]" // Puxa pra direita se estiver na borda esquerda
+                                : "left-1/2 -translate-x-1/2" // Centro para os demais
+                          }`}
+                        >
+                          <div className="bg-white/95 backdrop-blur-xl border border-black/5 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col">
+                            <div className="relative w-full h-28 bg-slate-200">
+                              <img
+                                src={region.img}
+                                alt={region.name}
+                                loading="lazy"
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                              <span className="absolute bottom-3 left-4 text-white font-bold text-[16px] tracking-tight drop-shadow-md">
+                                {region.name}
+                              </span>
+                            </div>
+
+                            <div className="p-4 flex flex-col bg-white">
+                              <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-600 mb-1.5">
+                                Polo Agrícola
+                              </span>
+                              <span className="text-[13px] font-medium text-slate-700 leading-snug">
+                                {region.forte}
+                              </span>
+
+                              {region.detail && (
+                                <div className="mt-3 border-t border-slate-100 pt-3">
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                    {region.detail}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          
+                          {/* A SETINHA ACOMPANHA O DESVIO DO CARD */}
+                          <div className={`absolute top-full border-[8px] border-transparent border-t-white ${
+                            isRightEdge 
+                              ? "right-[8px]" 
+                              : isLeftEdge 
+                                ? "left-[8px]" 
+                                : "left-1/2 -translate-x-1/2"
+                          }`} />
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
