@@ -11,7 +11,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import Image from "next/image"; // Movido para o topo, organizando os imports
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -196,7 +196,6 @@ const VisualOfferSection: React.FC = React.memo(() => {
           transition={{ duration: 0.5 }}
           className="md:col-span-8 relative h-[500px] rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-xl shadow-green-100/30"
         >
-          {/* OTIMIZAÇÃO: Uso de next/image no lugar de tag img nativa */}
           <Image 
             src="/images/equipe-biox-soja.jpg" 
             alt="Análise de Solo Pride Solos" 
@@ -245,7 +244,6 @@ const VisualOfferSection: React.FC = React.memo(() => {
              viewport={{ once: true }}
              className="relative flex-1 rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-md"
            >
-              {/* OTIMIZAÇÃO: Uso de next/image */}
               <Image 
                 src="/images/comparativo-batata.jpg" 
                 alt="Comparação de Raízes" 
@@ -272,7 +270,6 @@ const VisualOfferSection: React.FC = React.memo(() => {
              transition={{ delay: 0.1 }}
              className="relative flex-1 rounded-[2.5rem] overflow-hidden border border-gray-200 group shadow-md"
            >
-              {/* OTIMIZAÇÃO: Uso de next/image */}
               <Image 
                 src="/images/colheita-batata.jpg" 
                 alt="Colheita Produtiva" 
@@ -434,11 +431,11 @@ const ProductHeroSection: React.FC = React.memo(() => {
                 width={400}
                 height={500}
                 priority
-                sizes="(max-width: 768px) 100vw, 400px" // OTIMIZAÇÃO: Atributo de tamanho configurado
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto object-cover rounded-2xl shadow-lg relative z-20 mb-8 border border-white"
               />
               
-              <h3 className="text-4xl font-black text-[#020617] mb-2 tracking-tighter drop-shadow-md">SOLUS PRIDE</h3>
+              <h3 className="text-4xl font-black text-[#020617] mb-2 tracking-tighter drop-shadow-md">SOLUN`S PRIDE</h3>
               <span className="inline-block px-4 py-1.5 mt-2 mb-16 rounded-full bg-green-100 border border-green-200 text-green-800 text-xs font-bold uppercase tracking-widest shadow-sm">Uso Agrícola</span>
             </motion.div>
 
@@ -503,22 +500,6 @@ const ProductHeroSection: React.FC = React.memo(() => {
               Na sua Lavoura.
             </span>
           </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full text-green-700">
-               <ShieldCheck size={20} />
-            </div>
-            <p className="text-sm text-gray-600 font-medium">
-              Produto <span className="font-bold text-[#020617]">Aprovado</span> pelas
-              normas de fertilizantes do <strong className="text-green-700">MAPA</strong>.
-            </p>
-          </motion.div>
 
           <motion.p
               initial={{ opacity: 0 }}
@@ -615,7 +596,6 @@ const DocumentarySection: React.FC = React.memo(() => {
                transition={{ duration: 0.7 }}
                className="w-full aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_-10px_rgba(34,197,94,0.1)] bg-black/50 relative group"
             >
-               {/* OTIMIZAÇÃO: Preload none para não consumir dados e poster adicionado */}
                <video
                  src="/videos/depoimento-pride.mp4" 
                  controls
@@ -676,24 +656,40 @@ export default function AgriculturaMasterpiece() {
       <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#020617] overflow-hidden">
         <motion.div
           style={{ y: yHero, opacity: opacityHero }}
-          className="absolute inset-0 z-0 will-change-transform"
+          className="absolute inset-0 z-0 will-change-transform overflow-hidden bg-[#020617]"
         >
-          <div className="absolute inset-0 bg-[#020617]/40 z-10 pointer-events-none" />
-          
-          {/* OTIMIZAÇÃO: Adicionado poster ao vídeo Hero */}
+          {/* TRUQUE DE PRIORIDADE E CSS INLINE */}
+          <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
+             <Image
+              src="/images/hero-agricultura-poster.jpg"
+              alt="Preload"
+              fill
+              priority
+              quality={80}
+            />
+          </div>
+
           <video
             src="/videos/agricultura.mp4"
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
-            poster="/images/hero-agricultura-poster.jpg" 
-            className="w-full h-full object-cover scale-105"
+            preload="auto"
+            style={{
+              backgroundImage: "url('/images/hero-agricultura-poster.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "#020617",
+            }}
+            className="absolute inset-0 w-full h-full object-cover scale-105 z-10"
           />
+
+          {/* Camada de escurecimento fina por cima de tudo para dar leitura ao texto */}
+          <div className="absolute inset-0 bg-[#020617]/40 z-20 pointer-events-none" />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-6xl w-full">
+        <div className="relative z-30 text-center px-4 max-w-6xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -713,7 +709,7 @@ export default function AgriculturaMasterpiece() {
             <h1 className="text-5xl md:text-8xl font-bold text-white uppercase flex flex-col items-center gap-2 mb-8 tracking-tighter">
               <span className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
                 <span className="tracking-widest font-light opacity-80">
-                  SOLUS
+                  SOLUN`S
                 </span>
                 <span className="text-white drop-shadow-2xl">PRIDE</span>
               </span>
@@ -755,7 +751,7 @@ export default function AgriculturaMasterpiece() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="absolute bottom-10 z-20 text-white/50"
+          className="absolute bottom-10 z-30 text-white/50"
         >
           <ChevronDown size={32} />
         </motion.div>
@@ -767,9 +763,6 @@ export default function AgriculturaMasterpiece() {
           <span className="text-xs font-mono uppercase tracking-widest text-gray-400">
             Diferenciais:
           </span>
-          <div className="text-lg md:text-xl font-bold font-serif text-white tracking-widest opacity-80 flex items-center gap-2">
-            <ShieldCheck size={20} className="text-green-500" /> APROVADO PELO MAPA
-          </div>
           <div className="text-lg md:text-xl font-bold font-serif text-white tracking-widest opacity-80 flex items-center gap-2">
             <Leaf size={20} className="text-green-500" /> 100% NATURAL
           </div>

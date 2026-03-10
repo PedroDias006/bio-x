@@ -41,7 +41,7 @@ const NOVIDADES_CARDS = [
     tag: "PRIDE INTELLIGENCE",
     title: "Explore a Biologia Molecular Avançada.",
     subtitle: "Venha saber mais sobre como o Pride Alpha transforma sua safra.",
-    img: "/images/agricultura-unica-product.png",
+    img: "/images/agricultura-uni.png",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const SECTORS = [
     subtitle: "Saneamento biológico e recuperação de ecossistemas.",
     link: "/agua-meioambiente",
     image: "/images/setor-sanea.jpg",
-    logo: "/images/icone-saneamento.png",
+    logo: "/images/icone-sanea.png",
   },
   {
     title: "Vital Pride",
