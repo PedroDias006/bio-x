@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 /* =========================================================================
-   DADOS E CONSTANTES (SOLUS PRIDE)
+   DADOS E CONSTANTES (SOLUN`S PRIDE)
    ========================================================================= */
 
 const PRODUCT_BENEFITS = [
@@ -652,7 +652,7 @@ export default function AgriculturaMasterpiece() {
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-600 z-[100] origin-left shadow-[0_0_20px_rgba(34,197,94,0.5)]"
       />
 
-      {/* 1. HERO - PRIDE SOLOS */}
+      {/* 1. HERO - PRIDE SOLON`S */}
       <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#020617] overflow-hidden">
         <motion.div
           style={{ y: yHero, opacity: opacityHero }}
