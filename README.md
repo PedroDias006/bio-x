@@ -595,4 +595,90 @@ public class PlanoPremium extends Plano {
     }
 }
 
+package pm_prova2;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlanoBasico extends Plano implements ControladorPresenca {
+    // Adicionado <Atividade> aqui
+    private List<Atividade> atividadesAssociadas;
+
+    public PlanoBasico(String nome, double valorMensal, int quantidadeMaximaAtividades, StatusPlano status) {
+        super(nome, valorMensal, quantidadeMaximaAtividades, status);
+        // Adicionado <Atividade> aqui também
+        this.atividadesAssociadas = new ArrayList<Atividade>();
+    }
+
+    public boolean associarAtividade(Atividade atividade) {
+        if (atividadesAssociadas.size() >= getQuantidadeMaximaAtividades()) {
+            System.out.println("Erro: Limite de atividades atingido no plano " + getNome());
+            return false;
+        }
+        if (atividade.atividadeColetiva()) {
+            System.out.println("Erro: O Plano Básico permite apenas atividades individuais.");
+            return false;
+        }
+        atividadesAssociadas.add(atividade);
+        System.out.println("Sucesso: " + atividade.getNome() + " vinculada ao plano " + getNome());
+        return true;
+    }
+
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Plano Básico: " + getNome() + " | Status: " + getStatus());
+        // Agora o loop vai funcionar perfeitamente sem o erro de conversão
+        for (Atividade a : atividadesAssociadas) {
+            System.out.println("   - " + a.getNome());
+        }
+    }
+
+    @Override
+    public boolean permiteAtividadeColetiva() {
+        return false;
+    }
+
+    @Override
+    public void registrarPresenca(String nomeParticipante) {
+        System.out.println("[CATRACA] Acesso diário registrado para: " + nomeParticipante + " (Plano Básico)");
+    }
+}
+
+package pm_prova2;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlanoPremium extends Plano {
+    // Adicionado <Atividade> aqui
+    private List<Atividade> atividadesAssociadas;
+
+    public PlanoPremium(String nome, double valorMensal, int quantidadeMaximaAtividades, StatusPlano status) {
+        super(nome, valorMensal, quantidadeMaximaAtividades, status);
+        // Adicionado <Atividade> aqui também
+        this.atividadesAssociadas = new ArrayList<Atividade>();
+    }
+
+    public boolean associarAtividade(Atividade atividade) {
+        if (atividadesAssociadas.size() >= getQuantidadeMaximaAtividades()) {
+            System.out.println("Erro: Limite de atividades atingido no plano " + getNome());
+            return false;
+        }
+        atividadesAssociadas.add(atividade);
+        System.out.println("Sucesso: " + atividade.getNome() + " vinculada ao plano " + getNome());
+        return true;
+    }
+
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Plano Premium: " + getNome() + " | Status: " + getStatus());
+        // Agora o loop vai funcionar perfeitamente sem o erro de conversão
+        for (Atividade a : atividadesAssociadas) {
+            System.out.println("   - " + a.getNome());
+        }
+    }
+
+    @Override
+    public boolean permiteAtividadeColetiva() {
+        return true;
+    }
+}
 
