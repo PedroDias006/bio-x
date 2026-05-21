@@ -1,36 +1,207 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Atividade.java
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pm_prova2;
 
-## Getting Started
+/**
+ *
+ * @author glbra
+ */
+public abstract class Atividade {
 
-First, run the development server:
+    private String nome;
+    private int duracaoAula;
+    private int quantidadeMaximaParticipantes;
+    private double valorMensal;
+    private StatusAtividade status;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    public Atividade(String nome,
+                     int duracaoAula,
+                     int quantidadeMaximaParticipantes,
+                     double valorMensal,
+                     StatusAtividade status) {
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+        this.nome = nome;
+        this.duracaoAula = duracaoAula;
+        this.quantidadeMaximaParticipantes = quantidadeMaximaParticipantes;
+        this.valorMensal = valorMensal;
+        this.status = status;
+    }
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    public String getNome() {
+        return nome;
+    }
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-## Learn More
+    public int getDuracaoAula() {
+        return duracaoAula;
+    }
 
-To learn more about Next.js, take a look at the following resources:
+    public void setDuracaoAula(int duracaoAula) {
+        this.duracaoAula = duracaoAula;
+    }
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    public int getQuantidadeMaximaParticipantes() {
+        return quantidadeMaximaParticipantes;
+    }
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    public void setQuantidadeMaximaParticipantes(int quantidadeMaximaParticipantes) {
+        this.quantidadeMaximaParticipantes = quantidadeMaximaParticipantes;
+    }
 
-## Deploy on Vercel
+    public double getValorMensal() {
+        return valorMensal;
+    }
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    public void setValorMensal(double valorMensal) {
+        this.valorMensal = valorMensal;
+    }
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    public StatusAtividade getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusAtividade status) {
+        this.status = status;
+    }
+
+    public abstract void exibirDetalhes();
+
+    public abstract boolean atividadeColetiva();
+}
+   
+
+
+
+Plano.java
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pm_prova2;
+
+/**
+ *
+ * @author glbra
+ */
+public abstract class Plano {
+
+    private String nome;
+    private double valorMensal;
+    private int quantidadeMaximaAtividades;
+    private StatusPlano status;
+
+    public Plano(String nome,
+                 double valorMensal,
+                 int quantidadeMaximaAtividades,
+                 StatusPlano status) {
+
+        this.nome = nome;
+        this.valorMensal = valorMensal;
+        this.quantidadeMaximaAtividades = quantidadeMaximaAtividades;
+        this.status = status;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getValorMensal() {
+        return valorMensal;
+    }
+
+    public void setValorMensal(double valorMensal) {
+        this.valorMensal = valorMensal;
+    }
+
+    public int getQuantidadeMaximaAtividades() {
+        return quantidadeMaximaAtividades;
+    }
+
+    public void setQuantidadeMaximaAtividades(int quantidadeMaximaAtividades) {
+        this.quantidadeMaximaAtividades = quantidadeMaximaAtividades;
+    }
+
+    public StatusPlano getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPlano status) {
+        this.status = status;
+    }
+
+    public abstract void exibirDetalhes();
+
+    public abstract boolean permiteAtividadeColetiva();
+}
+   
+
+PM_Prova2.java
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package pm_prova2;
+
+/**
+ *
+ * @author glbra
+ */
+public class PM_Prova2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
+
+
+StatusAtividade.java
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
+ */
+package pm_prova2;
+
+/**
+ *
+ * @author glbra
+ */
+public enum StatusAtividade {
+    ATIVA,
+    LOTADA,
+    INATIVA
+    
+}
+
+StatusPlano.java
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
+ */
+package pm_prova2;
+
+/**
+ *
+ * @author glbra
+ */
+public enum StatusPlano {
+    ATIVO,
+    SUSPENSO,
+    CANCELADO
+    
+}
