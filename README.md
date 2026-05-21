@@ -355,3 +355,162 @@ public class PM_Prova2 {
     }
 }
 
+package pm_prova2;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+public class PM_Prova2 {
+
+    // Essas duas linhas abaixo estavam faltando no seu!
+    private static List<Atividade> listaAtividades = new ArrayList<>();
+    private static List<Plano> listaPlanos = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        inicializarDados(); 
+        
+        int opcao = 0;
+        while (opcao != 8) {
+            System.out.println("\n=== SISTEMA ACADEMIA ===");
+            System.out.println("1. Associar atividade a um plano");
+            System.out.println("2. Exibir todas as atividades");
+            System.out.println("3. Exibir todos os planos");
+            System.out.println("4. Exibir apenas planos ativos");
+            System.out.println("5. Emitir certificado");
+            System.out.println("6. Registrar presença");
+            System.out.println("7. Remover atividades inativas");
+            System.out.println("8. Sair");
+            System.out.print("Escolha: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcao) {
+                case 1:
+                    associarAtividadePlano(scanner);
+                    break;
+                case 2:
+                    exibirAtividades();
+                    break;
+                case 3:
+                    exibirPlanos(false);
+                    break;
+                case 4:
+                    exibirPlanos(true);
+                    break;
+                case 5:
+                    emitirCertificados(scanner);
+                    break;
+                case 6:
+                    registrarPresencas(scanner);
+                    break;
+                case 7:
+                    removerAtividadesInativas();
+                    break;
+                case 8:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
+        scanner.close();
+    }
+
+    private static void inicializarDados() {
+        listaAtividades.add(new Musculacao("Musculação Manhã", 60, 20, 100.0, StatusAtividade.ATIVA, 30, "07:00"));
+        listaAtividades.add(new Natacao("Natação Adulto", 45, 10, 150.0, StatusAtividade.ATIVA, 2.5, "18:00"));
+        listaAtividades.add(new Spinning("Spinning Noturno", 50, 15, 120.0, StatusAtividade.INATIVA, 15, "19:00"));
+
+        listaPlanos.add(new PlanoBasico("Básico Padrão", 90.0, 2, StatusPlano.ATIVO));
+        listaPlanos.add(new PlanoPremium("Premium Gold", 200.0, 5, StatusPlano.ATIVO));
+        System.out.println("Dados iniciais carregados com sucesso.");
+    }
+
+    // --- DAQUI PRA BAIXO ERAM OS MÉTODOS QUE ESTAVAM FALTANDO ---
+
+    private static void associarAtividadePlano(Scanner sc) {
+        System.out.println("Escolha o Plano (Índice):");
+        for (int i = 0; i < listaPlanos.size(); i++) {
+            System.out.println(i + ". " + listaPlanos.get(i).getNome());
+        }
+        int idPlano = sc.nextInt();
+
+        System.out.println("Escolha a Atividade (Índice):");
+        for (int i = 0; i < listaAtividades.size(); i++) {
+            System.out.println(i + ". " + listaAtividades.get(i).getNome());
+        }
+        int idAtiv = sc.nextInt();
+
+        Plano planoSelecionado = listaPlanos.get(idPlano);
+        Atividade ativSelecionada = listaAtividades.get(idAtiv);
+
+        if (planoSelecionado instanceof PlanoBasico) {
+            ((PlanoBasico) planoSelecionado).associarAtividade(ativSelecionada);
+        } else if (planoSelecionado instanceof PlanoPremium) {
+            ((PlanoPremium) planoSelecionado).associarAtividade(ativSelecionada);
+        }
+    }
+
+    private static void exibirAtividades() {
+        System.out.println("\n--- ATIVIDADES CADASTRADAS ---");
+        for (Atividade a : listaAtividades) {
+            a.exibirDetalhes();
+        }
+    }
+
+    private static void exibirPlanos(boolean apenasAtivos) {
+        System.out.println("\n--- PLANOS ---");
+        for (Plano p : listaPlanos) {
+            if (!apenasAtivos || p.getStatus() == StatusPlano.ATIVO) {
+                p.exibirDetalhes();
+            }
+        }
+    }
+
+    private static void emitirCertificados(Scanner sc) {
+        System.out.print("Nome do Aluno para o certificado: ");
+        String nome = sc.nextLine();
+        boolean achou = false;
+        
+        for (Atividade a : listaAtividades) {
+            if (a instanceof Certificavel) {
+                ((Certificavel) a).emitirCertificado(nome);
+                achou = true;
+            }
+        }
+        if (!achou) System.out.println("Nenhuma atividade emissora de certificado encontrada.");
+    }
+
+    private static void registrarPresencas(Scanner sc) {
+        System.out.print("Nome do Aluno para registrar presença: ");
+        String nome = sc.nextLine();
+
+        for (Atividade a : listaAtividades) {
+            if (a instanceof ControladorPresenca) {
+                ((ControladorPresenca) a).registrarPresenca(nome);
+            }
+        }
+        for (Plano p : listaPlanos) {
+            if (p instanceof ControladorPresenca) {
+                ((ControladorPresenca) p).registrarPresenca(nome);
+            }
+        }
+    }
+
+    private static void removerAtividadesInativas() {
+        Iterator<Atividade> iterator = listaAtividades.iterator();
+        int cont = 0;
+        while (iterator.hasNext()) {
+            Atividade a = iterator.next();
+            if (a.getStatus() == StatusAtividade.INATIVA) {
+                iterator.remove();
+                cont++;
+            }
+        }
+        System.out.println(cont + " atividade(s) inativa(s) removida(s).");
+    }
+}
+
