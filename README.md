@@ -1,207 +1,105 @@
-Atividade.java
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+AtividadeColetiva.java
 package pm_prova2;
 
-/**
- *
- * @author glbra
- */
-public abstract class Atividade {
-
-    private String nome;
-    private int duracaoAula;
-    private int quantidadeMaximaParticipantes;
-    private double valorMensal;
-    private StatusAtividade status;
-
-    public Atividade(String nome,
-                     int duracaoAula,
-                     int quantidadeMaximaParticipantes,
-                     double valorMensal,
-                     StatusAtividade status) {
-
-        this.nome = nome;
-        this.duracaoAula = duracaoAula;
-        this.quantidadeMaximaParticipantes = quantidadeMaximaParticipantes;
-        this.valorMensal = valorMensal;
-        this.status = status;
+public class AtividadeColetiva extends Atividade {
+    public AtividadeColetiva(String nome, int duracao, int maxPart, double valor, StatusAtividade status) {
+        super(nome, duracao, maxPart, valor, status);
     }
 
-    public String getNome() {
-        return nome;
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Atividade Coletiva: " + getNome() + " | Status: " + getStatus());
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    @Override
+    public boolean atividadeColetiva() {
+        return true;
     }
-
-    public int getDuracaoAula() {
-        return duracaoAula;
-    }
-
-    public void setDuracaoAula(int duracaoAula) {
-        this.duracaoAula = duracaoAula;
-    }
-
-    public int getQuantidadeMaximaParticipantes() {
-        return quantidadeMaximaParticipantes;
-    }
-
-    public void setQuantidadeMaximaParticipantes(int quantidadeMaximaParticipantes) {
-        this.quantidadeMaximaParticipantes = quantidadeMaximaParticipantes;
-    }
-
-    public double getValorMensal() {
-        return valorMensal;
-    }
-
-    public void setValorMensal(double valorMensal) {
-        this.valorMensal = valorMensal;
-    }
-
-    public StatusAtividade getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusAtividade status) {
-        this.status = status;
-    }
-
-    public abstract void exibirDetalhes();
-
-    public abstract boolean atividadeColetiva();
 }
-   
 
-
-
-Plano.java
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+AtividadeIndividual.java
 package pm_prova2;
 
-/**
- *
- * @author glbra
- */
-public abstract class Plano {
-
-    private String nome;
-    private double valorMensal;
-    private int quantidadeMaximaAtividades;
-    private StatusPlano status;
-
-    public Plano(String nome,
-                 double valorMensal,
-                 int quantidadeMaximaAtividades,
-                 StatusPlano status) {
-
-        this.nome = nome;
-        this.valorMensal = valorMensal;
-        this.quantidadeMaximaAtividades = quantidadeMaximaAtividades;
-        this.status = status;
+public class AtividadeIndividual extends Atividade {
+    public AtividadeIndividual(String nome, int duracao, int maxPart, double valor, StatusAtividade status) {
+        super(nome, duracao, maxPart, valor, status);
     }
 
-    public String getNome() {
-        return nome;
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Atividade Individual: " + getNome() + " | Status: " + getStatus());
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    @Override
+    public boolean atividadeColetiva() {
+        return false;
     }
-
-    public double getValorMensal() {
-        return valorMensal;
-    }
-
-    public void setValorMensal(double valorMensal) {
-        this.valorMensal = valorMensal;
-    }
-
-    public int getQuantidadeMaximaAtividades() {
-        return quantidadeMaximaAtividades;
-    }
-
-    public void setQuantidadeMaximaAtividades(int quantidadeMaximaAtividades) {
-        this.quantidadeMaximaAtividades = quantidadeMaximaAtividades;
-    }
-
-    public StatusPlano getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusPlano status) {
-        this.status = status;
-    }
-
-    public abstract void exibirDetalhes();
-
-    public abstract boolean permiteAtividadeColetiva();
 }
-   
+
+PlanoBasico.java
+package pm_prova2;
+
+public class PlanoBasico extends Plano {
+    public PlanoBasico(String nome, double valor, int maxAtiv, StatusPlano status) {
+        super(nome, valor, maxAtiv, status);
+    }
+
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Plano Básico: " + getNome() + " | Valor: R$" + getValorMensal());
+    }
+
+    @Override
+    public boolean permiteAtividadeColetiva() {
+        return false;
+    }
+}
+
+PlanoPremium.java
+package pm_prova2;
+
+public class PlanoPremium extends Plano {
+    public PlanoPremium(String nome, double valor, int maxAtiv, StatusPlano status) {
+        super(nome, valor, maxAtiv, status);
+    }
+
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Plano Premium: " + getNome() + " | Valor: R$" + getValorMensal());
+    }
+
+    @Override
+    public boolean permiteAtividadeColetiva() {
+        return true;
+    }
+}
 
 PM_Prova2.java
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package pm_prova2;
 
-/**
- *
- * @author glbra
- */
+import java.util.ArrayList;
+
 public class PM_Prova2 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Criando instâncias
+        ArrayList<Atividade> atividades = new ArrayList<>();
+        atividades.add(new AtividadeColetiva("Yoga", 60, 20, 150.0, StatusAtividade.ATIVA));
+        atividades.add(new AtividadeIndividual("Musculação", 90, 1, 100.0, StatusAtividade.ATIVA));
+
+        ArrayList<Plano> planos = new ArrayList<>();
+        planos.add(new PlanoBasico("Plano Light", 80.0, 5, StatusPlano.ATIVO));
+        planos.add(new PlanoPremium("Plano Gold", 250.0, 50, StatusPlano.ATIVO));
+
+        // Exibindo dados (Polimorfismo)
+        System.out.println("--- Lista de Atividades ---");
+        for (Atividade a : atividades) {
+            a.exibirDetalhes();
+        }
+
+        System.out.println("\n--- Lista de Planos ---");
+        for (Plano p : planos) {
+            p.exibirDetalhes();
+        }
     }
-    
 }
 
-
-StatusAtividade.java
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
-package pm_prova2;
-
-/**
- *
- * @author glbra
- */
-public enum StatusAtividade {
-    ATIVA,
-    LOTADA,
-    INATIVA
-    
-}
-
-StatusPlano.java
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
-package pm_prova2;
-
-/**
- *
- * @author glbra
- */
-public enum StatusPlano {
-    ATIVO,
-    SUSPENSO,
-    CANCELADO
-    
-}
