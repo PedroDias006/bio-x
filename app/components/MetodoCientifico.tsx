@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 
-export default function AetherisProtocol() {
+export default function PrideProtocol() {
 
   const steps = [
     { title: "Deploy de Bioma", desc: "Tecnologia molecular aplicada diretamente às necessidades estruturais do ecossistema." },
     { title: "Core Científico", desc: "Algoritmos genéticos, pesquisa contínua e rigor analítico em ambientes controlados." },
-    { title: "Regeneração Ativa", desc: "Nanovetores biológicos que estabilizam e reconfiguram a matriz orgânica do substrato." },
+    { title: "Regeneração Ativa", desc: "Compostos orgânicos funcionais que apoiam a estabilidade da matriz orgânica do substrato." },
     { title: "Telemetria de Campo", desc: "Métricas de alta performance comprovadas em múltiplas zonas de operação." },
   ];
 
@@ -21,7 +21,7 @@ export default function AetherisProtocol() {
         transition={{ duration: 0.8 }}
         className="text-4xl md:text-5xl font-bold text-center"
       >
-        O Protocolo Aetheris
+        O Protocolo Pride
       </motion.h2>
 
       <motion.p
@@ -30,7 +30,7 @@ export default function AetherisProtocol() {
         transition={{ delay: 0.3, duration: 1 }}
         className="text-zinc-300 text-center mt-4 max-w-2xl"
       >
-        Um pipeline lógico, validado e desenvolvido para otimizar o código biológico e o output produtivo.
+        Um pipeline lógico, validado e desenvolvido para otimizar o manejo orgânico e o output produtivo.
       </motion.p>
 
       {/* CARDS */}

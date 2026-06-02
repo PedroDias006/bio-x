@@ -18,8 +18,8 @@ const fonteTitulo = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Pride BioSolutions | Biotechnology & Agricultural Innovation",
-  description: "Soluções vivas para um futuro sustentável.",
+  title: "Pride Biosolutions | Tecnologia orgânica para produção sustentável",
+  description: "Soluções inteligentes para agricultura, saneamento, compostagem e pecuária.",
 };
 
 // 3. Configuração do Viewport para domar o Safari no iOS

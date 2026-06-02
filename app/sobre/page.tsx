@@ -1,42 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, FlaskConical, Globe2, Leaf, Sprout, Tractor } from "lucide-react";
+import { ArrowRight, Globe2, Leaf, ShieldCheck, Sprout, Tractor } from "lucide-react";
 
 /* =========================================================================
    DADOS CORPORATIVOS - PRIDE BIOSOLUTIONS
    ========================================================================= */
 const AREAS_ATUACAO = [
   {
-    name: "Agricultura Regenerativa",
-    role: "Linha Pride Solos",
-    bio: "Potencializamos a eficiência biológica do solo e a produtividade agrícola, nutrindo os sistemas existentes e favorecendo microbiotas benéficas.",
+    name: "Pride Agriculture™",
+    role: "Agricultura Sustentável",
+    bio: "Auxiliamos o manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e o uso eficiente de recursos.",
     // OTIMIZAÇÃO: Reduzido w=500, q=50 e forçado auto=format,compress
     image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
-    name: "Águas e Efluentes",
-    role: "Linha Pride Clean",
-    bio: "Tratamento focado no equilíbrio ecológico. Melhoramos a qualidade das águas e efluentes, promovendo ambientes aquáticos revitalizados.",
+    name: "Pride Sanitation™",
+    role: "Manejo Ambiental",
+    bio: "Apoiamos operações com redução de odores, estabilização orgânica, manejo de resíduos e melhor desempenho ambiental.",
     image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
-    name: "Suinocultura e Avicultura",
-    role: "Pride Swine & Chicken",
-    bio: "Contribuição ativa para a redução de resíduos, controle de odores e melhoria expressiva do bem-estar animal nos galpões.",
-    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format,compress&q=50&w=500&fit=crop"
+    name: "Pride Compost™",
+    role: "Compostagem e Resíduos",
+    bio: "Transformamos matéria orgânica em compostos mais estáveis, reduzindo odores e valorizando resíduos agroindustriais e urbanos verdes.",
+    image: "/images/folders/pride-compost-folder.jpeg"
   },
   {
-    name: "Bovinocultura",
-    role: "Linha Pride Cattle",
-    bio: "Aprimoramos a gestão de dejetos e a estabilidade do ambiente, apoiando uma produção mais saudável e sustentável na pecuária.",
-    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format,compress&q=50&w=500&fit=crop"
-  }
+    name: "Pride Livestock™",
+    role: "Pecuária Moderna",
+    bio: "Plataforma com Pride Swine™, Pride Poultry™ e Pride Cattle™ para ambiência, resíduos, água e performance ambiental.",
+    image: "/images/gado.jpg"
+  },
 ];
 
 const PRIDE_PILLARS = [
   { value: "100%", label: "Matérias-Primas Naturais", colSpan: "md:col-span-2 lg:col-span-1" },
-  { value: "04", label: "Setores de Atuação", colSpan: "md:col-span-1 lg:col-span-1" },
+  { value: "06", label: "Linhas de Solução", colSpan: "md:col-span-1 lg:col-span-1" },
   { value: "Eco", label: "Equilíbrio Ambiental", colSpan: "md:col-span-1 lg:col-span-1" },
   { value: "Prática", label: "Foco no Impacto Real", colSpan: "md:col-span-2 lg:col-span-1" },
 ];
@@ -84,12 +84,12 @@ export default function PrideAboutPage() {
             className="max-w-4xl"
           >
             <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-950 text-[10px] font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
-              <Globe2 size={14} /> Gênese Corporativa
+              <Globe2 size={14} /> Pride Biosolutions
             </motion.div>
             
             <motion.div variants={fadeInUp}>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] mb-6">
-                Ciência, Prática <br />
+                Tecnologia, Manejo <br />
                 <span className="text-slate-500">
                   e Sustentabilidade.
                 </span>
@@ -98,7 +98,7 @@ export default function PrideAboutPage() {
 
             <motion.div variants={fadeInUp}>
               <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed max-w-2xl">
-                A <strong className="font-bold text-slate-950">Pride BioSolutions Ltda.</strong> nasceu da urgência por soluções reais para agricultura, saneamento e pecuária. Transformamos ciência em impacto prático.
+                A <strong className="font-bold text-slate-950">Pride Biosolutions</strong> atua como plataforma corporativa de soluções ambientais, conectando tecnologia orgânica funcional, eficiência operacional e produção sustentável.
               </p>
             </motion.div>
           </motion.div>
@@ -117,10 +117,10 @@ export default function PrideAboutPage() {
           >
             <Sprout size={40} className="text-slate-900 mx-auto mb-10 opacity-80" strokeWidth={1.5} />
             <h2 className="text-3xl md:text-5xl font-medium text-slate-900 leading-tight tracking-tight mb-10">
-              "Identificamos que o caminho não era apenas introduzir micro-organismos ou insumos isolados, mas <strong className="font-black text-slate-950 underline decoration-slate-300 decoration-4 underline-offset-8">criar condições ideais para que os processos naturais prosperem.</strong>"
+              Nosso trabalho é transformar matéria orgânica, água, solo e ambientes produtivos em sistemas mais estáveis, eficientes e alinhados às melhores práticas ambientais e corporativas.
             </h2>
             <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em]">
-              — O Propósito Pride
+              — Propósito Pride
             </p>
           </motion.div>
         </div>
@@ -131,7 +131,7 @@ export default function PrideAboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16">
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Nossa Abordagem</h3>
-            <h2 className="text-3xl font-black text-slate-950 tracking-tight">Equilíbrio entre Produção e Ambiente</h2>
+            <h2 className="text-3xl font-black text-slate-950 tracking-tight">Eficiência operacional com responsabilidade ambiental</h2>
           </div>
 
           <motion.div 
@@ -169,9 +169,9 @@ export default function PrideAboutPage() {
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
           >
             {[
-              { icon: Leaf, title: "Matérias-Primas", desc: "Utilizamos derivados naturais e extratos vegetais selecionados, garantindo soluções que respeitam a biologia dos sistemas." },
-              { icon: FlaskConical, title: "Ciência Avançada", desc: "Nossas formulações são baseadas em pesquisa e entendimento profundo de microbiologia, solo e comportamento animal." },
-              { icon: Tractor, title: "Prática de Campo", desc: "A teoria testada na terra. Desenvolvemos soluções com aplicação simples e resultados comprovados pelo produtor no dia a dia." }
+              { icon: Leaf, title: "Compostos Orgânicos", desc: "Utilizamos compostos orgânicos funcionais e extratos naturais para apoiar processos produtivos mais equilibrados." },
+              { icon: ShieldCheck, title: "Tecnologia Aplicada", desc: "Nossas formulações são pensadas para manejo simples, rotina operacional segura e resultados consistentes." },
+              { icon: Tractor, title: "Prática de Campo", desc: "Cada linha responde a desafios concretos: odor, resíduos, solo, água, ambiência, compostagem e produtividade." }
             ].map((item, i) => (
               <motion.div key={i} variants={fadeInUp} className="group cursor-default">
                 <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-900 mb-8 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 shadow-sm">
@@ -196,7 +196,7 @@ export default function PrideAboutPage() {
               <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">Nossas Áreas de Atuação</h2>
             </div>
             <p className="text-slate-400 text-sm max-w-sm md:text-right font-light leading-relaxed">
-              Soluções tecnológicas que nutrem sistemas, otimizam o bem-estar animal e promovem a sustentabilidade em toda a cadeia.
+              Soluções tecnológicas que apoiam sistemas produtivos, reduzem impactos e valorizam resíduos em diferentes cadeias.
             </p>
           </div>
 
@@ -252,7 +252,7 @@ export default function PrideAboutPage() {
               O Orgulho de Fazer a Diferença
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-slate-500 mb-10 text-lg leading-relaxed font-light">
-              O nome <strong>Pride</strong> reflete nossa responsabilidade de entregar tecnologias que restabelecem o equilíbrio entre produção, ambiente e eficiência econômica para um futuro próspero.
+              O nome <strong>Pride</strong> reflete nossa responsabilidade de entregar tecnologias que conectam produção, ambiente, eficiência econômica e visão global para um futuro mais sustentável.
             </motion.p>
             <motion.div variants={fadeInUp}>
               <a href="/contato" className="inline-flex items-center justify-center gap-3 bg-slate-950 text-white hover:bg-slate-800 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all shadow-lg hover:-translate-y-1">

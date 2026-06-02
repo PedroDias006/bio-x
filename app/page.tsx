@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Beef,
-  Dna,
   Droplets,
   Headset,
-  Leaf,
+  Recycle,
+  ShieldCheck,
   Sprout,
+  Wind,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -26,52 +26,59 @@ const AppleCarouselPro = dynamic(() => import("@/app/components/AppleCarouselPro
 const NOVIDADES_CARDS = [
   {
     id: 1,
-    tag: "ESPECIALISTA DA PRIDE",
-    title: "Compre com a ajuda de um engenheiro agrônomo online ou no campo.",
-    img: "/images/espe-pride.png",
+    tag: "PRIDE AGRICULTURE™",
+    title: "Soluções inteligentes para uma agricultura produtiva e sustentável.",
+    img: "/images/folders/agricultura1.webp",
   },
   {
     id: 2,
-    tag: "VEM PARA O BIOLÓGICO",
-    title: "É muito fácil mudar do químico tradicional para a biotecnologia.",
-    img: "/images/transicao.png",
+    tag: "PRIDE COMPOST™",
+    title: "Tecnologia que transforma matéria orgânica em recursos de alto valor.",
+    img: "/images/folders/espe-pride.png",
   },
   {
     id: 3,
-    tag: "PRIDE INTELLIGENCE",
-    title: "Explore a Biologia Molecular Avançada.",
-    subtitle: "Venha saber mais sobre como o Pride Alpha transforma sua safra.",
-    img: "/images/agriculturaa.png",
+    tag: "PRIDE SANITATION™",
+    title: "Manejo ambiental avançado para operações industriais.",
+    subtitle: "Redução de odores, estabilização orgânica e eficiência operacional.",
+    img: "/images/sanitation-hero-bg.webp",
   },
   {
     id: 4,
-    tag: "DIAS DE CAMPO",
-    title: "Participe das sessões de inovação no campo.",
-    subtitle: "Saiba como aproveitar ao máximo o potencial genético da sua lavoura.",
-    img: "/images/evento-campo.png",
+    tag: "PRIDE LIVESTOCK™",
+    title: "Performance ambiental para a pecuária moderna.",
+    subtitle: "A plataforma que une Swine, Poultry e Cattle em uma só inteligência.",
+    img: "/images/livestock-hero-bg.webp",
   },
 ];
 
 const SECTORS = [
   {
-    title: "Solun`s Pride",
-    subtitle: "Biotecnologia de precisão para lavouras de alto rendimento.",
+    title: "Pride Agriculture™",
+    subtitle: "Manejo do solo, culturas e recursos para uma agricultura mais produtiva.",
     link: "/agricultura",
-    image: "/images/setor-agri.jpg",
+    image: "/images/pride-agriculturebg.webp",
     logo: "/images/icone-agri.png",
   },
   {
-    title: "Clean Pride",
-    subtitle: "Saneamento biológico e recuperação de ecossistemas.",
+    title: "Pride Sanitation™",
+    subtitle: "Manejo ambiental para efluentes, odores, resíduos e operações sustentáveis.",
     link: "/agua-meioambiente",
-    image: "/images/setor-sanea.jpg",
+    image: "/images/sanitationbg.webp",
     logo: "/images/icone-sanea.png",
   },
   {
-    title: "Vital Pride",
-    subtitle: "Nutrição avançada e modulação imunológica animal.",
+    title: "Pride Compost™",
+    subtitle: "Transformação orgânica inteligente para compostos mais estáveis e valorizados.",
+    link: "/compost",
+    image: "/images/compostbg.webp",
+    logo: "/images/icone-agri.png",
+  },
+  {
+    title: "Pride Livestock™",
+    subtitle: "Plataforma de performance e ambiência para Swine, Poultry e Cattle.",
     link: "/saude-animal",
-    image: "/images/setor-ani.jpg",
+    image: "/images/livestockbg.webp",
     logo: "/images/icone-saude.png",
   },
 ];
@@ -246,7 +253,7 @@ export default function Home() {
             className="w-full flex flex-col items-center text-center mt-auto"
           >
             <p className="text-slate-200 text-base md:text-xl lg:text-[22px] mb-8 max-w-5xl font-semibold leading-relaxed drop-shadow-lg">
-              Biotecnologia avançada que promove soluções econômicas, inteligentes e rentáveis para múltiplos setores. Resultados reais baseados em ciência aplicada e resultados positivos.
+              Tecnologia de base orgânica para agricultura, saneamento, compostagem e pecuária. Soluções inteligentes que melhoram o manejo, reduzem impactos e geram valor produtivo.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
@@ -273,26 +280,26 @@ export default function Home() {
       <section className="bg-black border-b border-white/5 py-3 md:py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
-            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Sprout className="w-3.5 h-3.5 md:w-6 md:h-6" /> Soja & Milho
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Agriculture™
             </div>
-            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Leaf className="w-3.5 h-3.5 md:w-6 md:h-6" /> Cana-de-Açúcar
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Sanitation™
             </div>
-            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Beef className="w-3.5 h-3.5 md:w-6 md:h-6" /> Pecuária Intensiva
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Recycle className="w-4 h-4 md:w-6 md:h-6" /> Compost™
             </div>
-            <div className="flex items-center gap-1.5 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Droplets className="w-3.5 h-3.5 md:w-6 md:h-6" /> Saneamento
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <ShieldCheck className="w-4 h-4 md:w-6 md:h-6" /> Livestock™
             </div>
           </div>
         </div>
       </section>
 
-      {/* DIVISÕES */}
+      {/* DIVISÕES (AGORA UM GRID 2x2 LUXUOSO) */}
       <section
         ref={divisoesRef}
-        className="py-20 bg-white relative z-10 border-t border-black/[0.04]"
+        className="py-24 bg-white relative z-10 border-t border-black/[0.04]"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -304,14 +311,14 @@ export default function Home() {
               className="max-w-3xl"
             >
               <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900 mb-4">
-                Áreas de Atuação.{" "}
+                Linhas Pride.{" "}
                 <span className="text-slate-500 font-medium">
-                  Protocolos hiper-especializados.
+                  Soluções para cada desafio.
                 </span>
               </h2>
               <p className="text-[17px] md:text-[19px] text-slate-500 leading-relaxed font-normal max-w-2xl">
-                Desenvolvemos biotecnologia avançada para resolver os maiores
-                gargalos produtivos do mercado global.
+                Quatro frentes tecnológicas conectadas por uma mesma lógica:
+                compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.
               </p>
             </motion.div>
 
@@ -319,7 +326,7 @@ export default function Home() {
               href="/sobre"
               className="hidden md:flex items-center gap-2 text-emerald-600 font-medium hover:text-emerald-700 transition-colors tracking-wide text-[15px] pb-2 group"
             >
-              Conheça nossa gênese{" "}
+              Conheça a Pride{" "}
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -327,14 +334,14 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
             {SECTORS.map((sector, index) => (
               <Link
                 key={index}
                 href={sector.link}
                 className="
                   group relative flex flex-col overflow-hidden rounded-[32px]
-                  h-[540px] md:h-[600px] bg-[#F5F5F7]
+                  h-[480px] md:h-[560px] bg-[#F5F5F7]
                   transition-all duration-500
                   shadow-[0_4px_20px_rgba(0,0,0,0.03)]
                   hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]
@@ -342,28 +349,12 @@ export default function Home() {
                 "
               >
                 <div className="relative z-20 px-8 pt-10 md:px-10 md:pt-12 flex-shrink-0">
-                  <div className="mb-7 inline-flex items-center justify-center w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.07)] border border-black/[0.05]">
+                  <div className="mb-6 inline-flex items-center justify-center w-[64px] h-[64px] rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.07)] border border-black/[0.05]">
                     <Image
                       src={sector.logo}
                       alt={`Ícone ${sector.title}`}
-                      width={
-                        sector.title === "Genoma Agro"
-                          ? 28
-                          : sector.title === "Divisão Hydro"
-                          ? 45
-                          : sector.title === "Bio-Zootecnia"
-                          ? 42
-                          : 38
-                      }
-                      height={
-                        sector.title === "SOLUN`S PRIDE"
-                          ? 28
-                          : sector.title === "CLEAN PRIDE"
-                          ? 42
-                          : sector.title === "VITAL PRIDE"
-                          ? 42
-                          : 38
-                      }
+                      width={40}
+                      height={40}
                       className="object-contain brightness-0 opacity-90"
                     />
                   </div>
@@ -372,14 +363,14 @@ export default function Home() {
                     {sector.title}
                   </h3>
 
-                  <p className="text-[15px] md:text-[17px] leading-[1.45] text-neutral-500 max-w-[95%]">
+                  <p className="text-[15px] md:text-[16px] leading-[1.5] text-neutral-500 max-w-[90%]">
                     {sector.subtitle}
                   </p>
 
                   <div className="mt-6 flex items-center gap-1.5 text-[15px] font-medium text-emerald-600 group-hover:text-emerald-700 transition-colors">
                     Explorar detalhes{" "}
                     <ArrowRight
-                      size={16}
+                      size={18}
                       className="transition-transform duration-300 group-hover:translate-x-1"
                     />
                   </div>
@@ -390,20 +381,21 @@ export default function Home() {
                     src={sector.image}
                     alt={sector.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                 </div>
               </Link>
             ))}
           </div>
 
-          <div className="mt-10 md:hidden flex justify-center">
+          <div className="mt-12 md:hidden flex justify-center">
             <Link
               href="/sobre"
               className="inline-flex items-center gap-2 text-emerald-600 font-medium transition-colors text-[15px] group"
             >
-              Conheça nossa gênese{" "}
+              Conheça a Pride{" "}
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -431,7 +423,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-[17px] md:text-[19px] text-slate-500 leading-relaxed font-normal max-w-2xl">
-                Nossa biotecnologia atua com excelência nos principais polos
+                Nossa tecnologia orgânica funcional atua com excelência nos principais polos
                 agrícolas do Brasil. Interaja com o mapa para visualizar nossa
                 área de cobertura.
               </p>
@@ -492,10 +484,9 @@ export default function Home() {
                   />
 
                   {ACTIVE_REGIONS.map((region) => {
-                    // CÁLCULO INTELIGENTE DE BORDAS PARA O CELULAR
                     const leftPos = parseInt(region.left);
-                    const isRightEdge = leftPos >= 70; // Estados como ES, BA, PI, MG
-                    const isLeftEdge = leftPos <= 30; // Estados como RO
+                    const isRightEdge = leftPos >= 70;
+                    const isLeftEdge = leftPos <= 30;
 
                     return (
                       <motion.div
@@ -522,7 +513,7 @@ export default function Home() {
                           </span>
                         </div>
 
-                        {/* CARD COM ALINHAMENTO DINÂMICO PARA NÃO SER "COMIDO" */}
+                        {/* CARD COM ALINHAMENTO DINÂMICO */}
                         <div 
                           className={`absolute bottom-full mb-4 transition-all duration-300 w-[240px] z-50 ${
                             activeMapRegion === region.id 
@@ -530,10 +521,10 @@ export default function Home() {
                               : "opacity-0 translate-y-3 pointer-events-none group-hover/node:opacity-100 group-hover/node:translate-y-0"
                           } ${
                             isRightEdge 
-                              ? "right-[-16px]" // Puxa pra esquerda se estiver na borda direita
+                              ? "right-[-16px]" 
                               : isLeftEdge 
-                                ? "left-[-16px]" // Puxa pra direita se estiver na borda esquerda
-                                : "left-1/2 -translate-x-1/2" // Centro para os demais
+                                ? "left-[-16px]" 
+                                : "left-1/2 -translate-x-1/2"
                           }`}
                         >
                           <div className="bg-white/95 backdrop-blur-xl border border-black/5 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col">
@@ -569,7 +560,6 @@ export default function Home() {
                             </div>
                           </div>
                           
-                          {/* A SETINHA ACOMPANHA O DESVIO DO CARD */}
                           <div className={`absolute top-full border-[8px] border-transparent border-t-white ${
                             isRightEdge 
                               ? "right-[8px]" 
@@ -653,8 +643,9 @@ export default function Home() {
                     alt={card.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
+                    className="object-cover object-center transition-transform duration-700 group-hover/card:scale-[1.03]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                 </div>
               </Link>
             ))}
@@ -662,7 +653,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BIOTECNOLOGIA PRIDE */}
+      {/* PLATAFORMA PRIDE */}
       <section className="py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -675,12 +666,12 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-              Biotecnologia Pride
+              Pride Technology Platform
             </p>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Maximizando a <span className="text-emerald-500">Safra</span>,
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Transformando <span className="text-emerald-500">Ambientes</span>,
               <br />
-              Regenerando o Futuro.
+              Gerando Valor.
             </h2>
           </motion.div>
 
@@ -695,14 +686,14 @@ export default function Home() {
             >
               <div className="w-20 h-20 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.35)] transition-all duration-500 relative">
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <Dna className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
+                <Sprout className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
-                Biotecnologia de Precisão
+                Tecnologia Orgânica de Precisão
               </h3>
               <p className="text-slate-400 leading-relaxed text-[15px]">
-                Protocolos biológicos hiper-especializados baseados em biologia
-                molecular avançada para otimizar resultados de cultivo.
+                Formulações à base de compostos orgânicos e extratos naturais
+                para apoiar processos produtivos mais estáveis e eficientes.
               </p>
             </motion.div>
 
@@ -722,8 +713,8 @@ export default function Home() {
                 Engenharia Agronômica Dedicada
               </h3>
               <p className="text-slate-400 leading-relaxed text-[15px]">
-                Suporte consultivo de engenheiros agrônomos experientes, online
-                e no campo, focado na maximização da safra.
+                Suporte técnico para orientar aplicações em lavouras, granjas,
+                operações ambientais, compostagem e pecuária.
               </p>
             </motion.div>
 
@@ -737,21 +728,21 @@ export default function Home() {
             >
               <div className="w-20 h-20 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.35)] transition-all duration-500 relative">
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <Sprout className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
+                <Recycle className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
-                Soluções Biológicas de Amplo Espectro
+                Soluções Ambientais de Amplo Espectro
               </h3>
               <p className="text-slate-400 leading-relaxed text-[15px]">
-                Protocolos que restauram a saúde do solo e promovem um
-                agronegócio regenerativo e sustentável.
+                Tecnologias desenhadas para reduzir odores, estabilizar matéria
+                orgânica, otimizar recursos e elevar a sustentabilidade operacional.
               </p>
             </motion.div>
           </div>
 
           <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <p className="text-slate-300 text-lg md:text-xl font-medium">
-              Fale com um Especialista Pride e transforme sua produção.
+              Fale com um especialista Pride e encontre a linha ideal para sua operação.
             </p>
             <Link
               href="/contato"

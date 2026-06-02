@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export default function AetherisInteractiveSection() {
+export default function PrideInteractiveSection() {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const [activeTopic, setActiveTopic] = useState<any>(null);
@@ -72,7 +72,7 @@ export default function AetherisInteractiveSection() {
 
       draw() {
         ctx!.globalAlpha = this.alpha;
-        ctx!.fillStyle = "#06b6d4"; // Aetheris Cyan
+        ctx!.fillStyle = "#06b6d4"; // Pride Cyan
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -105,16 +105,16 @@ export default function AetherisInteractiveSection() {
     };
   }, [open]);
 
-  // ======= TOPICOS (AETHERIS DATA) =======
+  // ======= TOPICOS (PRIDE DATA) =======
   const topics = [
     {
       title: "Origem Genética",
-      desc: "A Aetheris nasce da necessidade de reescrever o código de ecossistemas degradados, combinando inteligência de dados com microbiologia de campo.",
+      desc: "A Pride nasce para organizar tecnologias orgânicas funcionais em soluções ambientais de alto desempenho.",
       img: "/images/cards/raiz.jpg",
       points: [
-        "Arquitetura construída por bio-engenheiros",
+        "Arquitetura construída por equipe técnica multidisciplinar",
         "Protocolos criados a partir da análise de dados reais",
-        "Compreensão sintética dos desafios do bioma",
+        "Compreensão prática dos desafios produtivos",
         "Tecnologia aplicada via algoritmos de precisão",
         "Visão integrada à rotina operacional do produtor",
       ],
@@ -125,34 +125,34 @@ export default function AetherisInteractiveSection() {
       ],
     },
     {
-      title: "Core Científico",
-      desc: "Desenvolvimento baseado em engenharia molecular avançada e validação rigorosa de cada nanovetor biológico utilizado.",
+      title: "Core Tecnológico",
+      desc: "Desenvolvimento baseado em engenharia de formulações e validação rigorosa de compostos orgânicos funcionais.",
       img: "/images/cards/ciencia.jpg",
       points: [
-        "Pesquisa contínua em biologia sintética",
-        "Isolamento de cepas de performance extrema",
-        "Validação em laboratórios de biossegurança",
+        "Pesquisa contínua em formulações de base orgânica",
+        "Seleção de compostos funcionais de alta performance",
+        "Validação técnica em rotinas de campo",
         "Protocolos auditáveis por IA",
         "Esquadrão técnico multidisciplinar",
         "Tecnologia baseada em Data Science",
       ],
       indicators: [
         { label: "Rigor Analítico", value: "98%", bar: "98%" },
-        { label: "Taxa de Sobrevivência (Cepa)", value: "92%", bar: "92%" },
-        { label: "Precisão Genômica", value: "96%", bar: "96%" },
+        { label: "Consistência Operacional", value: "92%", bar: "92%" },
+        { label: "Precisão Técnica", value: "96%", bar: "96%" },
       ],
     },
     {
       title: "Regeneração Ativa",
-      desc: "Tecnologias que não apenas preservam, mas otimizam e expandem o limite de suporte dos sistemas biológicos hospedeiros.",
+      desc: "Tecnologias que preservam, otimizam e ampliam o suporte de sistemas produtivos com maior estabilidade operacional.",
       img: "/images/cards/sustentabilidade.jpg",
       points: [
         "Reconfiguração ativa do substrato",
-        "Estímulo à biodiversidade molecular",
+        "Suporte a práticas ambientais responsáveis",
         "Substituição de dependências químicas",
-        "Ciclagem autônoma de energia",
-        "Impacto ambiental negativo (Carbon Negative)",
-        "Promove evolução de biomas estáticos",
+        "Eficiência em ciclos produtivos",
+        "Redução de impactos operacionais",
+        "Promove evolução de sistemas produtivos",
       ],
       indicators: [
         { label: "Recuperação de Área", value: "93%", bar: "93%" },

@@ -1,513 +1,441 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import {
-  Activity,
   ArrowRight,
-  ArrowUpRight,
-  CheckCircle2,
-  ChevronDown,
+  ArrowUp,
+  BarChart3,
   Droplets,
-  FileText,
+  Factory,
+  Globe2,
   Leaf,
-  Phone,
+  Play,
+  Recycle,
+  Settings,
   ShieldCheck,
   Waves,
   Wind,
 } from "lucide-react";
 import Image from "next/image";
-import { memo } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 /* =========================================================================
-   DADOS
+   DADOS EXTRAÍDOS DO MATERIAL OFICIAL PRIDE SANITATION
    ========================================================================= */
-const SOLUTIONS = [
+
+const FLYER_BENEFITS = [
+  { title: "Redução de Odores", desc: "Auxilia na redução de odores, promovendo melhor conforto ambiental.", icon: Wind },
+  { title: "Equilíbrio Ambiental", desc: "Contribui para o equilíbrio das condições ambientais e operacionais.", icon: Waves },
+  { title: "Estabilização Orgânica", desc: "Favorece a estabilização da matéria orgânica sustentável.", icon: Droplets },
+  { title: "Eficiência Operacional", desc: "Melhora a eficiência dos processos e qualidade das operações.", icon: Settings },
+];
+
+const FLYER_APPLICATIONS = [
+  { title: "Estações de Tratamento", desc: "Apoia o manejo de lodo e efluentes em ETEs industriais e urbanas.", icon: Waves },
+  { title: "Efluentes Industriais", desc: "Contribui para o equilíbrio de sistemas com alta matéria orgânica.", icon: Factory },
+  { title: "Redução de Carga", desc: "Apoia a redução de carga orgânica e favorece a clarificação.", icon: Droplets },
+  { title: "Controle de Odores", desc: "Atua ativamente na mitigação de odores ofensivos nos ambientes.", icon: Wind },
+  { title: "Manejo de Resíduos", desc: "Solução adequada para diversos tipos de resíduos e subprodutos.", icon: Recycle },
+  { title: "Sustentabilidade", desc: "Promove práticas sustentáveis e melhora o desempenho ambiental.", icon: Globe2 },
+];
+
+const FLYER_DIFFERENTIALS = [
+  { title: "Compostos Funcionais", desc: "Formulação à base de compostos orgânicos naturais e extratos vegetais.", icon: Leaf },
+  { title: "Tecnologia de Desempenho", desc: "Desenvolvido para entregar performance consistente em diferentes condições operacionais.", icon: Droplets },
+  { title: "Segurança e Confiança", desc: "Solução segura, de fácil aplicação e alinhada às melhores práticas de operações.", icon: ShieldCheck },
+  { title: "Eficiência e Economia", desc: "Melhora a eficiência operacional e contribui para a otimização de recursos.", icon: BarChart3 },
+];
+
+/* Caminhos das imagens locais a serem inseridas na pasta public/images/ */
+const PROOF_CARDS = [
   {
-    title: "Clarificação Natural",
-    desc: "Atua na redução de impurezas em suspensão, melhorando a transparência e a qualidade visual da água.",
+    title: "Controle de Carga Orgânica",
+    desc: "Apoio ao controle operacional de sistemas com alta presença de matéria orgânica.",
+    image: "/images/sanitation-prova-1.webp",
+    icon: BarChart3,
+  },
+  {
+    title: "Clarificação Operacional",
+    desc: "Suporte aos processos de estabilização, melhorando a leitura visual.",
+    image: "/images/sanitation-prova-2.webp",
     icon: Droplets,
   },
   {
-    title: "Equilíbrio Aquático",
-    desc: "Restaura a biologia natural de lagos, lagoas e tanques, criando um ecossistema vital e saudável.",
-    icon: Waves,
-  },
-  {
-    title: "Redução de Odores",
-    desc: "Ação direta na degradação da matéria orgânica, mitigando gases e maus odores de forma eficaz.",
-    icon: Wind,
-  },
-  {
-    title: "Aplicação Prática",
-    desc: "Solução simples, segura e sem complicações regulatórias, facilitando o manejo do seu sistema.",
+    title: "Estabilidade de Sistema",
+    desc: "Equilíbrio para rotinas ambientais que exigem previsibilidade.",
+    image: "/images/sanitation-prova-3.webp",
     icon: ShieldCheck,
   },
 ];
 
-const SPECS = [
-  { label: "Composição", val: "100% Natural" },
-  { label: "Aplicação", val: "Direta na Água" },
-  { label: "Ação Principal", val: "Clarificação" },
-  { label: "Burocracia", val: "Zero Registros" },
-];
-
 /* =========================================================================
-   ANIMAÇÃO LEVE
+   PÁGINA PRINCIPAL
    ========================================================================= */
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const reduceMotion = useReducedMotion();
+export default function PrideSanitationPage() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.45, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+  // Ícone encapsulado para evitar erro de sintaxe do JSX
+  const FirstProofIcon = PROOF_CARDS[0].icon;
 
-const SolutionCard = memo(function SolutionCard({
-  title,
-  desc,
-  Icon,
-  delay,
-}: {
-  title: string;
-  desc: string;
-  Icon: React.ComponentType<{ className?: string }>;
-  delay: number;
-}) {
-  return (
-    <FadeIn delay={delay}>
-      <div className="h-full rounded-3xl bg-white border border-slate-200 p-6 md:p-8 transition-transform duration-200 hover:-translate-y-1">
-        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
-          <Icon className="w-5 h-5" />
-        </div>
-        <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">{title}</h3>
-        <p className="text-sm leading-relaxed text-slate-600">{desc}</p>
-      </div>
-    </FadeIn>
-  );
-});
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-export default function PrideCleanPage() {
-  const reduceMotion = useReducedMotion();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden">
+    <main ref={containerRef} className="bg-[#FBFBF9] text-[#1A1A1A] overflow-x-hidden font-sans selection:bg-[#4BB1D3]/20 selection:text-[#1A1A1A]">
+      
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-1 bg-[#4BB1D3] z-[100] origin-left shadow-[0_0_15px_rgba(75,177,211,0.4)]"
+      />
+
       {/* ======================================================
-          HERO (OTIMIZADO CONTRA TELA PRETA)
+          1. HERO INOVADOR (LAYOUT INDUSTRIAL)
       ====================================================== */}
-      <section className="relative min-h-[90svh] w-full flex items-center justify-center px-4 sm:px-6 bg-white overflow-hidden">
-        
-        <div className="absolute inset-0 z-0 bg-white">
-          {/* TRUQUE INVISÍVEL: O Next.js vai injetar essa imagem no <head> com prioridade máxima.
-            Quando a página abrir, a foto já está baixada e no cache do navegador.
-          */}
-          <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
-            <Image 
-              src="/images/agua-hero-poster.jpg" 
-              alt="Preload" 
-              fill 
-              priority 
-              quality={80} 
-            />
-          </div>
-
-          {/* Vídeo só aparece em md+ */}
-          <div className="hidden md:block absolute inset-0">
-            {/* CSS INLINE MATADOR: O background-image CSS roda antes do HTML renderizar o player de vídeo.
-              O backgroundColor '#ffffff' anula a tela preta nativa do HTML5. 
-            */}
-            <video
-              src="/videos/agua-hero.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              style={{
-                backgroundImage: "url('/images/agua-hero-poster.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundColor: "#ffffff",
-              }}
-              className="w-full h-full object-cover opacity-35"
-            />
-          </div>
-
-          {/* Poster/imagem para telas pequenas (Usando o mesmo esquema inline) */}
-          <div
-            className="md:hidden absolute inset-0 bg-center bg-cover opacity-20"
-            style={{ 
-              backgroundImage: "url('/images/agua-hero-poster.jpg')",
-              backgroundColor: "#ffffff"
-            }}
+      <section className="relative bg-[#07131D] pt-32 pb-32 md:pt-40 md:pb-48 px-6">
+        {/* Background Técnico Otimizado - Degradês reduzidos para a imagem brilhar mais */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/sanitation-hero-bg.webp"
+            alt="Estação de Tratamento"
+            fill
+            priority // Única imagem da página que deve ter priority
+            sizes="100vw"
+            quality={75} // Qualidade aumentada levemente pois agora ela aparece mais
+            className="object-cover opacity-60 mix-blend-luminosity"
           />
-
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-slate-50" />
+          {/* Sombreamento lateral para garantir leitura do texto e sombras de topo/base */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07131D]/70 via-[#07131D]/20 to-[#07131D]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07131D]/90 via-[#07131D]/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-6xl text-center pt-20 pb-16">
-          <FadeIn>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-blue-200 bg-white mb-6 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-blue-500" />
-              <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-blue-700 uppercase">
-                Tratamento Natural de Águas
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12">
+          
+          {/* Textos Esquerda */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:w-7/12"
+          >
+            <div className="mb-6 flex items-center gap-4 border-b border-white/10 pb-4 w-fit">
+              <ShieldCheck size={18} className="text-[#4BB1D3]" strokeWidth={1.5} />
+              <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#E0DED8]">
+                Tecnologia Ambiental
               </span>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-6 leading-[1]">
-              Qualidade e Equilíbrio <br />
-              <span className="text-blue-600">para suas Águas.</span>
+            
+            <h1 className="text-5xl md:text-7xl font-serif font-normal uppercase tracking-wide leading-[1.1] text-white mb-8">
+              Manejo Ambiental <br />
+              <span className="text-[#4BB1D3] italic">Sustentável.</span>
             </h1>
-
-            <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-slate-700 leading-relaxed mb-10 px-2">
-              O aditivo natural que atua na clarificação e redução de impurezas em{" "}
-              <strong className="text-blue-800">
-                lagos, lagoas, tanques e efluentes
-              </strong>
-              , restaurando a saúde e a vitalidade do ambiente aquático.
+            
+            <p className="max-w-lg text-lg font-light leading-relaxed text-[#E0DED8] mb-12 border-l border-[#4BB1D3] pl-6">
+              A Pride Sanitation auxilia no controle de carga orgânica, clarificação e mitigação de odores para operações que exigem estabilidade contínua.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#"
-                className="group flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-7 py-4 rounded-full font-bold transition-colors uppercase tracking-wider text-xs sm:text-sm"
-              >
-                FALAR COM ESPECIALISTA <ArrowUpRight size={18} />
-              </a>
+            <Link
+              href="/contato"
+              className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#4BB1D3] px-10 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#07131D] transition-colors hover:bg-[#3A8EA8] shadow-lg"
+            >
+              Falar com Engenharia <ArrowRight size={16} />
+            </Link>
+          </motion.div>
 
-              <a
-                href="#solucoes"
-                className="group flex items-center justify-center gap-3 px-7 py-4 rounded-full border border-slate-300 text-slate-800 hover:bg-white transition-colors font-bold bg-white uppercase tracking-wider text-xs sm:text-sm"
-              >
-                Ver Benefícios
-                <ChevronDown size={16} className={!reduceMotion ? "transition-transform group-hover:translate-y-1" : ""} />
-              </a>
-            </div>
-          </FadeIn>
+          {/* Produto Direita */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:w-5/12 flex justify-center lg:justify-end w-full"
+          >
+            <Image
+              src="/images/sanitation-produto.webp"
+              alt="Bombona Pride Sanitation"
+              width={420}
+              height={520}
+              priority
+              quality={85} // Qualidade maior para o produto
+              className="object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.8)]"
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* ======================================================
-          SOLUÇÕES
+          2. BARRA FLUTUANTE DE BENEFÍCIOS (GLASSMORPHISM)
       ====================================================== */}
-      <section id="solucoes" className="py-20 md:py-28 bg-slate-50 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row justify-between md:items-end mb-14 md:mb-16 gap-6">
-            <FadeIn className="max-w-3xl">
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                Cuidado Integrado
-              </h2>
-              <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-                Desenvolvido para atuar diretamente na causa dos desequilíbrios aquáticos.
-                Ajudamos a criar um ambiente vital, livre de odores, sem a necessidade
-                de intervenções químicas complexas.
-              </p>
-            </FadeIn>
+      <section className="relative z-20 px-6 -mt-20 md:-mt-24">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="bg-[#0B1B29]/80 backdrop-blur-xl border border-white/10 rounded-sm p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] grid grid-cols-1 md:grid-cols-4 gap-8"
+          >
+            {FLYER_BENEFITS.map((item) => (
+              <div key={item.title} className="flex flex-col border-l border-white/5 pl-6">
+                <item.icon className="text-[#4BB1D3] mb-4" size={28} strokeWidth={1.5} />
+                <h3 className="text-sm font-serif uppercase tracking-widest text-white mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-[11px] font-light leading-relaxed text-[#888888]">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-            <FadeIn delay={0.05}>
-              <a
-                href="#"
-                className="text-blue-600 font-bold flex items-center gap-2 uppercase text-xs tracking-widest"
-              >
-                Conhecer o Produto <ArrowRight size={16} />
-              </a>
-            </FadeIn>
+      {/* ======================================================
+          3. APLICAÇÕES (PAINEL PANORÂMICO + LINHAS)
+      ====================================================== */}
+      <section className="py-24 md:py-32 bg-[#FBFBF9] px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-serif font-normal uppercase tracking-wide text-[#1A1A1A] leading-tight mb-6">
+              Integração Operacional <br />
+              <span className="text-[#4BB1D3] italic">Sem Burocracia.</span>
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {SOLUTIONS.map((item, i) => (
-              <SolutionCard
+          {/* Imagem Widescreen Otimizada (Alinhada à base com object-bottom) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="w-full h-[300px] md:h-[450px] relative rounded-sm overflow-hidden shadow-xl mb-16"
+          >
+            <Image
+              src="/images/sanitation-panoramica.webp"
+              alt="Infraestrutura Industrial"
+              fill
+              quality={75}
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              loading="lazy"
+              className="object-cover object-bottom" /* <-- Ajuste do enquadramento para focar na água */
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B29] to-transparent opacity-70" />
+            <div className="absolute bottom-8 left-8">
+              <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#4BB1D3]">
+                Compatibilidade Industrial
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Cards em Linha (Estilo Dashboard) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+            {FLYER_APPLICATIONS.map((item, index) => (
+              <motion.div 
                 key={item.title}
-                title={item.title}
-                desc={item.desc}
-                Icon={item.icon}
-                delay={i * 0.04}
-              />
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-start gap-6 p-6 bg-white border border-[#E0DED8] rounded-sm hover:border-[#4BB1D3] hover:shadow-md transition-all group"
+              >
+                <div className="w-14 h-14 shrink-0 bg-[#FBFBF9] border border-[#E0DED8] flex items-center justify-center rounded-sm group-hover:bg-[#0B1B29] group-hover:border-[#0B1B29] transition-colors">
+                  <item.icon className="text-[#0B1B29] group-hover:text-[#4BB1D3] transition-colors" size={24} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-serif uppercase tracking-widest text-[#1A1A1A] mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs font-light leading-relaxed text-[#666666]">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ======================================================
-          PRODUTO
+          4. DIFERENCIAIS (LAYOUT STICKY / SCROLL LATERAL)
       ====================================================== */}
-      <section className="py-20 md:py-28 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
-            <div className="w-full lg:w-1/2">
-              <FadeIn>
-                <div className="relative rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-200 p-6 sm:p-8 md:p-10 flex flex-col items-center">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-sky-50 via-transparent to-blue-50" />
-
-                  <div className="relative z-10 flex flex-col items-center w-full">
-                    <Image
-                      src="/images/pride-clean.png"
-                      alt="Embalagem Pride Clean"
-                      width={400}
-                      height={500}
-                      priority={false}
-                      loading="lazy"
-                      quality={70}
-                      sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, 360px"
-                      className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[360px] h-auto object-contain mb-6"
-                    />
-
-                    <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mb-2 tracking-tight text-center">
-                      PRIDE CLEAN
-                    </h3>
-                    <span className="inline-block px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[11px] font-bold uppercase tracking-widest text-center">
-                      Aditivo 100% Natural
-                    </span>
-                  </div>
-
-                  <div className="mt-8 w-full bg-white p-5 rounded-2xl border border-slate-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-1.5 bg-emerald-100 rounded-full text-emerald-600">
-                        <CheckCircle2 size={16} />
-                      </div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
-                        Eficácia Visível
-                      </span>
-                    </div>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      Seguro para o meio ambiente, fauna aquática e flora do seu lago.
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-
-            <div className="w-full lg:w-1/2">
-              <FadeIn delay={0.08}>
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-1 bg-blue-500 rounded-full" />
-                  <span className="text-blue-600 font-bold tracking-widest uppercase text-xs sm:text-sm">
-                    Detalhes do Produto
-                  </span>
-                </div>
-
-                <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 tracking-tight leading-tight">
-                  Ação Biológica <br /> Contínua.
-                </h2>
-
-                <div className="space-y-5">
-                  <div className="flex gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-200">
-                    <div className="shrink-0">
-                      <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-blue-600 border border-slate-200">
-                        <Leaf size={22} />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-1">Base Orgânica</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        Formulado a partir de extratos vegetais que promovem a saúde da
-                        água sem gerar passivos químicos.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {SPECS.map((spec) => (
-                      <div
-                        key={spec.label}
-                        className="bg-slate-50 p-5 rounded-2xl border border-slate-200"
-                      >
-                        <span className="block text-slate-400 text-[10px] uppercase font-bold mb-1 tracking-wider">
-                          {spec.label}
-                        </span>
-                        <span className="block text-base sm:text-lg font-bold text-slate-800">
-                          {spec.val}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-3">
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-3 text-blue-600 font-bold text-sm uppercase tracking-wide"
-                    >
-                      <FileText size={18} />
-                      Consultar Ficha Técnica
-                    </a>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ======================================================
-          IMPACTO
-      ====================================================== */}
-      <section className="py-20 md:py-24 bg-slate-50 text-slate-900 border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row justify-between md:items-end mb-14 md:mb-16 border-b border-slate-200 pb-6 gap-5">
-            <div className="max-w-xl">
-              <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-                O Impacto na Água
-              </h2>
-              <p className="text-slate-600">
-                Resultados práticos observados na redução de carga orgânica e melhoria
-                estética visual após a estabilização do sistema.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 text-blue-600 text-sm mt-2 md:mt-0 font-bold bg-blue-50 px-4 py-2 rounded-full border border-blue-100 w-fit">
-              <Activity size={16} /> Ecossistema Ativo
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            <FadeIn delay={0.08} className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl">
-              <div className="flex justify-between items-start mb-8 gap-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-1">
-                    Matéria Orgânica
-                  </h3>
-                  <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">
-                    Geração de Odores
-                  </span>
-                </div>
-                <span className="bg-emerald-50 text-emerald-600 px-3 py-2 rounded-lg text-sm md:text-base font-bold border border-emerald-100 whitespace-nowrap">
-                  Estabilizado
-                </span>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between text-sm mb-2 text-slate-500 font-medium">
-                    <span>Sem Tratamento</span>
-                    <span>Alto Índice</span>
-                  </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <div className="h-full w-[85%] bg-amber-700/60 rounded-full" />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-sm mb-2 text-blue-600 font-bold">
-                    <span>Com Pride Clean</span>
-                    <span>Equilibrado</span>
-                  </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "25%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: reduceMotion ? 0 : 0.9 }}
-                      className="h-full bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.12} className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl">
-              <div className="flex justify-between items-start mb-8 gap-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-1">
-                    Turbidez e Impurezas
-                  </h3>
-                  <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">
-                    Clarificação Visual
-                  </span>
-                </div>
-                <span className="bg-blue-50 text-blue-600 px-3 py-2 rounded-lg text-sm md:text-base font-bold border border-blue-100 whitespace-nowrap">
-                  Água Clara
-                </span>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between text-sm mb-2 text-slate-500 font-medium">
-                    <span>Antes</span>
-                    <span>Alta Turbidez</span>
-                  </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <div className="h-full w-[90%] bg-stone-500/50 rounded-full" />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-sm mb-2 text-sky-500 font-bold">
-                    <span>Depois</span>
-                    <span>Transparência</span>
-                  </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "15%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: reduceMotion ? 0 : 0.9 }}
-                      className="h-full bg-gradient-to-r from-blue-400 to-sky-300 rounded-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ======================================================
-          CTA
-      ====================================================== */}
-      <section className="py-20 md:py-28 px-4 sm:px-6 flex justify-center bg-white border-t border-slate-100">
-        <div className="max-w-5xl w-full bg-gradient-to-br from-blue-600 to-cyan-600 p-8 sm:p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] text-center relative overflow-hidden">
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest">
-              <Droplets size={14} fill="currentColor" /> Equilíbrio e Vitalidade
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 tracking-tight leading-[1.1]">
-              Águas cristalinas e <br />
-              ecossistema saudável.
+      <section className="relative bg-[#0B1B29] py-32 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-start">
+          
+          {/* Título Fixo na Tela */}
+          <div className="md:w-1/3 md:sticky md:top-32">
+            <h2 className="text-[#4BB1D3] text-4xl font-serif font-normal uppercase tracking-wide mb-6">
+              Matéria <br /> Prima
             </h2>
-
-            <p className="text-blue-100 text-base md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-              Garanta a melhoria visual e biológica dos seus lagos, tanques e
-              efluentes de maneira simples e sem dores de cabeça com registros.
+            <p className="text-base font-light text-[#888888] leading-relaxed">
+              Desenvolvida com foco em biotecnologia orgânica para garantir a estabilidade do sistema sem uso de agentes agressivos.
             </p>
+          </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="#"
-                className="flex items-center justify-center gap-3 bg-white text-blue-700 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-colors uppercase tracking-wider text-sm"
+          {/* Blocos de Conteúdo Roláveis */}
+          <div className="md:w-2/3 flex flex-col gap-8">
+            {FLYER_DIFFERENTIALS.map((item) => (
+              <motion.div 
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="bg-[#07131D] border border-white/5 p-10 md:p-12 rounded-sm hover:border-[#4BB1D3]/50 transition-colors"
               >
-                <Phone size={18} /> Solicitar Orçamento
-              </a>
+                <div className="flex items-center gap-6 mb-6 border-b border-white/5 pb-6">
+                  <item.icon className="text-[#4BB1D3]" size={36} strokeWidth={1.5} />
+                  <h4 className="text-xl font-serif uppercase tracking-wider text-white">
+                    {item.title}
+                  </h4>
+                </div>
+                <p className="text-sm font-light leading-relaxed text-[#E0DED8]">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <a
-                href="#"
-                className="flex items-center justify-center gap-3 bg-transparent text-white border border-white/30 px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors uppercase tracking-wider text-sm"
-              >
-                Falar no WhatsApp
-              </a>
+      {/* ======================================================
+          5. PROVA VISUAL (GRID ASSIMÉTRICO MODERNO OTIMIZADO)
+      ====================================================== */}
+      <section className="py-24 md:py-32 bg-white px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-normal uppercase tracking-wide leading-tight text-[#1A1A1A]">
+              Impacto <span className="italic text-[#4BB1D3]">Visível.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Foto Gigante Esquerda */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="md:col-span-2 relative h-[400px] md:h-[600px] rounded-sm overflow-hidden group bg-black"
+            >
+              <Image
+                src={PROOF_CARDS[0].image}
+                alt={PROOF_CARDS[0].title}
+                fill
+                loading="lazy"
+                quality={60}
+                sizes="(max-width: 768px) 100vw, 66vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-60 group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B29] via-[#0B1B29]/40 to-transparent opacity-90" />
+              <div className="absolute bottom-10 left-10 right-10">
+                <FirstProofIcon className="mb-4 text-[#4BB1D3]" size={32} strokeWidth={1.5} />
+                <h3 className="text-3xl font-serif uppercase tracking-wide text-white mb-2">{PROOF_CARDS[0].title}</h3>
+                <p className="text-sm font-light text-[#E0DED8] max-w-md">{PROOF_CARDS[0].desc}</p>
+              </div>
+            </motion.div>
+
+            {/* Fotos Menores Direita */}
+            <div className="md:col-span-1 flex flex-col gap-6">
+              {PROOF_CARDS.slice(1).map((card, index) => (
+                <motion.div 
+                  key={card.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative h-[200px] md:h-[288px] rounded-sm overflow-hidden group bg-black"
+                >
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    loading="lazy"
+                    quality={60}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-60 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B29] to-transparent opacity-90" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="text-lg font-serif uppercase tracking-wide text-white mb-1">{card.title}</h3>
+                    <p className="text-[11px] font-light text-[#888888] line-clamp-2">{card.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* ======================================================
+          6. DEPOIMENTO LADO-A-LADO (SIDE-BY-SIDE)
+      ====================================================== */}
+      <section id="depoimento" className="bg-[#FBFBF9] py-24 md:py-32 px-6 border-t border-[#E0DED8]">
+        <div className="mx-auto max-w-7xl flex flex-col lg:flex-row items-center gap-16">
+          
+          <div className="lg:w-5/12">
+            <div className="mb-6 inline-flex items-center gap-3 rounded-sm border border-[#4BB1D3]/30 bg-white px-4 py-1.5 shadow-sm text-[9px] font-sans font-semibold uppercase tracking-[0.3em] text-[#0B1B29]">
+              <Play size={12} fill="currentColor" className="text-[#4BB1D3]" />
+              Estudo de Caso
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-normal uppercase tracking-wide text-[#1A1A1A] mb-6">
+              A Solução em <br /> Operação.
+            </h2>
+            <p className="text-base font-light text-[#666666] leading-relaxed mb-8">
+              Acompanhe a aplicação e o desempenho real da tecnologia Pride Sanitation no suporte à infraestrutura de estações e controle de efluentes.
+            </p>
+            <Link
+              href="/contato"
+              className="inline-flex items-center gap-2 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#0B1B29] hover:text-[#4BB1D3] transition-colors border-b border-[#0B1B29] hover:border-[#4BB1D3] pb-1"
+            >
+              Consultar Especialista <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div className="lg:w-7/12 w-full">
+            <div className="overflow-hidden rounded-sm border border-[#E0DED8] bg-black shadow-xl relative">
+              {/* OTIMIZADO: preload="none" economiza banda até o play */}
+              <video
+                src="/videos/sanitation-hero.mp4"
+                controls
+                preload="none"
+                poster="/images/sanitation-poster.webp"
+                className="aspect-video w-full object-cover"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ======================================================
+          BOTÃO FLUTUANTE DE VOLTAR AO TOPO
+      ====================================================== */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-[100] w-12 h-12 bg-[#4BB1D3] rounded-sm shadow-lg flex items-center justify-center text-[#0B1B29] hover:bg-[#3A8EA8] transition-colors duration-300"
+          >
+            <ArrowUp size={20} strokeWidth={2} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
     </main>
   );
 }

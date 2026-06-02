@@ -2,23 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, ShieldCheck } from "lucide-react";
-import { useState } from "react";
 
 export default function ContatoPage() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    empresa: "",
-    email: "",
-    telefone: "",
-    setor: "",
-    mensagem: "",
-    aceitaTermos: false,
-  });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Lógica de envio aqui
-    console.log("Enviando...", formData);
+    console.log("Mensagem enviada para a equipe Pride.");
   };
 
   return (
@@ -42,7 +31,7 @@ export default function ContatoPage() {
           {/* ================= COLUNA ESQUERDA (INFORMAÇÕES) ================= */}
           <div className="lg:col-span-4 space-y-6">
             
-            {/* CARD 1: SEDE OPERACIONAL */}
+            {/* CARD 1: ATENDIMENTO */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -50,12 +39,12 @@ export default function ContatoPage() {
             >
               <div className="flex items-center gap-3 mb-4 text-slate-950">
                 <MapPin size={24} />
-                <h3 className="font-bold text-lg">Sede Operacional</h3>
+                <h3 className="font-bold text-lg">Atendimento Brasil</h3>
               </div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Endereço Principal</p>
-              <p className="text-sm text-slate-600 leading-relaxed mb-1">Pólo Industrial de Biotecnologia, Galpão 3</p>
-              <p className="text-sm text-slate-600 leading-relaxed mb-3">Ribeirão Preto, São Paulo — BR</p>
-              <p className="text-[10px] font-mono text-slate-400">CNPJ: 00.000.000/0001-00</p>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Equipe técnica e comercial</p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-1">Agricultura, saneamento, compostagem e pecuária</p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-3">Atendimento consultivo para operações em todo o Brasil.</p>
+              <p className="text-[10px] font-mono text-slate-400">@pridebiosolutions</p>
             </motion.div>
 
             {/* CARD 2: CANAIS DE ATENDIMENTO */}
@@ -72,11 +61,14 @@ export default function ContatoPage() {
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Canais de Atendimento</p>
               
               <div className="space-y-3">
-                <a href="tel:+5516999999999" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
-                  +55 16 99999-9999
+                <a href="tel:+553120106080" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  (31) 2010-6080
                 </a>
-                <a href="mailto:contato@pride.com.br" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
-                  <Mail size={16} /> contato@pride.com.br
+                <a href="https://wa.me/5531995235778" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  WhatsApp (31) 99523-5778
+                </a>
+                <a href="mailto:vendas@pridebiosolutions.com.br" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  <Mail size={16} /> vendas@pridebiosolutions.com.br
                 </a>
               </div>
             </motion.div>
@@ -161,11 +153,17 @@ export default function ContatoPage() {
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Linha de Interesse</label>
-                <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all appearance-none cursor-pointer">
-                  <option value="" disabled selected>Selecione um Produto ou Setor...</option>
-                  <option value="solos">Pride Solos (Agricultura e Cultivo)</option>
-                  <option value="vitals">Linha Vitals (Aves, Suínos, Gado)</option>
-                  <option value="clean">Pride Clean (Lagos e Efluentes)</option>
+                <select
+                  defaultValue=""
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Selecione um Produto ou Setor...</option>
+                  <option value="agriculture">Pride Agriculture™</option>
+                  <option value="sanitation">Pride Sanitation™</option>
+                  <option value="compost">Pride Compost™</option>
+                  <option value="swine">Pride Swine™</option>
+                  <option value="poultry">Pride Poultry™</option>
+                  <option value="cattle">Pride Cattle™</option>
                   <option value="parceiro">Seja um Distribuidor / Revenda</option>
                   <option value="outros">Outros / Dúvidas Gerais</option>
                 </select>

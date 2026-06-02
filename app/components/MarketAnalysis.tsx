@@ -18,7 +18,7 @@ const data = [
   { year: "2024", value2: 20 }
 ];
 
-export default function AetherisMarketAnalysis() {
+export default function PrideMarketAnalysis() {
   return (
     <section className="relative w-full h-[900px] overflow-hidden bg-[#05080A]">
 
@@ -79,7 +79,7 @@ export default function AetherisMarketAnalysis() {
         <div className="w-[45%] text-white">
 
           <p className="text-gray-300 text-[18px] leading-relaxed max-w-[480px] mb-10">
-            A Aetheris Genoma apresenta um crescimento exponencial na adoção de seus nanovetores biológicos. Nossos sistemas substituem insumos sintéticos pesados, garantindo máxima eficiência e regeneração celular do ecossistema.
+            A Pride apresenta crescimento na adoção de tecnologias orgânicas funcionais. Nossos sistemas apoiam operações que buscam eficiência, estabilidade e melhor desempenho ambiental.
           </p>
 
           {/* DESCRIPTION 01 */}
@@ -90,7 +90,7 @@ export default function AetherisMarketAnalysis() {
                 EXPANSÃO DE RENDIMENTO
               </h4>
               <p className="text-gray-300 mt-2 max-w-[380px] leading-snug">
-                A adoção do protocolo Aetheris gera um aumento direto na densidade de biomassa e rentabilidade operacional nas principais áreas de cultivo.
+                A adoção de protocolos Pride apoia a eficiência operacional e a rentabilidade nas principais áreas de cultivo.
               </p>
             </div>
           </div>

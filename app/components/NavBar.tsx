@@ -7,10 +7,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { name: "Solun`s Pride", href: "/agricultura" }, // Corrigi a digitação de "Solun`s" para "Solus" baseado no seu SECTORS
-  { name: "Vital Pride", href: "/saude-animal" },
-  { name: "Clean Pride", href: "/agua-meioambiente" },
-  { name: "Nossa Gênese", href: "/sobre" },
+  { name: "Agricultura™", href: "/agricultura" },
+  { name: "Saneamento™", href: "/agua-meioambiente" },
+  { name: "Compostagem™", href: "/compost" },
+  { name: "Gado™", href: "/saude-animal" },
+  { name: "Sobre", href: "/sobre" },
 ];
 
 export default function NavBar() {
@@ -59,7 +60,7 @@ export default function NavBar() {
                 whileHover={{ y: -2, scale: 1.02 }}
                 transition={{ duration: 0.22 }}
                 /* AS MEDIDAS AQUI FORAM AUMENTADAS EM ~35% PARA TODAS AS TELAS */
-                className="relative h-[90px] w-[280px] sm:h-[110px] sm:w-[320px] md:h-[130px] md:w-[420px] lg:h-[150px] lg:w-[500px]"
+                className="relative h-[82px] w-[220px] sm:h-[92px] sm:w-[260px] md:h-[110px] md:w-[320px] lg:h-[120px] lg:w-[360px]"
               >
                 <Image
                   src="/images/logo-pride-dark.png"

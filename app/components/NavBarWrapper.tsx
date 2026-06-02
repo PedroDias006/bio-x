@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import NavBar from "./NavBar";
 
-export default function AetherisNavWrapper() {
+export default function PrideNavWrapper() {
   const navbarRef = useRef<HTMLDivElement>(null);
   const [navbarHeight, setNavbarHeight] = useState<number>(120);
 
