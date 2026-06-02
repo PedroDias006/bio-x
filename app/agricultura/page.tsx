@@ -105,7 +105,7 @@ export default function PrideAgriculturePage() {
         className="fixed top-0 left-0 right-0 h-1 bg-[#D4AF37] z-[100] origin-left shadow-[0_0_15px_rgba(212,175,55,0.4)]"
       />
 
-      {/* ======================================================
+     {/* ======================================================
           1. HERO & BENEFÍCIOS
       ====================================================== */}
       <section className="relative bg-[#0B140F] pt-32 pb-20 md:pt-48 md:pb-24 px-6 overflow-hidden">
@@ -163,7 +163,7 @@ export default function PrideAgriculturePage() {
                 width={450}
                 height={550}
                 priority
-                className="w-[82vw] max-w-[330px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2 md:w-auto md:max-w-none"
+                className="w-[82vw] max-w-[330px] md:max-w-[380px] lg:max-w-[420px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
               />
             </motion.div>
           </div>

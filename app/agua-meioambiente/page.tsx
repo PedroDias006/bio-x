@@ -110,18 +110,17 @@ export default function PrideSanitationPage() {
           1. HERO INOVADOR (LAYOUT INDUSTRIAL)
       ====================================================== */}
       <section className="relative bg-[#07131D] pt-32 pb-32 md:pt-40 md:pb-48 px-6">
-        {/* Background Técnico Otimizado - Degradês reduzidos para a imagem brilhar mais */}
+        {/* Background Técnico Otimizado */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/sanitation-hero-bg.webp"
             alt="Estação de Tratamento"
             fill
-            priority // Única imagem da página que deve ter priority
+            priority
             sizes="100vw"
-            quality={75} // Qualidade aumentada levemente pois agora ela aparece mais
+            quality={75}
             className="object-cover opacity-60 mix-blend-luminosity"
           />
-          {/* Sombreamento lateral para garantir leitura do texto e sombras de topo/base */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#07131D]/70 via-[#07131D]/20 to-[#07131D]/90" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#07131D]/90 via-[#07131D]/40 to-transparent" />
         </div>
@@ -172,13 +171,12 @@ export default function PrideSanitationPage() {
               width={420}
               height={520}
               priority
-              quality={85} // Qualidade maior para o produto
-              className="w-[78vw] max-w-[310px] object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.8)] md:w-auto md:max-w-none"
+              quality={85}
+              className="w-[78vw] max-w-[310px] md:max-w-[380px] lg:max-w-[420px] object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.8)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
             />
           </motion.div>
         </div>
       </section>
-
       {/* ======================================================
           2. BARRA FLUTUANTE DE BENEFÍCIOS (GLASSMORPHISM)
       ====================================================== */}
