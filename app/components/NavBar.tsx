@@ -27,7 +27,6 @@ export default function NavBar() {
   }, []);
 
   return (
-    // ATUALIZAÇÃO AQUI: Respeitando a Safe Area do iOS com o top dinâmico
     <header className="fixed top-[max(16px,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1360px]">
       <motion.div
         layout
@@ -47,7 +46,7 @@ export default function NavBar() {
         <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-black/12 to-transparent" />
         <div className="pointer-events-none absolute inset-x-20 bottom-0 h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
 
-        {/* CONTAINER DO MENU SUPERIOR - Ajustado px-4 para celular */}
+        {/* CONTAINER DO MENU SUPERIOR */}
         <div className="relative flex items-center justify-between px-4 md:px-8 lg:px-10 h-[78px] z-50 rounded-[36px]">
           
           {/* LADO ESQUERDO: LOGO ALINHADA À ESQUERDA */}
@@ -60,7 +59,6 @@ export default function NavBar() {
               <motion.div
                 whileHover={{ y: -2, scale: 1.02 }}
                 transition={{ duration: 0.22 }}
-                /* AS MEDIDAS AQUI FORAM AUMENTADAS EM ~35% PARA TODAS AS TELAS */
                 className="relative h-[72px] w-[190px] sm:h-[80px] sm:w-[230px] md:h-[88px] md:w-[255px] xl:h-[92px] xl:w-[270px]"
               >
                 <Image
@@ -134,25 +132,6 @@ export default function NavBar() {
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher className="shrink-0" />
 
-            <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.2 }}>
-              <Link
-                href="/contato"
-                className="
-                  rounded-full px-3 py-2
-                  text-[15px] font-semibold xl:text-[16px]
-                  text-neutral-700 hover:text-black
-                  outline-none focus:outline-none
-                  focus-visible:outline-none focus-visible:ring-0
-                  active:bg-transparent
-                  transition-colors duration-300
-                  select-none
-                "
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                Contato
-              </Link>
-            </motion.div>
-
             <motion.div
               whileHover={{ y: -2, scale: 1.02 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
@@ -175,7 +154,7 @@ export default function NavBar() {
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
                 <span className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_100%)]" />
-                <span className="relative z-10">Especialista</span>
+                <span className="relative z-10">Contato</span>
                 <ArrowRight
                   size={15}
                   className="relative z-10 opacity-80 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
@@ -184,7 +163,7 @@ export default function NavBar() {
             </motion.div>
           </div>
 
-          {/* BOTÃO MENU MOBILE (Com z-index elevado para a logo não ficar por cima) */}
+          {/* BOTÃO MENU MOBILE */}
           <motion.button
             whileTap={{ scale: 0.94 }}
             className="relative z-50 xl:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
@@ -240,21 +219,6 @@ export default function NavBar() {
                       href="/contato"
                       onClick={() => setOpen(false)}
                       className="
-                        rounded-2xl px-4 py-3.5
-                        text-[17px] font-semibold text-neutral-800
-                        transition-all duration-300
-                        hover:bg-neutral-100
-                        outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
-                      "
-                      style={{ WebkitTapHighlightColor: "transparent" }}
-                    >
-                      Contato
-                    </Link>
-
-                    <Link
-                      href="/contato"
-                      onClick={() => setOpen(false)}
-                      className="
                         group flex items-center justify-center gap-2
                         rounded-2xl bg-black px-4 py-3.5
                         text-[17px] font-semibold text-white
@@ -265,7 +229,7 @@ export default function NavBar() {
                       "
                       style={{ WebkitTapHighlightColor: "transparent" }}
                     >
-                      Falar com Especialista
+                      Contato
                       <ArrowRight
                         size={16}
                         className="transition-transform duration-300 group-hover:translate-x-1"
