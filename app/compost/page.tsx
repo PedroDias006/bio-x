@@ -191,11 +191,11 @@ export default function PrideCompostPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#111A14]/40 to-transparent lg:hidden" />
           </div>
 
-          {/* NOVO: PRODUTO FLUTUANTE NO ESPAÇO DIREITO */}
+          {/* NOVO: PRODUTO FLUTUANTE NO ESPAÇO DIREITO CORRIGIDO */}
           <motion.div
-            className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:block"
-            initial={{ opacity: 0, scale: 0.9, y: "-40%" }}
-            animate={{ opacity: 1, scale: 1, y: "-50%" }}
+            className="absolute top-[55%] left-1/2 z-30 hidden lg:block"
+            initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
+            animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
@@ -234,7 +234,6 @@ export default function PrideCompostPage() {
         </div>
 
       </section>
-
       {/* ======================================================
           2. CICLO DE TRANSFORMAÇÃO (PIPELINE INTERATIVO)
       ====================================================== */}

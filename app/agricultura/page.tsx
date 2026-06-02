@@ -52,7 +52,7 @@ const PROOF_CARDS = [
   {
     title: "Desenvolvimento Radicular",
     desc: "Leitura visual de resposta das plantas e raízes mais profundas e estruturadas.",
-    image: "https://images.unsplash.com/photo-1592982537447-6f2a6a0a2c8c?auto=format&fit=crop&q=80&w=800",
+    image: "/images/agriculture-radicular.webp",
     icon: TrendingUp,
   },
   {
