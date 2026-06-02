@@ -18,8 +18,11 @@ export default function ContatoPage() {
         
         {/* TÍTULO DA PÁGINA - MONOCROMÁTICO */}
         <div className="mb-12 border-b border-slate-200 pb-8">
-          <h1 className="text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase">
-            Fale com nossos <span className="text-slate-950 underline decoration-slate-300 decoration-4 underline-offset-8">Especialistas</span>
+          <h1 className="text-[2.55rem] sm:text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase leading-[0.98] md:leading-tight">
+            <span className="block sm:inline">Fale com nossos</span>{" "}
+            <span className="block text-slate-950 underline decoration-slate-300 decoration-4 underline-offset-8 sm:inline">
+              Especialistas
+            </span>
           </h1>
           <p className="text-slate-500 font-mono text-xs uppercase tracking-widest">
             Canal de atendimento direto com a equipe técnica da Pride

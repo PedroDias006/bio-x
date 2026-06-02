@@ -88,9 +88,9 @@ export default function PrideAboutPage() {
             </motion.div>
             
             <motion.div variants={fadeInUp}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] mb-6">
+              <h1 className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[1] md:leading-[0.9] mb-6 break-words">
                 Tecnologia, Manejo <br />
-                <span className="text-slate-500">
+                <span className="block text-slate-500 sm:inline">
                   e Sustentabilidade.
                 </span>
               </h1>

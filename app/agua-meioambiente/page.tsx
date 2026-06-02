@@ -142,7 +142,7 @@ export default function PrideSanitationPage() {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-serif font-normal uppercase tracking-wide leading-[1.1] text-white mb-8">
+            <h1 className="text-[2.75rem] sm:text-5xl md:text-7xl font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.05] sm:leading-[1.1] text-white mb-8">
               Manejo Ambiental <br />
               <span className="text-[#4BB1D3] italic">Sustentável.</span>
             </h1>
@@ -153,7 +153,7 @@ export default function PrideSanitationPage() {
 
             <Link
               href="/contato"
-              className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#4BB1D3] px-10 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#07131D] transition-colors hover:bg-[#3A8EA8] shadow-lg"
+              className="inline-flex w-full items-center justify-center gap-3 rounded-sm bg-[#4BB1D3] px-6 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#07131D] transition-colors hover:bg-[#3A8EA8] shadow-lg sm:w-auto sm:px-10"
             >
               Falar com Engenharia <ArrowRight size={16} />
             </Link>
@@ -173,7 +173,7 @@ export default function PrideSanitationPage() {
               height={520}
               priority
               quality={85} // Qualidade maior para o produto
-              className="object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.8)]"
+              className="w-[78vw] max-w-[310px] object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.8)] md:w-auto md:max-w-none"
             />
           </motion.div>
         </div>

@@ -143,7 +143,7 @@ export default function PrideCompostPage() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-wide leading-[1.05] text-white mb-8">
+            <h1 className="text-[3rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.05] text-white mb-8">
               PRIDE <br />
               <span className="text-[#D4A017]">COMPOST</span>
             </h1>
@@ -154,7 +154,7 @@ export default function PrideCompostPage() {
 
             <Link
               href="/contato"
-              className="inline-flex items-center justify-center gap-4 rounded-sm bg-[#D4A017] px-10 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#111A14] transition-all hover:bg-[#B88A14] shadow-lg w-fit"
+              className="inline-flex w-full items-center justify-center gap-4 rounded-sm bg-[#D4A017] px-6 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#111A14] transition-all hover:bg-[#B88A14] shadow-lg sm:w-fit sm:px-10"
             >
               Falar com Engenharia <ArrowRight size={16} />
             </Link>
@@ -167,7 +167,7 @@ export default function PrideCompostPage() {
                 width={280}
                 height={380}
                 priority
-                className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                className="w-[76vw] max-w-[285px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] sm:w-auto sm:max-w-none"
               />
             </div>
           </motion.div>

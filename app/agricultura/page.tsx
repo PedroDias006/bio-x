@@ -140,7 +140,7 @@ export default function PrideAgriculturePage() {
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-wide leading-[1.1] text-white mb-8 drop-shadow-lg">
+              <h1 className="text-[2.75rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.08] sm:leading-[1.1] text-white mb-8 drop-shadow-lg">
                 PRIDE <br />
                 <span className="text-[#D4AF37]">AGRICULTURE</span>
               </h1>
@@ -163,7 +163,7 @@ export default function PrideAgriculturePage() {
                 width={450}
                 height={550}
                 priority
-                className="object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
+                className="w-[82vw] max-w-[330px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2 md:w-auto md:max-w-none"
               />
             </motion.div>
           </div>

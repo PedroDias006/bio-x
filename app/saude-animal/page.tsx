@@ -144,7 +144,7 @@ export default function PrideLivestockPage() {
      {/* ======================================================
           1. HERO EXCLUSIVO (TRÍADE / PLATFORM SHOWCASE)
       ====================================================== */}
-      <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center overflow-hidden bg-[#0A0A0A] px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
+      <section className="relative w-full flex min-h-[auto] flex-col items-center overflow-hidden bg-[#0A0A0A] px-6 pb-14 pt-32 lg:min-h-[100svh] lg:flex-row lg:px-12 lg:py-0">
         
         {/* === BACKGROUND IMAGE (NOVO) === */}
         <div className="absolute inset-0 z-0">
@@ -163,7 +163,7 @@ export default function PrideLivestockPage() {
         </div>
 
         {/* Luz de Fundo (Ambient Glow) Dourada */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[1000px] lg:h-[1000px] bg-[#D4AF37] opacity-10 blur-[150px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-1/2 left-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D4AF37] opacity-10 blur-[110px] pointer-events-none z-0 sm:h-[600px] sm:w-[600px] lg:h-[1000px] lg:w-[1000px] lg:blur-[150px]" />
 
         {/* === LADO ESQUERDO: TEXTO E CTA === */}
         <div className="w-full lg:w-1/2 relative z-20 flex flex-col justify-center lg:pr-12 xl:pl-12 mt-10 lg:mt-0">
@@ -179,7 +179,7 @@ export default function PrideLivestockPage() {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-wide leading-[1.05] text-white mb-8 drop-shadow-lg">
+            <h1 className="text-[3rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.05] text-white mb-8 drop-shadow-lg">
               LIVESTOCK <br />
               <span className="text-[#D4AF37]">PLATFORM</span>
             </h1>
@@ -190,7 +190,7 @@ export default function PrideLivestockPage() {
 
             <Link
               href="#vitrine"
-              className="inline-flex items-center justify-center gap-4 rounded-sm bg-[#D4AF37] px-10 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#0A0A0A] transition-all hover:bg-[#B88A14] shadow-[0_0_30px_rgba(212,175,55,0.2)] w-fit"
+              className="inline-flex w-full items-center justify-center gap-4 rounded-sm bg-[#D4AF37] px-6 py-5 text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-[#0A0A0A] transition-all hover:bg-[#B88A14] shadow-[0_0_30px_rgba(212,175,55,0.2)] sm:w-fit sm:px-10"
             >
               Explorar Linhas de Produção <ArrowRight size={16} />
             </Link>
@@ -198,9 +198,9 @@ export default function PrideLivestockPage() {
         </div>
 
         {/* === LADO DIREITO: O TALENTO ESPECIAL (PILARES ASSIMÉTRICOS) === */}
-        <div className="w-full lg:w-1/2 relative z-10 mt-20 lg:mt-0 h-[450px] lg:h-[100svh] flex items-center justify-center">
+        <div className="relative z-10 mt-12 flex h-[340px] w-full items-center justify-center sm:h-[420px] lg:mt-0 lg:h-[100svh] lg:w-1/2">
           
-          <div className="grid grid-cols-3 gap-3 md:gap-5 w-full max-w-2xl h-full py-12 lg:py-32">
+          <div className="grid h-full w-full max-w-2xl grid-cols-3 gap-3 py-8 md:gap-5 lg:py-32">
             
             {/* Pilar 1: Cattle */}
             <motion.div 
