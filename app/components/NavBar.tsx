@@ -5,6 +5,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const NAV = [
   { name: "Agricultura™", href: "/agricultura" },
@@ -27,7 +28,7 @@ export default function NavBar() {
 
   return (
     // ATUALIZAÇÃO AQUI: Respeitando a Safe Area do iOS com o top dinâmico
-    <header className="fixed top-[max(16px,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1240px]">
+    <header className="fixed top-[max(16px,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1360px]">
       <motion.div
         layout
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -50,17 +51,17 @@ export default function NavBar() {
         <div className="relative flex items-center justify-between px-4 md:px-8 lg:px-10 h-[78px] z-50 rounded-[36px]">
           
           {/* LADO ESQUERDO: LOGO ALINHADA À ESQUERDA */}
-          <div className="relative h-full flex items-center shrink-0">
+          <div className="relative h-full flex w-[190px] shrink-0 items-center sm:w-[230px] md:w-[255px] xl:w-[270px]">
             <Link
               href="/"
-              className="absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 flex items-center select-none outline-none focus:outline-none"
+              className="relative -left-2 md:left-0 flex items-center select-none outline-none focus:outline-none"
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
               <motion.div
                 whileHover={{ y: -2, scale: 1.02 }}
                 transition={{ duration: 0.22 }}
                 /* AS MEDIDAS AQUI FORAM AUMENTADAS EM ~35% PARA TODAS AS TELAS */
-                className="relative h-[82px] w-[220px] sm:h-[92px] sm:w-[260px] md:h-[110px] md:w-[320px] lg:h-[120px] lg:w-[360px]"
+                className="relative h-[72px] w-[190px] sm:h-[80px] sm:w-[230px] md:h-[88px] md:w-[255px] xl:h-[92px] xl:w-[270px]"
               >
                 <Image
                   src="/images/logo-pride-dark.png"
@@ -74,7 +75,7 @@ export default function NavBar() {
           </div>
 
           {/* MEIO: LINKS DESKTOP */}
-          <nav className="hidden lg:flex items-center gap-1.5 ml-auto mr-4">
+          <nav className="hidden xl:flex items-center gap-1 ml-auto mr-3">
             {NAV.map((item) => (
               <motion.div
                 key={item.name}
@@ -89,8 +90,8 @@ export default function NavBar() {
                   href={item.href}
                   className="
                     group relative flex items-center justify-center
-                    rounded-full px-4 py-2.5
-                    text-[14px] font-medium tracking-[-0.01em]
+                    rounded-full px-3.5 py-2.5
+                    text-[15px] font-semibold xl:text-[16px]
                     text-neutral-800
                     outline-none focus:outline-none
                     focus-visible:outline-none
@@ -130,13 +131,15 @@ export default function NavBar() {
           </nav>
 
           {/* LADO DIREITO: BOTÕES DESKTOP */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher className="shrink-0" />
+
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.2 }}>
               <Link
                 href="/contato"
                 className="
                   rounded-full px-3 py-2
-                  text-[14px] font-medium tracking-[-0.01em]
+                  text-[15px] font-semibold xl:text-[16px]
                   text-neutral-700 hover:text-black
                   outline-none focus:outline-none
                   focus-visible:outline-none focus-visible:ring-0
@@ -160,7 +163,7 @@ export default function NavBar() {
                   group relative flex items-center gap-2.5
                   rounded-full px-6 py-3
                   bg-black text-white
-                  text-[14px] font-semibold tracking-[-0.01em]
+                  text-[15px] font-semibold
                   outline-none focus:outline-none
                   focus-visible:outline-none focus-visible:ring-0
                   active:opacity-100 active:bg-black
@@ -184,7 +187,7 @@ export default function NavBar() {
           {/* BOTÃO MENU MOBILE (Com z-index elevado para a logo não ficar por cima) */}
           <motion.button
             whileTap={{ scale: 0.94 }}
-            className="relative z-50 lg:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
+            className="relative z-50 xl:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
             onClick={() => setOpen(!open)}
             aria-label="Abrir menu"
             style={{ WebkitTapHighlightColor: "transparent" }}
@@ -201,7 +204,7 @@ export default function NavBar() {
               animate={{ height: "auto", opacity: 1, y: 0 }}
               exit={{ height: 0, opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden overflow-hidden border-t border-black/[0.06] bg-white relative z-40 rounded-b-[36px]"
+              className="xl:hidden overflow-hidden border-t border-black/[0.06] bg-white relative z-40 rounded-b-[36px]"
             >
               <div className="px-4 pb-4 pt-3">
                 <div className="rounded-[28px] bg-white p-2">
@@ -217,8 +220,8 @@ export default function NavBar() {
                         onClick={() => setOpen(false)}
                         className="
                           flex items-center justify-between
-                          rounded-2xl px-4 py-3.5
-                          text-[15px] font-medium text-neutral-900
+                          rounded-2xl px-4 py-4
+                          text-[17px] font-semibold text-neutral-900
                           transition-all duration-300
                           hover:bg-neutral-100
                           outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
@@ -230,13 +233,15 @@ export default function NavBar() {
                     </motion.div>
                   ))}
 
-                  <div className="mt-2 grid gap-2 border-t border-black/[0.06] pt-3">
+                  <div className="mt-2 grid gap-3 border-t border-black/[0.06] pt-3">
+                    <LanguageSwitcher className="mx-auto w-full justify-center py-1" />
+
                     <Link
                       href="/contato"
                       onClick={() => setOpen(false)}
                       className="
-                        rounded-2xl px-4 py-3
-                        text-[15px] font-medium text-neutral-800
+                        rounded-2xl px-4 py-3.5
+                        text-[17px] font-semibold text-neutral-800
                         transition-all duration-300
                         hover:bg-neutral-100
                         outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
@@ -252,7 +257,7 @@ export default function NavBar() {
                       className="
                         group flex items-center justify-center gap-2
                         rounded-2xl bg-black px-4 py-3.5
-                        text-[15px] font-semibold text-white
+                        text-[17px] font-semibold text-white
                         shadow-[0_12px_24px_rgba(0,0,0,0.16)]
                         transition-all duration-300
                         hover:shadow-[0_16px_30px_rgba(0,0,0,0.22)]

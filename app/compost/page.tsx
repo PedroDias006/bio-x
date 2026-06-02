@@ -123,8 +123,8 @@ export default function PrideCompostPage() {
         className="fixed top-0 left-0 right-0 h-1 bg-[#D4A017] z-[100] origin-left shadow-[0_0_15px_rgba(212,160,23,0.4)]"
       />
 
-      {/* ======================================================
-          1. HERO EXCLUSIVO (EDITORIAL SPLIT LAYOUT)
+     {/* ======================================================
+          1. HERO EXCLUSIVO (EDITORIAL SPLIT LAYOUT COM PRODUTO)
       ====================================================== */}
       <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row overflow-hidden bg-[#111A14]">
         
@@ -173,7 +173,7 @@ export default function PrideCompostPage() {
           </motion.div>
         </div>
 
-        {/* === LADO DIREITO: IMAGEM FOTOGRÁFICA === */}
+        {/* === LADO DIREITO: IMAGEM FOTOGRÁFICA E PRODUTO === */}
         <div className="w-full lg:w-[55%] relative min-h-[50vh] lg:h-auto z-0 flex flex-col justify-end">
           {/* Background Otimizado */}
           <div className="absolute inset-0">
@@ -190,6 +190,24 @@ export default function PrideCompostPage() {
             <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#111A14] via-[#111A14]/30 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#111A14]/40 to-transparent lg:hidden" />
           </div>
+
+          {/* NOVO: PRODUTO FLUTUANTE NO ESPAÇO DIREITO */}
+          <motion.div
+            className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:block"
+            initial={{ opacity: 0, scale: 0.9, y: "-40%" }}
+            animate={{ opacity: 1, scale: 1, y: "-50%" }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/images/compost-produto.webp"
+              alt="Bombona Pride Compost"
+              width={380}
+              height={480}
+              priority
+              quality={85}
+              className="object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.9)] hover:scale-105 transition-transform duration-700"
+            />
+          </motion.div>
 
           {/* Benefícios Integrados na base da Imagem */}
           <div className="relative z-20 w-full p-6 lg:p-12 bg-gradient-to-t from-[#111A14] via-[#111A14]/90 to-transparent pt-32 lg:pt-48 mt-auto">
@@ -214,24 +232,6 @@ export default function PrideCompostPage() {
             </div>
           </div>
         </div>
-
-        {/* === PRODUTO FLUTUANTE NO DESKTOP (QUEBRA A DIVISÃO DA TELA) === */}
-        <motion.div
-          className="absolute top-1/2 left-[45%] -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:block"
-          initial={{ opacity: 0, scale: 0.9, y: "-40%" }}
-          animate={{ opacity: 1, scale: 1, y: "-50%" }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Image
-            src="/images/compost-produto.webp"
-            alt="Bombona Pride Compost"
-            width={400}
-            height={500}
-            priority
-            quality={85}
-            className="object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] hover:scale-105 transition-transform duration-700"
-          />
-        </motion.div>
 
       </section>
 
