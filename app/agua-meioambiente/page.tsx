@@ -21,7 +21,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================================
-   DADOS EXTRAÍDOS DO MATERIAL OFICIAL PRIDE SANITATION
+   DADOS EXTRAÍDOS DO MATERIAL OFICIAL SEPAR ANT
    ========================================================================= */
 
 const FLYER_BENEFITS = [
@@ -72,7 +72,7 @@ const PROOF_CARDS = [
 /* =========================================================================
    PÁGINA PRINCIPAL
    ========================================================================= */
-export default function PrideSanitationPage() {
+export default function SeparAntPage() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -142,12 +142,12 @@ export default function PrideSanitationPage() {
             </div>
             
             <h1 className="text-[2.75rem] sm:text-5xl md:text-7xl font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.05] sm:leading-[1.1] text-white mb-8">
-              Manejo Ambiental <br />
-              <span className="text-[#4BB1D3] italic">Sustentável.</span>
+              SEPAR <br />
+              <span className="text-[#4BB1D3] italic">ANT</span>
             </h1>
             
             <p className="max-w-lg text-lg font-light leading-relaxed text-[#E0DED8] mb-12 border-l border-[#4BB1D3] pl-6">
-              A Pride Sanitation auxilia no controle de carga orgânica, clarificação e mitigação de odores para operações que exigem estabilidade contínua.
+              A Separ Ant auxilia no controle de carga orgânica, clarificação e mitigação de odores para operações que exigem estabilidade contínua.
             </p>
 
             <Link
@@ -167,7 +167,7 @@ export default function PrideSanitationPage() {
           >
             <Image
               src="/images/sanitation-produto.webp"
-              alt="Bombona Pride Sanitation"
+              alt="Bombona Separ Ant"
               width={420}
               height={520}
               priority
@@ -391,7 +391,7 @@ export default function PrideSanitationPage() {
               A Solução em <br /> Operação.
             </h2>
             <p className="text-base font-light text-[#666666] leading-relaxed mb-8">
-              Acompanhe a aplicação e o desempenho real da tecnologia Pride Sanitation no suporte à infraestrutura de estações e controle de efluentes.
+              Acompanhe a aplicação e o desempenho real da tecnologia Separ Ant no suporte à infraestrutura de estações e controle de efluentes.
             </p>
             <Link
               href="/contato"

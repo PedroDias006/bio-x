@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function PrideProtocol() {
+export default function AntharsProtocol() {
 
   const steps = [
     { title: "Deploy de Bioma", desc: "Tecnologia molecular aplicada diretamente às necessidades estruturais do ecossistema." },
@@ -21,7 +21,7 @@ export default function PrideProtocol() {
         transition={{ duration: 0.8 }}
         className="text-4xl md:text-5xl font-bold text-center"
       >
-        O Protocolo Pride
+        O Protocolo Anthars
       </motion.h2>
 
       <motion.p

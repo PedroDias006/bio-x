@@ -18,7 +18,7 @@ const fonteTitulo = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Pride Biosolutions | Tecnologia orgânica para produção sustentável",
+  title: "Anthars Biotechnologies | Tecnologia orgânica para produção sustentável",
   description: "Soluções inteligentes para agricultura, saneamento, compostagem e pecuária.",
 };
 

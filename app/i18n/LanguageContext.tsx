@@ -22,14 +22,16 @@ type LanguageContextValue = {
   setLanguage: (language: Language) => void;
 };
 
-const STORAGE_KEY = "pride-language";
+const STORAGE_KEY = "anthars-language";
 const ORIGINAL_TEXT = new WeakMap<Text, string>();
 
 const TRANSLATIONS: Record<string, Translation> = {
-  "Agricultura™": { en: "Agriculture™", es: "Agricultura™" },
-  "Saneamento™": { en: "Sanitation™", es: "Saneamiento™" },
-  "Compostagem™": { en: "Compost™", es: "Compostaje™" },
-  "Gado™": { en: "Livestock™", es: "Ganadería™" },
+  "Agro Ant™": { en: "Agro Ant™", es: "Agro Ant™" },
+  "Separ Ant™": { en: "Separ Ant™", es: "Separ Ant™" },
+  "Compost Ant™": { en: "Compost Ant™", es: "Compost Ant™" },
+  "Poultry Ant™": { en: "Poultry Ant™", es: "Poultry Ant™" },
+  "Livestock Ant™": { en: "Livestock Ant™", es: "Livestock Ant™" },
+  "Swine Ant™": { en: "Swine Ant™", es: "Swine Ant™" },
   Sobre: { en: "About", es: "Acerca" },
   Contato: { en: "Contact", es: "Contacto" },
   Especialista: { en: "Specialist", es: "Especialista" },
@@ -37,7 +39,7 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Consultar Especialista": { en: "Consult a Specialist", es: "Consultar a un Especialista" },
   "Falar com Engenharia": { en: "Talk to Engineering", es: "Hablar con Ingeniería" },
   "Solicitar Especificação Técnica": { en: "Request Technical Specification", es: "Solicitar Especificación Técnica" },
-  "Conheça a Pride": { en: "Discover Pride", es: "Conozca Pride" },
+  "Conheça a Anthars": { en: "Discover Anthars", es: "Conozca Anthars" },
   "Explorar detalhes": { en: "Explore details", es: "Explorar detalles" },
   "Explorar Linhas de Produção": { en: "Explore Production Lines", es: "Explorar Líneas de Producción" },
   "Agendar Reunião Técnica": { en: "Schedule a Technical Meeting", es: "Agendar Reunión Técnica" },
@@ -51,11 +53,11 @@ const TRANSLATIONS: Record<string, Translation> = {
     es: "Tecnología de base orgánica para agricultura, saneamiento, compostaje y ganadería. Soluciones inteligentes que mejoran el manejo, reducen impactos y generan valor productivo.",
   },
   "Áreas de Atuação": { en: "Business Areas", es: "Áreas de Actuación" },
-  "Linhas Pride.": { en: "Pride Lines.", es: "Líneas Pride." },
+  "Linhas Anthars.": { en: "Anthars Lines.", es: "Líneas Anthars." },
   "Soluções para cada desafio.": { en: "Solutions for every challenge.", es: "Soluciones para cada desafío." },
-  "Quatro frentes tecnológicas conectadas por uma mesma lógica: compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.": {
-    en: "Four technological fronts connected by the same logic: functional organic compounds, practical application and environmental responsibility.",
-    es: "Cuatro frentes tecnológicas conectadas por la misma lógica: compuestos orgánicos funcionales, aplicación práctica y responsabilidad ambiental.",
+  "Seis frentes tecnológicas conectadas por uma mesma lógica: compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.": {
+    en: "Six technological fronts connected by the same logic: functional organic compounds, practical application and environmental responsibility.",
+    es: "Seis frentes tecnológicas conectadas por la misma lógica: compuestos orgánicos funcionales, aplicación práctica y responsabilidad ambiental.",
   },
   "Presença Nacional.": { en: "National Presence.", es: "Presencia Nacional." },
   "De ponta a ponta.": { en: "End to end.", es: "De punta a punta." },
@@ -86,9 +88,9 @@ const TRANSLATIONS: Record<string, Translation> = {
     en: "Technologies designed to reduce odors, stabilize organic matter, optimize resources and raise operational sustainability.",
     es: "Tecnologías diseñadas para reducir olores, estabilizar materia orgánica, optimizar recursos y elevar la sostenibilidad operacional.",
   },
-  "Fale com um especialista Pride e encontre a linha ideal para sua operação.": {
-    en: "Talk to a Pride specialist and find the ideal line for your operation.",
-    es: "Hable con un especialista Pride y encuentre la línea ideal para su operación.",
+  "Fale com um especialista Anthars e encontre a linha ideal para sua operação.": {
+    en: "Talk to an Anthars specialist and find the ideal line for your operation.",
+    es: "Hable con un especialista Anthars y encuentre la línea ideal para su operación.",
   },
   "Soluções inteligentes para uma agricultura produtiva e sustentável.": {
     en: "Intelligent solutions for productive and sustainable agriculture.",
@@ -110,9 +112,9 @@ const TRANSLATIONS: Record<string, Translation> = {
     en: "Environmental performance for modern livestock.",
     es: "Performance ambiental para la ganadería moderna.",
   },
-  "A plataforma que une Swine, Poultry e Cattle em uma só inteligência.": {
-    en: "The platform that connects Swine, Poultry and Cattle in one intelligence.",
-    es: "La plataforma que une Swine, Poultry y Cattle en una sola inteligencia.",
+  "A plataforma que une Swine Ant, Poultry Ant e Livestock Ant em uma só inteligência.": {
+    en: "The platform that connects Swine Ant, Poultry Ant and Livestock Ant in one intelligence.",
+    es: "La plataforma que une Swine Ant, Poultry Ant y Livestock Ant en una sola inteligencia.",
   },
   "Manejo do solo, culturas e recursos para uma agricultura mais produtiva.": {
     en: "Soil, crop and resource management for more productive agriculture.",
@@ -126,9 +128,9 @@ const TRANSLATIONS: Record<string, Translation> = {
     en: "Intelligent organic transformation for more stable and valuable compounds.",
     es: "Transformación orgánica inteligente para compuestos más estables y valorizados.",
   },
-  "Plataforma de performance e ambiência para Swine, Poultry e Cattle.": {
-    en: "Performance and environment platform for Swine, Poultry and Cattle.",
-    es: "Plataforma de performance y ambiente para Swine, Poultry y Cattle.",
+  "Plataforma de performance e ambiência para Swine Ant, Poultry Ant e Livestock Ant.": {
+    en: "Performance and environment platform for Swine Ant, Poultry Ant and Livestock Ant.",
+    es: "Plataforma de performance y ambiente para Swine Ant, Poultry Ant y Livestock Ant.",
   },
 
   "Saúde e Equilíbrio do Solo": { en: "Soil Health and Balance", es: "Salud y Equilibrio del Suelo" },
@@ -225,23 +227,23 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Soluções Inteligentes": { en: "Intelligent Solutions", es: "Soluciones Inteligentes" },
   "para uma agricultura": { en: "for agriculture", es: "para una agricultura" },
   "mais produtiva e sustentável.": { en: "more productive and sustainable.", es: "más productiva y sostenible." },
-  "A Pride Agriculture é uma solução tecnológica desenvolvida para auxiliar no manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e maior eficiência no uso dos recursos.": {
-    en: "Pride Agriculture is a technological solution developed to support sustainable soil and crop management, promoting better conditions for plant development and greater efficiency in resource use.",
-    es: "Pride Agriculture es una solución tecnológica desarrollada para apoyar el manejo sostenible del suelo y los cultivos, promoviendo mejores condiciones para el desarrollo de las plantas y mayor eficiencia en el uso de recursos.",
+  "A Agro Ant é uma solução tecnológica desenvolvida para auxiliar no manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e maior eficiência no uso dos recursos.": {
+    en: "Agro Ant is a technological solution developed to support sustainable soil and crop management, promoting better conditions for plant development and greater efficiency in resource use.",
+    es: "Agro Ant es una solución tecnológica desarrollada para apoyar el manejo sostenible del suelo y los cultivos, promoviendo mejores condiciones para el desarrollo de las plantas y mayor eficiencia en el uso de recursos.",
   },
   Aplicações: { en: "Applications", es: "Aplicaciones" },
-  "Diferenciais Pride": { en: "Pride Differentials", es: "Diferenciales Pride" },
+  "Diferenciais Anthars": { en: "Anthars Differentials", es: "Diferenciales Anthars" },
   "A força da raiz ao": { en: "Strength from root to", es: "La fuerza de la raíz al" },
   "fruto.": { en: "fruit.", es: "fruto." },
-  "Registros visuais do desenvolvimento vegetal, confirmando a eficiência estrutural entregue pelas soluções Pride no campo.": {
-    en: "Visual records of plant development, confirming the structural efficiency delivered by Pride solutions in the field.",
-    es: "Registros visuales del desarrollo vegetal, confirmando la eficiencia estructural entregada por las soluciones Pride en campo.",
+  "Registros visuais do desenvolvimento vegetal, confirmando a eficiência estrutural entregue pelas soluções Anthars no campo.": {
+    en: "Visual records of plant development, confirming the structural efficiency delivered by Anthars solutions in the field.",
+    es: "Registros visuales del desarrollo vegetal, confirmando la eficiencia estructural entregada por las soluciones Anthars en campo.",
   },
   "Resultado em Vídeo": { en: "Video Result", es: "Resultado en Video" },
   "Quem aplica no campo.": { en: "Who applies it in the field.", es: "Quien lo aplica en campo." },
-  "Acompanhe a experiência real com a tecnologia Pride Biosolutions na prática.": {
-    en: "Follow the real experience with Pride Biosolutions technology in practice.",
-    es: "Acompañe la experiencia real con la tecnología Pride Biosolutions en la práctica.",
+  "Acompanhe a experiência real com a tecnologia Anthars Biotechnologies na prática.": {
+    en: "Follow the real experience with Anthars Biotechnologies technology in practice.",
+    es: "Acompañe la experiencia real con la tecnología Anthars Biotechnologies en la práctica.",
   },
 
   "Redução de Odores": { en: "Odor Reduction", es: "Reducción de Olores" },
@@ -318,9 +320,9 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Tecnologia Ambiental": { en: "Environmental Technology", es: "Tecnología Ambiental" },
   "Manejo Ambiental": { en: "Environmental Management", es: "Manejo Ambiental" },
   "Sustentável.": { en: "Sustainable.", es: "Sostenible." },
-  "A Pride Sanitation auxilia no controle de carga orgânica, clarificação e mitigação de odores para operações que exigem estabilidade contínua.": {
-    en: "Pride Sanitation supports organic load control, clarification and odor mitigation for operations that require continuous stability.",
-    es: "Pride Sanitation apoya el control de carga orgánica, la clarificación y la mitigación de olores para operaciones que exigen estabilidad continua.",
+  "A Separ Ant auxilia no controle de carga orgânica, clarificação e mitigação de odores para operações que exigem estabilidade contínua.": {
+    en: "Separ Ant supports organic load control, clarification and odor mitigation for operations that require continuous stability.",
+    es: "Separ Ant apoya el control de carga orgánica, la clarificación y la mitigación de olores para operaciones que exigen estabilidad continua.",
   },
   "Integração Operacional": { en: "Operational Integration", es: "Integración Operacional" },
   "Sem Burocracia.": { en: "Without Bureaucracy.", es: "Sin Burocracia." },
@@ -332,9 +334,9 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Estudo de Caso": { en: "Case Study", es: "Estudio de Caso" },
   "A Solução em": { en: "The Solution in", es: "La Solución en" },
   "Operação.": { en: "Operation.", es: "Operación." },
-  "Acompanhe a aplicação e o desempenho real da tecnologia Pride Sanitation no suporte à infraestrutura de estações e controle de efluentes.": {
-    en: "Follow the real application and performance of Pride Sanitation technology supporting station infrastructure and effluent control.",
-    es: "Acompañe la aplicación y el desempeño real de la tecnología Pride Sanitation en apoyo a la infraestructura de estaciones y control de efluentes.",
+  "Acompanhe a aplicação e o desempenho real da tecnologia Separ Ant no suporte à infraestrutura de estações e controle de efluentes.": {
+    en: "Follow the real application and performance of Separ Ant technology supporting station infrastructure and effluent control.",
+    es: "Acompañe la aplicación y el desempeño real de la tecnología Separ Ant en apoyo a la infraestructura de estaciones y control de efluentes.",
   },
 
   "Transforma Resíduos": { en: "Transforms Residues", es: "Transforma Residuos" },
@@ -416,9 +418,9 @@ const TRANSLATIONS: Record<string, Translation> = {
     es: "Tecnología que transforma materia orgánica",
   },
   "em soluções sustentáveis.": { en: "into sustainable solutions.", es: "en soluciones sostenibles." },
-  "A Pride Compost é uma solução tecnológica desenvolvida para otimizar os processos de transformação e estabilização da matéria orgânica, favorecendo o manejo sustentável, a redução de odores e a valorização dos compostos orgânicos.": {
-    en: "Pride Compost is a technological solution developed to optimize organic matter transformation and stabilization processes, supporting sustainable management, odor reduction and the valuation of organic compounds.",
-    es: "Pride Compost es una solución tecnológica desarrollada para optimizar los procesos de transformación y estabilización de la materia orgánica, favoreciendo el manejo sostenible, la reducción de olores y la valorización de los compuestos orgánicos.",
+  "A Compost Ant é uma solução tecnológica desenvolvida para otimizar os processos de transformação e estabilização da matéria orgânica, favorecendo o manejo sustentável, a redução de odores e a valorização dos compostos orgânicos.": {
+    en: "Compost Ant is a technological solution developed to optimize organic matter transformation and stabilization processes, supporting sustainable management, odor reduction and the valuation of organic compounds.",
+    es: "Compost Ant es una solución tecnológica desarrollada para optimizar los procesos de transformación y estabilización de la materia orgánica, favoreciendo el manejo sostenible, la reducción de olores y la valorización de los compuestos orgánicos.",
   },
   "Detalhes da Formulação": { en: "Formulation Details", es: "Detalles de la Formulación" },
   "Passe o mouse sobre os diferenciais para visualizar o impacto operacional no campo.": {
@@ -428,9 +430,9 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Resultado em Campo": { en: "Field Result", es: "Resultado en Campo" },
   "O impacto visual": { en: "The visual impact", es: "El impacto visual" },
   "e biológico.": { en: "and biological.", es: "y biológico." },
-  "Acompanhe a aplicação prática da tecnologia Pride Compost e visualize a diferença na estrutura, umidade e padronização do composto final.": {
-    en: "Follow the practical application of Pride Compost technology and visualize the difference in structure, moisture and standardization of the final compost.",
-    es: "Acompañe la aplicación práctica de la tecnología Pride Compost y visualice la diferencia en estructura, humedad y estandarización del compuesto final.",
+  "Acompanhe a aplicação prática da tecnologia Compost Ant e visualize a diferença na estrutura, umidade e padronização do composto final.": {
+    en: "Follow the practical application of Compost Ant technology and visualize the difference in structure, moisture and standardization of the final compost.",
+    es: "Acompañe la aplicación práctica de la tecnología Compost Ant y visualice la diferencia en estructura, humedad y estandarización del compuesto final.",
   },
 
   Bovinocultura: { en: "Cattle Farming", es: "Bovinocultura" },
@@ -482,9 +484,9 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Aplicações Recomendadas": { en: "Recommended Applications", es: "Aplicaciones Recomendadas" },
   "Eficiência hoje,": { en: "Efficiency today,", es: "Eficiencia hoy," },
   "Legado amanhã.": { en: "Legacy tomorrow.", es: "Legado mañana." },
-  "Da ambiência ao resíduo, a Pride organiza soluções para operações que precisam unir bem-estar animal, eficiência, segurança e responsabilidade ambiental na mesma rotina.": {
-    en: "From environment to residues, Pride organizes solutions for operations that need animal welfare, efficiency, safety and environmental responsibility in the same routine.",
-    es: "De la ambiencia al residuo, Pride organiza soluciones para operaciones que necesitan unir bienestar animal, eficiencia, seguridad y responsabilidad ambiental en la misma rutina.",
+  "Da ambiência ao resíduo, a Anthars organiza soluções para operações que precisam unir bem-estar animal, eficiência, segurança e responsabilidade ambiental na mesma rotina.": {
+    en: "From environment to residues, Anthars organizes solutions for operations that need animal welfare, efficiency, safety and environmental responsibility in the same routine.",
+    es: "De la ambiencia al residuo, Anthars organiza soluciones para operaciones que necesitan unir bienestar animal, eficiencia, seguridad y responsabilidad ambiental en la misma rutina.",
   },
   "Soluções completas para cada desafio da pecuária moderna.": {
     en: "Complete solutions for every challenge of modern livestock.",
@@ -494,7 +496,7 @@ const TRANSLATIONS: Record<string, Translation> = {
   "Ambiência e Conforto": { en: "Environment and Comfort", es: "Ambiencia y Confort" },
   "Qualidade da Água": { en: "Water Quality", es: "Calidad del Agua" },
 
-  "Sobre a Pride": { en: "About Pride", es: "Acerca de Pride" },
+  "Sobre a Anthars": { en: "About Anthars", es: "Acerca de Anthars" },
   "Plataforma corporativa de tecnologias orgânicas funcionais para agricultura, saneamento, compostagem e pecuária. Eficiência ambiental com visão global.": {
     en: "Corporate platform of functional organic technologies for agriculture, sanitation, composting and livestock. Environmental efficiency with a global vision.",
     es: "Plataforma corporativa de tecnologías orgánicas funcionales para agricultura, saneamiento, compostaje y ganadería. Eficiencia ambiental con visión global.",
@@ -509,21 +511,21 @@ const TRANSLATIONS: Record<string, Translation> = {
   },
   "Seu e-mail": { en: "Your email", es: "Su e-mail" },
   Cadastrar: { en: "Subscribe", es: "Registrar" },
-  "© 2026 Pride Biosolutions. Todos os direitos reservados.": {
-    en: "© 2026 Pride Biosolutions. All rights reserved.",
-    es: "© 2026 Pride Biosolutions. Todos los derechos reservados.",
+  "© 2026 Anthars Biotechnologies. Todos os direitos reservados.": {
+    en: "© 2026 Anthars Biotechnologies. All rights reserved.",
+    es: "© 2026 Anthars Biotechnologies. Todos los derechos reservados.",
   },
   "Tecnologia, Manejo": { en: "Technology, Management", es: "Tecnología, Manejo" },
   "e Sustentabilidade.": { en: "and Sustainability.", es: "y Sostenibilidad." },
-  "A Pride Biosolutions atua como plataforma corporativa de soluções ambientais, conectando tecnologia orgânica funcional, eficiência operacional e produção sustentável.": {
-    en: "Pride Biosolutions operates as a corporate environmental solutions platform, connecting functional organic technology, operational efficiency and sustainable production.",
-    es: "Pride Biosolutions actúa como plataforma corporativa de soluciones ambientales, conectando tecnología orgánica funcional, eficiencia operacional y producción sostenible.",
+  "A Anthars Biotechnologies atua como plataforma corporativa de soluções ambientais, conectando tecnologia orgânica funcional, eficiência operacional e produção sustentável.": {
+    en: "Anthars Biotechnologies operates as a corporate environmental solutions platform, connecting functional organic technology, operational efficiency and sustainable production.",
+    es: "Anthars Biotechnologies actúa como plataforma corporativa de soluciones ambientales, conectando tecnología orgánica funcional, eficiencia operacional y producción sostenible.",
   },
   "Nosso trabalho é transformar matéria orgânica, água, solo e ambientes produtivos em sistemas mais estáveis, eficientes e alinhados às melhores práticas ambientais e corporativas.": {
     en: "Our work is to transform organic matter, water, soil and productive environments into more stable, efficient systems aligned with the best environmental and corporate practices.",
     es: "Nuestro trabajo es transformar materia orgánica, agua, suelo y ambientes productivos en sistemas más estables, eficientes y alineados con las mejores prácticas ambientales y corporativas.",
   },
-  "— Propósito Pride": { en: "— Pride Purpose", es: "— Propósito Pride" },
+  "— Propósito Anthars": { en: "— Anthars Purpose", es: "— Propósito Anthars" },
   "Nossa Abordagem": { en: "Our Approach", es: "Nuestro Enfoque" },
   "Eficiência operacional com responsabilidade ambiental": {
     en: "Operational efficiency with environmental responsibility",
@@ -555,18 +557,18 @@ const TRANSLATIONS: Record<string, Translation> = {
   },
   "Agricultura Sustentável": { en: "Sustainable Agriculture", es: "Agricultura Sostenible" },
   "Pecuária Moderna": { en: "Modern Livestock", es: "Ganadería Moderna" },
-  "O Orgulho de Fazer a Diferença": { en: "The Pride of Making a Difference", es: "El Orgullo de Hacer la Diferencia" },
-  "O nome Pride reflete nossa responsabilidade de entregar tecnologias que conectam produção, ambiente, eficiência econômica e visão global para um futuro mais sustentável.": {
-    en: "The Pride name reflects our responsibility to deliver technologies that connect production, environment, economic efficiency and global vision for a more sustainable future.",
-    es: "El nombre Pride refleja nuestra responsabilidad de entregar tecnologías que conectan producción, ambiente, eficiencia económica y visión global para un futuro más sostenible.",
+  "O Orgulho de Fazer a Diferença": { en: "The Responsibility to Make a Difference", es: "La Responsabilidad de Hacer la Diferencia" },
+  "O nome Anthars reflete nossa responsabilidade de entregar tecnologias que conectam produção, ambiente, eficiência econômica e visão global para um futuro mais sustentável.": {
+    en: "The Anthars name reflects our responsibility to deliver technologies that connect production, environment, economic efficiency and global vision for a more sustainable future.",
+    es: "El nombre Anthars refleja nuestra responsabilidad de entregar tecnologías que conectan producción, ambiente, eficiencia económica y visión global para un futuro más sostenible.",
   },
   "Junte-se à nossa Jornada": { en: "Join Our Journey", es: "Únase a Nuestra Jornada" },
 
   "Fale com nossos": { en: "Talk to our", es: "Hable con nuestros" },
   Especialistas: { en: "Specialists", es: "Especialistas" },
-  "Canal de atendimento direto com a equipe técnica da Pride": {
-    en: "Direct service channel with Pride's technical team",
-    es: "Canal de atención directa con el equipo técnico de Pride",
+  "Canal de atendimento direto com a equipe técnica da Anthars": {
+    en: "Direct service channel with Anthars technical team",
+    es: "Canal de atención directa con el equipo técnico de Anthars",
   },
   "Atendimento Brasil": { en: "Brazil Service", es: "Atención Brasil" },
   "Equipe técnica e comercial": { en: "Technical and commercial team", es: "Equipo técnico y comercial" },
@@ -604,9 +606,9 @@ const TRANSLATIONS: Record<string, Translation> = {
     en: "Briefly describe how we can help your property or business...",
     es: "Describa brevemente cómo podemos ayudar su propiedad o negocio...",
   },
-  "Concordo em receber comunicações da Pride. Seus dados estão seguros conosco e não serão compartilhados com terceiros. Entendo que o tempo de resposta é de até 24h úteis.": {
-    en: "I agree to receive communications from Pride. Your data is safe with us and will not be shared with third parties. I understand the response time is up to 24 business hours.",
-    es: "Acepto recibir comunicaciones de Pride. Sus datos están seguros con nosotros y no serán compartidos con terceros. Entiendo que el tiempo de respuesta es de hasta 24 horas hábiles.",
+  "Concordo em receber comunicações da Anthars. Seus dados estão seguros conosco e não serão compartilhados com terceiros. Entendo que o tempo de resposta é de até 24h úteis.": {
+    en: "I agree to receive communications from Anthars. Your data is safe with us and will not be shared with third parties. I understand the response time is up to 24 business hours.",
+    es: "Acepto recibir comunicaciones de Anthars. Sus datos están seguros con nosotros y no serán compartidos con terceros. Entiendo que el tiempo de respuesta es de hasta 24 horas hábiles.",
   },
   "Enviar Mensagem": { en: "Send Message", es: "Enviar Mensaje" },
 };
@@ -663,7 +665,7 @@ function translateAttributes(language: Language) {
       const current = element.getAttribute(attribute);
       if (!current) return;
 
-      const originalAttribute = `data-pride-original-${attribute}`;
+      const originalAttribute = `data-anthars-original-${attribute}`;
       const storedOriginal = element.getAttribute(originalAttribute);
       const normalizedCurrent = normalizeText(current);
       const original = storedOriginal ?? REVERSE_TRANSLATIONS.get(normalizedCurrent) ?? normalizedCurrent;

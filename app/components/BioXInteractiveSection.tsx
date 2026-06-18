@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export default function PrideInteractiveSection() {
+export default function AntharsInteractiveSection() {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const [activeTopic, setActiveTopic] = useState<any>(null);
@@ -72,7 +72,7 @@ export default function PrideInteractiveSection() {
 
       draw() {
         ctx!.globalAlpha = this.alpha;
-        ctx!.fillStyle = "#06b6d4"; // Pride Cyan
+        ctx!.fillStyle = "#06b6d4"; // Anthars Cyan
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -105,11 +105,11 @@ export default function PrideInteractiveSection() {
     };
   }, [open]);
 
-  // ======= TOPICOS (PRIDE DATA) =======
+  // ======= TOPICOS (ANTHARS DATA) =======
   const topics = [
     {
       title: "Origem Genética",
-      desc: "A Pride nasce para organizar tecnologias orgânicas funcionais em soluções ambientais de alto desempenho.",
+      desc: "A Anthars nasce para organizar tecnologias orgânicas funcionais em soluções ambientais de alto desempenho.",
       img: "/images/cards/raiz.jpg",
       points: [
         "Arquitetura construída por equipe técnica multidisciplinar",

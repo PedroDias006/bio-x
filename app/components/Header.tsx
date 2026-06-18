@@ -63,11 +63,11 @@ export default function Header() {
           >
             <img
               src="/images/logo-aetheris.png"
-              alt="Pride Biosolutions"
+              alt="Anthars Biotechnologies"
               className="w-9 h-9 rounded-md"
             />
             <span className="font-bold text-[#0D746D] text-lg tracking-tight">
-              Pride Biosolutions
+              Anthars Biotechnologies
             </span>
           </motion.div>
 
@@ -128,7 +128,7 @@ export default function Header() {
               exit={{ scale: 0.9, opacity: 0 }}
             >
               <h2 className="text-xl font-bold mb-4 text-center">
-                Entrar na Pride
+                Entrar na Anthars
               </h2>
 
               <input

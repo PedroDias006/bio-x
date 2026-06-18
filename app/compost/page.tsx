@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================================
-   DADOS EXTRAÍDOS DO MATERIAL OFICIAL PRIDE COMPOST
+   DADOS EXTRAÍDOS DO MATERIAL OFICIAL COMPOST ANT
    ========================================================================= */
 
 const FLYER_BENEFITS = [
@@ -75,7 +75,7 @@ const TRANSFORMATION_STEPS = [
   {
     label: "02",
     title: "Estabilizar",
-    desc: "A tecnologia Pride auxilia o equilíbrio, reduz odores e acelera a decomposição homogênea da matéria.",
+    desc: "A tecnologia Anthars auxilia o equilíbrio, reduz odores e acelera a decomposição homogênea da matéria.",
   },
   {
     label: "03",
@@ -87,7 +87,7 @@ const TRANSFORMATION_STEPS = [
 /* =========================================================================
    PÁGINA PRINCIPAL
    ========================================================================= */
-export default function PrideCompostPage() {
+export default function CompostAntPage() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -139,13 +139,13 @@ export default function PrideCompostPage() {
             <div className="mb-8 inline-flex items-center gap-3 border border-[#D4A017]/30 px-5 py-2 rounded-sm bg-white/5 backdrop-blur-md">
               <Recycle size={14} className="text-[#D4A017]" strokeWidth={2} />
               <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#D4A017]">
-                Pride Biosolutions
+                Anthars Biotechnologies
               </span>
             </div>
 
             <h1 className="text-[3rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.05] text-white mb-8">
-              PRIDE <br />
-              <span className="text-[#D4A017]">COMPOST</span>
+              COMPOST <br />
+              <span className="text-[#D4A017]">ANT</span>
             </h1>
 
             <p className="text-lg md:text-xl font-light leading-relaxed text-[#E0DED8] mb-12 border-l-2 border-[#D4A017] pl-6">
@@ -163,7 +163,7 @@ export default function PrideCompostPage() {
             <div className="mt-16 flex justify-center lg:hidden relative z-30">
               <Image
                 src="/images/compost-produto.webp"
-                alt="Bombona Pride Compost"
+                alt="Bombona Compost Ant"
                 width={280}
                 height={380}
                 priority
@@ -200,7 +200,7 @@ export default function PrideCompostPage() {
           >
             <Image
               src="/images/compost-produto.webp"
-              alt="Bombona Pride Compost"
+              alt="Bombona Compost Ant"
               width={380}
               height={480}
               priority
@@ -328,7 +328,7 @@ export default function PrideCompostPage() {
                 <span className="text-[#D4A017] italic">em soluções sustentáveis.</span>
               </h2>
               <p className="text-base font-light leading-relaxed text-[#666666] mb-12 border-l-2 border-[#D4A017] pl-6">
-                A Pride Compost é uma solução tecnológica desenvolvida para otimizar os processos de transformação e estabilização da matéria orgânica, favorecendo o manejo sustentável, a redução de odores e a valorização dos compostos orgânicos.
+                A Compost Ant é uma solução tecnológica desenvolvida para otimizar os processos de transformação e estabilização da matéria orgânica, favorecendo o manejo sustentável, a redução de odores e a valorização dos compostos orgânicos.
               </p>
 
               <Link
@@ -396,7 +396,7 @@ export default function PrideCompostPage() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <h2 className="text-[#D4A017] text-3xl md:text-4xl font-serif font-normal uppercase tracking-widest mb-6">
-              Diferenciais Pride
+              Diferenciais Anthars
             </h2>
             <p className="text-base font-light text-[#888888] max-w-2xl">
               Passe o mouse sobre os diferenciais para visualizar o impacto operacional no campo.
@@ -484,7 +484,7 @@ export default function PrideCompostPage() {
               O impacto visual <br /> <span className="text-[#D4A017] italic">e biológico.</span>
             </h2>
             <p className="text-base font-light text-[#666666] leading-relaxed mb-8">
-              Acompanhe a aplicação prática da tecnologia Pride Compost e visualize a diferença na estrutura, umidade e padronização do composto final.
+              Acompanhe a aplicação prática da tecnologia Compost Ant e visualize a diferença na estrutura, umidade e padronização do composto final.
             </p>
             <Link
               href="/contato"

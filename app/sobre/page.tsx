@@ -4,37 +4,49 @@ import { motion } from "framer-motion";
 import { ArrowRight, Globe2, Leaf, ShieldCheck, Sprout, Tractor } from "lucide-react";
 
 /* =========================================================================
-   DADOS CORPORATIVOS - PRIDE BIOSOLUTIONS
+   DADOS CORPORATIVOS - ANTHARS BIOTECHNOLOGIES
    ========================================================================= */
 const AREAS_ATUACAO = [
   {
-    name: "Pride Agriculture™",
+    name: "Agro Ant™",
     role: "Agricultura Sustentável",
     bio: "Auxiliamos o manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e o uso eficiente de recursos.",
     // OTIMIZAÇÃO: Reduzido w=500, q=50 e forçado auto=format,compress
     image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
-    name: "Pride Sanitation™",
+    name: "Separ Ant™",
     role: "Manejo Ambiental",
     bio: "Apoiamos operações com redução de odores, estabilização orgânica, manejo de resíduos e melhor desempenho ambiental.",
     image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format,compress&q=50&w=500&fit=crop"
   },
   {
-    name: "Pride Compost™",
+    name: "Compost Ant™",
     role: "Compostagem e Resíduos",
     bio: "Transformamos matéria orgânica em compostos mais estáveis, reduzindo odores e valorizando resíduos agroindustriais e urbanos verdes.",
     image: "/images/folders/pride-compost-folder.jpeg"
   },
   {
-    name: "Pride Livestock™",
-    role: "Pecuária Moderna",
-    bio: "Plataforma com Pride Swine™, Pride Poultry™ e Pride Cattle™ para ambiência, resíduos, água e performance ambiental.",
-    image: "/images/gado.jpg"
+    name: "Livestock Ant™",
+    role: "Bovinocultura",
+    bio: "Solução para ambiência, manejo orgânico, conforto ambiental e performance sustentável em operações bovinas modernas.",
+    image: "/images/cattle.webp"
+  },
+  {
+    name: "Poultry Ant™",
+    role: "Avicultura",
+    bio: "Tecnologia para apoio à estabilidade da cama de aviário, controle de odores e melhores condições ambientais nos galpões.",
+    image: "/images/poultry.webp"
+  },
+  {
+    name: "Swine Ant™",
+    role: "Suinocultura",
+    bio: "Linha voltada ao manejo sustentável das instalações, redução de odores, dejetos e eficiência operacional em granjas.",
+    image: "/images/swine.webp"
   },
 ];
 
-const PRIDE_PILLARS = [
+const ANTHARS_PILLARS = [
   { value: "100%", label: "Matérias-Primas Naturais", colSpan: "md:col-span-2 lg:col-span-1" },
   { value: "06", label: "Linhas de Solução", colSpan: "md:col-span-1 lg:col-span-1" },
   { value: "Eco", label: "Equilíbrio Ambiental", colSpan: "md:col-span-1 lg:col-span-1" },
@@ -58,7 +70,7 @@ const staggerContainer: any = {
   }
 };
 
-export default function PrideAboutPage() {
+export default function AntharsAboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden selection:bg-slate-900 selection:text-white">
       
@@ -68,7 +80,7 @@ export default function PrideAboutPage() {
           {/* OTIMIZAÇÃO: fetchPriority high para carregar rápido, w=1600 e forte compressão */}
           <img 
             src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format,compress&q=60&w=1600&fit=crop" 
-            alt="Laboratório e Campo Pride BioSolutions" 
+            alt="Laboratório e Campo Anthars Biotechnologies" 
             fetchPriority="high"
             decoding="async"
             className="w-full h-full object-cover object-center opacity-70"
@@ -84,7 +96,7 @@ export default function PrideAboutPage() {
             className="max-w-4xl"
           >
             <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-950 text-[10px] font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
-              <Globe2 size={14} /> Pride Biosolutions
+              <Globe2 size={14} /> Anthars Biotechnologies
             </motion.div>
             
             <motion.div variants={fadeInUp}>
@@ -98,14 +110,14 @@ export default function PrideAboutPage() {
 
             <motion.div variants={fadeInUp}>
               <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed max-w-2xl">
-                A <strong className="font-bold text-slate-950">Pride Biosolutions</strong> atua como plataforma corporativa de soluções ambientais, conectando tecnologia orgânica funcional, eficiência operacional e produção sustentável.
+                A <strong className="font-bold text-slate-950">Anthars Biotechnologies</strong> atua como plataforma corporativa de soluções ambientais, conectando tecnologia orgânica funcional, eficiência operacional e produção sustentável.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. O MANIFESTO PRIDE */}
+      {/* 2. O MANIFESTO ANTHARS */}
       <section className="py-24 bg-slate-50 relative z-10">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.div 
@@ -120,7 +132,7 @@ export default function PrideAboutPage() {
               Nosso trabalho é transformar matéria orgânica, água, solo e ambientes produtivos em sistemas mais estáveis, eficientes e alinhados às melhores práticas ambientais e corporativas.
             </h2>
             <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em]">
-              — Propósito Pride
+              — Propósito Anthars
             </p>
           </motion.div>
         </div>
@@ -141,7 +153,7 @@ export default function PrideAboutPage() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {PRIDE_PILLARS.map((stat, i) => (
+            {ANTHARS_PILLARS.map((stat, i) => (
               <motion.div 
                 key={i}
                 variants={fadeInUp}
@@ -252,7 +264,7 @@ export default function PrideAboutPage() {
               O Orgulho de Fazer a Diferença
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-slate-500 mb-10 text-lg leading-relaxed font-light">
-              O nome <strong>Pride</strong> reflete nossa responsabilidade de entregar tecnologias que conectam produção, ambiente, eficiência econômica e visão global para um futuro mais sustentável.
+              O nome <strong>Anthars</strong> reflete nossa responsabilidade de entregar tecnologias que conectam produção, ambiente, eficiência econômica e visão global para um futuro mais sustentável.
             </motion.p>
             <motion.div variants={fadeInUp}>
               <a href="/contato" className="inline-flex items-center justify-center gap-3 bg-slate-950 text-white hover:bg-slate-800 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all shadow-lg hover:-translate-y-1">

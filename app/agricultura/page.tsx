@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================================
-   DADOS EXTRAÍDOS DO MATERIAL OFICIAL PRIDE
+   DADOS EXTRAÍDOS DO MATERIAL OFICIAL AGRO ANT
    ========================================================================= */
 
 const FLYER_BENEFITS = [
@@ -72,7 +72,7 @@ const PROOF_CARDS = [
 /* =========================================================================
    PÁGINA PRINCIPAL
    ========================================================================= */
-export default function PrideAgriculturePage() {
+export default function AgroAntPage() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   
@@ -113,7 +113,7 @@ export default function PrideAgriculturePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/colheita-batata.jpg"
-            alt="Colheita Pride Agriculture"
+            alt="Colheita Agro Ant"
             fill
             priority
             quality={85}
@@ -136,13 +136,13 @@ export default function PrideAgriculturePage() {
               <div className="mb-8 inline-flex items-center gap-3">
                 <div className="w-8 h-px bg-[#D4AF37]" />
                 <span className="text-[12px] font-sans font-semibold uppercase tracking-[0.4em] text-[#D4AF37]">
-                  Pride Biosolutions
+                  Anthars Biotechnologies
                 </span>
               </div>
               
               <h1 className="text-[2.75rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal uppercase tracking-normal sm:tracking-wide leading-[1.08] sm:leading-[1.1] text-white mb-8 drop-shadow-lg">
-                PRIDE <br />
-                <span className="text-[#D4AF37]">AGRICULTURE</span>
+                AGRO <br />
+                <span className="text-[#D4AF37]">ANT</span>
               </h1>
               
               <p className="max-w-md text-xl md:text-2xl font-light leading-relaxed text-[#E0DED8]">
@@ -159,7 +159,7 @@ export default function PrideAgriculturePage() {
             >
               <Image
                 src="/images/agricultura.png"
-                alt="Bombona Pride Agriculture"
+                alt="Bombona Agro Ant"
                 width={450}
                 height={550}
                 priority
@@ -216,7 +216,7 @@ export default function PrideAgriculturePage() {
                 <span className="text-[#D4AF37] italic">mais produtiva e sustentável.</span>
               </h2>
               <p className="text-base font-light leading-relaxed text-[#666666] mb-12 border-l-2 border-[#D4AF37] pl-6">
-                A Pride Agriculture é uma solução tecnológica desenvolvida para auxiliar no manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e maior eficiência no uso dos recursos.
+                A Agro Ant é uma solução tecnológica desenvolvida para auxiliar no manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e maior eficiência no uso dos recursos.
               </p>
 
               <Link
@@ -235,7 +235,7 @@ export default function PrideAgriculturePage() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1200"
-                alt="Plantação verde Pride"
+                alt="Plantação verde Agro Ant"
                 fill
                 quality={85}
                 className="object-cover"
@@ -273,7 +273,7 @@ export default function PrideAgriculturePage() {
       </section>
 
       {/* ======================================================
-          3. DIFERENCIAIS PRIDE (GRÁFICO CRESCENTE INTERATIVO)
+          3. DIFERENCIAIS ANTHARS (GRÁFICO CRESCENTE INTERATIVO)
       ====================================================== */}
       <section className="py-24 bg-[#FBFBF9] px-6">
         <div className="max-w-7xl mx-auto">
@@ -288,7 +288,7 @@ export default function PrideAgriculturePage() {
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37] opacity-5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3" />
 
             <h2 className="text-[#D4AF37] text-2xl md:text-3xl font-serif font-normal uppercase tracking-widest mb-16 border-b border-white/10 pb-6 inline-block relative z-10">
-              Diferenciais Pride
+              Diferenciais Anthars
             </h2>
 
             {/* Container do Gráfico */}
@@ -354,7 +354,7 @@ export default function PrideAgriculturePage() {
               A força da raiz ao <span className="italic text-[#D4AF37]">fruto.</span>
             </h2>
             <p className="text-lg font-light leading-relaxed text-[#888888]">
-              Registros visuais do desenvolvimento vegetal, confirmando a eficiência estrutural entregue pelas soluções Pride no campo.
+              Registros visuais do desenvolvimento vegetal, confirmando a eficiência estrutural entregue pelas soluções Anthars no campo.
             </p>
           </div>
 
@@ -404,7 +404,7 @@ export default function PrideAgriculturePage() {
               Quem aplica no campo.
             </h2>
             <p className="text-lg font-light text-[#666666] leading-relaxed">
-              Acompanhe a experiência real com a tecnologia Pride Biosolutions na prática.
+              Acompanhe a experiência real com a tecnologia Anthars Biotechnologies na prática.
             </p>
           </div>
 

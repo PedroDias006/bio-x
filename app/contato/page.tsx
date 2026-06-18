@@ -7,7 +7,7 @@ export default function ContatoPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Lógica de envio aqui
-    console.log("Mensagem enviada para a equipe Pride.");
+    console.log("Mensagem enviada para a equipe Anthars.");
   };
 
   return (
@@ -25,7 +25,7 @@ export default function ContatoPage() {
             </span>
           </h1>
           <p className="text-slate-500 font-mono text-xs uppercase tracking-widest">
-            Canal de atendimento direto com a equipe técnica da Pride
+            Canal de atendimento direto com a equipe técnica da Anthars
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function ContatoPage() {
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Equipe técnica e comercial</p>
               <p className="text-sm text-slate-600 leading-relaxed mb-1">Agricultura, saneamento, compostagem e pecuária</p>
               <p className="text-sm text-slate-600 leading-relaxed mb-3">Atendimento consultivo para operações em todo o Brasil.</p>
-              <p className="text-[10px] font-mono text-slate-400">@pridebiosolutions</p>
+              <p className="text-[10px] font-mono text-slate-400">@antharsbiotechnologies</p>
             </motion.div>
 
             {/* CARD 2: CANAIS DE ATENDIMENTO */}
@@ -70,8 +70,8 @@ export default function ContatoPage() {
                 <a href="https://wa.me/5531995235778" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
                   WhatsApp (31) 99523-5778
                 </a>
-                <a href="mailto:vendas@pridebiosolutions.com.br" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
-                  <Mail size={16} /> vendas@pridebiosolutions.com.br
+                <a href="mailto:vendas@antharsbiotechnologies.com.br" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  <Mail size={16} /> vendas@antharsbiotechnologies.com.br
                 </a>
               </div>
             </motion.div>
@@ -161,12 +161,12 @@ export default function ContatoPage() {
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all appearance-none cursor-pointer"
                 >
                   <option value="" disabled>Selecione um Produto ou Setor...</option>
-                  <option value="agriculture">Pride Agriculture™</option>
-                  <option value="sanitation">Pride Sanitation™</option>
-                  <option value="compost">Pride Compost™</option>
-                  <option value="swine">Pride Swine™</option>
-                  <option value="poultry">Pride Poultry™</option>
-                  <option value="cattle">Pride Cattle™</option>
+                  <option value="agriculture">Agro Ant™</option>
+                  <option value="sanitation">Separ Ant™</option>
+                  <option value="compost">Compost Ant™</option>
+                  <option value="swine">Swine Ant™</option>
+                  <option value="poultry">Poultry Ant™</option>
+                  <option value="cattle">Livestock Ant™</option>
                   <option value="parceiro">Seja um Distribuidor / Revenda</option>
                   <option value="outros">Outros / Dúvidas Gerais</option>
                 </select>
@@ -189,7 +189,7 @@ export default function ContatoPage() {
                   className="mt-1 h-4 w-4 rounded border-gray-300 text-slate-900 focus:ring-slate-900 cursor-pointer"
                 />
                 <label htmlFor="termos" className="text-xs text-slate-500 leading-relaxed cursor-pointer">
-                  Concordo em receber comunicações da Pride. Seus dados estão seguros conosco e não serão compartilhados com terceiros. Entendo que o tempo de resposta é de até 24h úteis.
+                  Concordo em receber comunicações da Anthars. Seus dados estão seguros conosco e não serão compartilhados com terceiros. Entendo que o tempo de resposta é de até 24h úteis.
                 </label>
               </div>
 

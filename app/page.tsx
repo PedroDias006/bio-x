@@ -26,59 +26,87 @@ const AppleCarouselPro = dynamic(() => import("@/app/components/AppleCarouselPro
 const NOVIDADES_CARDS = [
   {
     id: 1,
-    tag: "PRIDE AGRICULTURE™",
+    tag: "AGRO ANT™",
     title: "Soluções inteligentes para uma agricultura produtiva e sustentável.",
     img: "/images/folders/agricultura1.webp",
   },
   {
     id: 2,
-    tag: "PRIDE COMPOST™",
+    tag: "COMPOST ANT™",
     title: "Tecnologia que transforma matéria orgânica em recursos de alto valor.",
     img: "/images/folders/espe-pride.png",
   },
   {
     id: 3,
-    tag: "PRIDE SANITATION™",
+    tag: "SEPAR ANT™",
     title: "Manejo ambiental avançado para operações industriais.",
     subtitle: "Redução de odores, estabilização orgânica e eficiência operacional.",
     img: "/images/sanitation-hero-bg.webp",
   },
   {
     id: 4,
-    tag: "PRIDE LIVESTOCK™",
+    tag: "LIVESTOCK ANT™",
     title: "Performance ambiental para a pecuária moderna.",
-    subtitle: "A plataforma que une Swine, Poultry e Cattle em uma só inteligência.",
+    subtitle: "Ambiência, resíduos e performance operacional para bovinocultura.",
     img: "/images/livestock-hero-bg.webp",
+  },
+  {
+    id: 5,
+    tag: "POULTRY ANT™",
+    title: "Ambiência em equilíbrio para aviários modernos.",
+    subtitle: "Apoio ao controle de odores, cama de aviário e conforto ambiental.",
+    img: "/images/poultry-showcase.webp",
+  },
+  {
+    id: 6,
+    tag: "SWINE ANT™",
+    title: "Inteligência ambiental para granjas mais eficientes.",
+    subtitle: "Manejo de instalações, dejetos e redução de odores na suinocultura.",
+    img: "/images/swine-showcase.webp",
   },
 ];
 
 const SECTORS = [
   {
-    title: "Pride Agriculture™",
+    title: "Agro Ant™",
     subtitle: "Manejo do solo, culturas e recursos para uma agricultura mais produtiva.",
     link: "/agricultura",
     image: "/images/pride-agriculturebg.webp",
     logo: "/images/icone-agri.png",
   },
   {
-    title: "Pride Sanitation™",
+    title: "Separ Ant™",
     subtitle: "Manejo ambiental para efluentes, odores, resíduos e operações sustentáveis.",
     link: "/agua-meioambiente",
     image: "/images/sanitationbg.webp",
     logo: "/images/icone-sanea.png",
   },
   {
-    title: "Pride Compost™",
+    title: "Compost Ant™",
     subtitle: "Transformação orgânica inteligente para compostos mais estáveis e valorizados.",
     link: "/compost",
     image: "/images/compostbg.webp",
     logo: "/images/icone-agri.png",
   },
   {
-    title: "Pride Livestock™",
-    subtitle: "Plataforma de performance e ambiência para Swine, Poultry e Cattle.",
-    link: "/saude-animal",
+    title: "Livestock Ant™",
+    subtitle: "Performance ambiental e ambiência para bovinocultura moderna.",
+    link: "/livestock-ant",
     image: "/images/livestockbg.webp",
+    logo: "/images/icone-saude.png",
+  },
+  {
+    title: "Poultry Ant™",
+    subtitle: "Ambiência, cama de aviário e estabilidade ambiental para aves.",
+    link: "/poultry-ant",
+    image: "/images/poultry.webp",
+    logo: "/images/icone-saude.png",
+  },
+  {
+    title: "Swine Ant™",
+    subtitle: "Manejo sustentável de granjas, instalações, dejetos e odores.",
+    link: "/swine-ant",
+    image: "/images/swine.webp",
     logo: "/images/icone-saude.png",
   },
 ];
@@ -281,129 +309,137 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Agriculture™
+              <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Agro Ant™
             </div>
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Sanitation™
+              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Separ Ant™
             </div>
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <Recycle className="w-4 h-4 md:w-6 md:h-6" /> Compost™
+              <Recycle className="w-4 h-4 md:w-6 md:h-6" /> Compost Ant™
             </div>
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
-              <ShieldCheck className="w-4 h-4 md:w-6 md:h-6" /> Livestock™
+              <ShieldCheck className="w-4 h-4 md:w-6 md:h-6" /> Livestock Ant™
+            </div>
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Wind className="w-4 h-4 md:w-6 md:h-6" /> Poultry Ant™
+            </div>
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Headset className="w-4 h-4 md:w-6 md:h-6" /> Swine Ant™
             </div>
           </div>
         </div>
       </section>
 
-      {/* DIVISÕES (AGORA UM GRID 2x2 LUXUOSO) */}
-      <section
-        ref={divisoesRef}
-        className="py-24 bg-white relative z-10 border-t border-black/[0.04]"
+     {/* DIVISÕES - CARDS MENORES E RESPONSIVOS */}
+<section
+  ref={divisoesRef}
+  className="py-14 md:py-18 bg-white relative z-10 border-t border-black/[0.04]"
+>
+  <div className="max-w-6xl mx-auto px-5 md:px-6">
+    <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-12 gap-5">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl"
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl"
-            >
-              <h2 className="text-[34px] md:text-[52px] leading-[1.02] tracking-[-0.05em] font-semibold text-slate-900 mb-4">
-                Linhas Pride.{" "}
-                <span className="text-slate-500 font-medium">
-                  Soluções para cada desafio.
-                </span>
-              </h2>
-              <p className="text-[17px] md:text-[19px] text-slate-500 leading-relaxed font-normal max-w-2xl">
-                Quatro frentes tecnológicas conectadas por uma mesma lógica:
-                compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.
-              </p>
-            </motion.div>
+        <h2 className="text-[30px] md:text-[44px] leading-[1.04] tracking-[-0.045em] font-semibold text-slate-900 mb-3">
+          Linhas Anthars.{" "}
+          <span className="text-slate-500 font-medium">
+            Soluções para cada desafio.
+          </span>
+        </h2>
 
-            <Link
-              href="/sobre"
-              className="hidden md:flex items-center gap-2 text-emerald-600 font-medium hover:text-emerald-700 transition-colors tracking-wide text-[15px] pb-2 group"
-            >
-              Conheça a Pride{" "}
+        <p className="text-[15px] md:text-[17px] text-slate-500 leading-relaxed font-normal max-w-2xl">
+          Seis frentes tecnológicas conectadas por uma mesma lógica:
+          compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.
+        </p>
+      </motion.div>
+
+      <Link
+        href="/sobre"
+        className="hidden md:flex items-center gap-2 text-emerald-600 font-medium hover:text-emerald-700 transition-colors tracking-wide text-[14px] pb-1 group"
+      >
+        Conheça a Anthars{" "}
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </Link>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+      {SECTORS.map((sector, index) => (
+        <Link
+          key={index}
+          href={sector.link}
+          className="
+            group relative flex flex-col overflow-hidden rounded-[24px]
+            h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px]
+            bg-[#F5F5F7]
+            transition-all duration-500
+            shadow-[0_4px_18px_rgba(0,0,0,0.035)]
+            hover:shadow-[0_16px_34px_rgba(0,0,0,0.08)]
+            border border-black/[0.03]
+          "
+        >
+          <div className="relative z-20 px-6 pt-6 md:px-7 md:pt-7 flex-shrink-0">
+            <div className="mb-4 inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-full bg-white shadow-[0_7px_20px_rgba(0,0,0,0.07)] border border-black/[0.05]">
+              <Image
+                src={sector.logo}
+                alt={`Ícone ${sector.title}`}
+                width={30}
+                height={30}
+                className="object-contain brightness-0 opacity-90"
+              />
+            </div>
+
+            <h3 className="text-[23px] md:text-[25px] font-semibold tracking-[-0.02em] leading-tight text-neutral-900 mb-2">
+              {sector.title}
+            </h3>
+
+            <p className="text-[13px] md:text-[14px] leading-[1.45] text-neutral-500 max-w-[92%]">
+              {sector.subtitle}
+            </p>
+
+            <div className="mt-4 flex items-center gap-1.5 text-[13px] md:text-[14px] font-medium text-emerald-600 group-hover:text-emerald-700 transition-colors">
+              Explorar detalhes{" "}
               <ArrowRight
-                size={16}
+                size={15}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </Link>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-            {SECTORS.map((sector, index) => (
-              <Link
-                key={index}
-                href={sector.link}
-                className="
-                  group relative flex flex-col overflow-hidden rounded-[32px]
-                  h-[480px] md:h-[560px] bg-[#F5F5F7]
-                  transition-all duration-500
-                  shadow-[0_4px_20px_rgba(0,0,0,0.03)]
-                  hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]
-                  border border-black/[0.03]
-                "
-              >
-                <div className="relative z-20 px-8 pt-10 md:px-10 md:pt-12 flex-shrink-0">
-                  <div className="mb-6 inline-flex items-center justify-center w-[64px] h-[64px] rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.07)] border border-black/[0.05]">
-                    <Image
-                      src={sector.logo}
-                      alt={`Ícone ${sector.title}`}
-                      width={40}
-                      height={40}
-                      className="object-contain brightness-0 opacity-90"
-                    />
-                  </div>
-
-                  <h3 className="text-[28px] md:text-[32px] font-semibold tracking-[-0.02em] leading-tight text-neutral-900 mb-3">
-                    {sector.title}
-                  </h3>
-
-                  <p className="text-[15px] md:text-[16px] leading-[1.5] text-neutral-500 max-w-[90%]">
-                    {sector.subtitle}
-                  </p>
-
-                  <div className="mt-6 flex items-center gap-1.5 text-[15px] font-medium text-emerald-600 group-hover:text-emerald-700 transition-colors">
-                    Explorar detalhes{" "}
-                    <ArrowRight
-                      size={18}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </div>
-                </div>
-
-                <div className="relative flex-grow mt-8 overflow-hidden rounded-b-[32px]">
-                  <Image
-                    src={sector.image}
-                    alt={sector.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-                </div>
-              </Link>
-            ))}
+          <div className="relative flex-1 mt-5 overflow-hidden rounded-b-[24px] min-h-[120px]">
+            <Image
+              src={sector.image}
+              alt={sector.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
           </div>
+        </Link>
+      ))}
+    </div>
 
-          <div className="mt-12 md:hidden flex justify-center">
-            <Link
-              href="/sobre"
-              className="inline-flex items-center gap-2 text-emerald-600 font-medium transition-colors text-[15px] group"
-            >
-              Conheça a Pride{" "}
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="mt-9 md:hidden flex justify-center">
+      <Link
+        href="/sobre"
+        className="inline-flex items-center gap-2 text-emerald-600 font-medium transition-colors text-[15px] group"
+      >
+        Conheça a Anthars{" "}
+        <ArrowRight
+          size={16}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* MAPA 3D BRANCO */}
       <section className="py-24 bg-[#F5F5F7] relative z-10 border-t border-black/[0.04]">
@@ -653,7 +689,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PLATAFORMA PRIDE */}
+      {/* PLATAFORMA ANTHARS */}
       <section className="py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -666,7 +702,7 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-              Pride Technology Platform
+              Anthars Technology Platform
             </p>
               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
               Transformando <span className="text-emerald-500">Ambientes</span>,
@@ -742,7 +778,7 @@ export default function Home() {
 
           <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <p className="text-slate-300 text-lg md:text-xl font-medium">
-              Fale com um especialista Pride e encontre a linha ideal para sua operação.
+              Fale com um especialista Anthars e encontre a linha ideal para sua operação.
             </p>
             <Link
               href="/contato"
