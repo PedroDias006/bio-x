@@ -25,8 +25,8 @@ const MAIN_NAV = [
 ];
 
 const SANEAMENTO_NAV = [
-  { name: "Saneante™", href: "/separante" },
-  { name: "Separante™", href: "/agua-meioambiente" },
+  { name: "SANE ANT™", href: "/separante" },
+  { name: "SEPAR ANT™", href: "/agua-meioambiente" },
 ];
 
 const ANIMAL_NAV = [
