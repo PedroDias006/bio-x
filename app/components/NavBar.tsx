@@ -4,19 +4,35 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type Dispatch,
+  type RefObject,
+  type SetStateAction,
+} from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
+
+type NavItem = {
+  name: string;
+  href: string;
+};
 
 const MAIN_NAV = [
   { name: "Agricultura™", href: "/agricultura" },
-  { name: "Saneamento™", href: "/agua-meioambiente" },
   { name: "Compostagem™", href: "/compost" },
 ];
 
+const SANEAMENTO_NAV = [
+  { name: "Saneante™", href: "/separante" },
+  { name: "Separante™", href: "/agua-meioambiente" },
+];
+
 const ANIMAL_NAV = [
-  { name: "Boi™", href: "/livestock-ant" },
-  { name: "Porco™", href: "/swine-ant" },
-  { name: "Galinha™", href: "/poultry-ant" },
+  { name: "Gado™", href: "/livestock-ant" },
+  { name: "Suínos™", href: "/swine-ant" },
+  { name: "Frangos™", href: "/poultry-ant" },
 ];
 
 const END_NAV = [{ name: "Sobre", href: "/sobre" }];
@@ -24,9 +40,14 @@ const END_NAV = [{ name: "Sobre", href: "/sobre" }];
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const [saneamentoOpen, setSaneamentoOpen] = useState(false);
   const [animalOpen, setAnimalOpen] = useState(false);
+
+  const [mobileSaneamentoOpen, setMobileSaneamentoOpen] = useState(false);
   const [mobileAnimalOpen, setMobileAnimalOpen] = useState(false);
 
+  const saneamentoRef = useRef<HTMLDivElement | null>(null);
   const animalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -39,6 +60,13 @@ export default function NavBar() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (
+        saneamentoRef.current &&
+        !saneamentoRef.current.contains(event.target as Node)
+      ) {
+        setSaneamentoOpen(false);
+      }
+
       if (
         animalRef.current &&
         !animalRef.current.contains(event.target as Node)
@@ -53,18 +81,12 @@ export default function NavBar() {
 
   useEffect(() => {
     if (!open) {
+      setMobileSaneamentoOpen(false);
       setMobileAnimalOpen(false);
     }
   }, [open]);
 
-  const DesktopNavLink = ({
-    item,
-  }: {
-    item: {
-      name: string;
-      href: string;
-    };
-  }) => (
+  const DesktopNavLink = ({ item }: { item: NavItem }) => (
     <motion.div
       key={item.name}
       whileHover={{
@@ -115,6 +137,236 @@ export default function NavBar() {
     </motion.div>
   );
 
+  const DesktopDropdown = ({
+    label,
+    items,
+    isOpen,
+    setIsOpen,
+    closeOther,
+    dropdownRef,
+    ariaLabel,
+  }: {
+    label: string;
+    items: NavItem[];
+    isOpen: boolean;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    closeOther: () => void;
+    dropdownRef: RefObject<HTMLDivElement | null>;
+    ariaLabel: string;
+  }) => (
+    <div
+      ref={dropdownRef}
+      className="relative"
+      onMouseEnter={() => {
+        setIsOpen(true);
+        closeOther();
+      }}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <motion.button
+        type="button"
+        whileHover={{
+          y: -2,
+          scale: 1.01,
+        }}
+        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+          closeOther();
+        }}
+        className="
+          group relative flex items-center justify-center gap-1.5
+          rounded-full px-3.5 py-2.5
+          text-[15px] font-semibold xl:text-[16px]
+          text-neutral-800
+          outline-none focus:outline-none
+          focus-visible:outline-none
+          focus-visible:ring-0
+          active:bg-transparent
+          transition-all duration-300
+          select-none
+        "
+        style={{ WebkitTapHighlightColor: "transparent" }}
+        aria-expanded={isOpen}
+        aria-label={ariaLabel}
+      >
+        <span
+          className="
+            pointer-events-none absolute inset-0 rounded-full
+            border border-transparent
+            bg-transparent
+            transition-all duration-300
+            group-hover:border-black/[0.08]
+            group-hover:shadow-[0_10px_24px_rgba(0,0,0,0.08)]
+          "
+        />
+
+        <span
+          className="
+            pointer-events-none absolute left-1/2 bottom-[7px] h-[1.5px] w-0
+            -translate-x-1/2 rounded-full bg-black
+            transition-all duration-300
+            group-hover:w-[52%]
+          "
+        />
+
+        <span className="relative z-10 text-neutral-800">{label}</span>
+
+        <ChevronDown
+          size={15}
+          className={`
+            relative z-10 block shrink-0 text-neutral-800 transition-transform duration-300
+            ${isOpen ? "rotate-180" : "rotate-0"}
+          `}
+        />
+      </motion.button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="
+              absolute left-1/2 top-[calc(100%-2px)] z-[1000] w-[190px]
+              -translate-x-1/2 pt-3
+            "
+          >
+            <div
+              className="
+                rounded-[22px]
+                border border-black/[0.07]
+                bg-white p-2
+                shadow-[0_20px_45px_rgba(0,0,0,0.14),0_6px_16px_rgba(0,0,0,0.08)]
+              "
+            >
+              {items.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="
+                    group/item flex items-center justify-between
+                    rounded-2xl px-4 py-3
+                    text-[15px] font-semibold text-neutral-800
+                    transition-all duration-300
+                    hover:bg-neutral-100
+                    outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                  "
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  <span>{item.name}</span>
+                  <ArrowRight
+                    size={14}
+                    className="opacity-0 transition-all duration-300 group-hover/item:translate-x-1 group-hover/item:opacity-70"
+                  />
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+
+  const MobileDropdown = ({
+    label,
+    items,
+    isOpen,
+    setIsOpen,
+    closeOther,
+    delay,
+  }: {
+    label: string;
+    items: NavItem[];
+    isOpen: boolean;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    closeOther: () => void;
+    delay: number;
+  }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay }}
+    >
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+          closeOther();
+        }}
+        className="
+          flex w-full items-center justify-between
+          rounded-2xl px-4 py-4
+          text-left text-[17px] font-semibold text-neutral-900
+          transition-all duration-300
+          hover:bg-neutral-100
+          outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+        "
+        style={{ WebkitTapHighlightColor: "transparent" }}
+        aria-expanded={isOpen}
+      >
+        <span>{label}</span>
+        <ChevronDown
+          size={19}
+          className={`
+            transition-transform duration-300
+            ${isOpen ? "rotate-180" : "rotate-0"}
+          `}
+        />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              duration: 0.24,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="overflow-hidden"
+          >
+            <div className="ml-3 mt-1 grid gap-1 border-l border-black/[0.08] pl-3">
+              {items.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.035 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => {
+                      setOpen(false);
+                      setIsOpen(false);
+                    }}
+                    className="
+                      flex items-center justify-between
+                      rounded-2xl px-4 py-3
+                      text-[16px] font-semibold text-neutral-800
+                      transition-all duration-300
+                      hover:bg-neutral-100
+                      outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                    "
+                    style={{
+                      WebkitTapHighlightColor: "transparent",
+                    }}
+                  >
+                    {item.name}
+                    <ArrowRight size={15} className="opacity-60" />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+
   return (
     <header className="fixed top-[max(16px,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[999] w-[96%] max-w-[1360px]">
       <motion.div
@@ -135,9 +387,7 @@ export default function NavBar() {
         <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-black/12 to-transparent" />
         <div className="pointer-events-none absolute inset-x-20 bottom-0 h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
 
-        {/* CONTAINER DO MENU SUPERIOR */}
         <div className="relative flex items-center justify-between px-4 md:px-8 lg:px-10 h-[78px] z-50 rounded-[36px]">
-          {/* LADO ESQUERDO: LOGO ALINHADA À ESQUERDA */}
           <div className="relative h-full flex w-[190px] shrink-0 items-center sm:w-[230px] md:w-[255px] xl:w-[270px]">
             <Link
               href="/"
@@ -160,126 +410,36 @@ export default function NavBar() {
             </Link>
           </div>
 
-          {/* MEIO: LINKS DESKTOP */}
           <nav className="hidden xl:flex items-center gap-1 ml-auto mr-3">
-            {MAIN_NAV.map((item) => (
-              <DesktopNavLink key={item.name} item={item} />
-            ))}
+            <DesktopNavLink item={MAIN_NAV[0]} />
 
-            {/* DROPDOWN LINHA ANIMAL DESKTOP */}
-            <div
-              ref={animalRef}
-              className="relative"
-              onMouseEnter={() => setAnimalOpen(true)}
-              onMouseLeave={() => setAnimalOpen(false)}
-            >
-              <motion.button
-                type="button"
-                whileHover={{
-                  y: -2,
-                  scale: 1.01,
-                }}
-                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => setAnimalOpen((prev) => !prev)}
-                className="
-                  group relative flex items-center justify-center gap-1.5
-                  rounded-full px-3.5 py-2.5
-                  text-[15px] font-semibold xl:text-[16px]
-                  text-neutral-800
-                  outline-none focus:outline-none
-                  focus-visible:outline-none
-                  focus-visible:ring-0
-                  active:bg-transparent
-                  transition-all duration-300
-                  select-none
-                "
-                style={{ WebkitTapHighlightColor: "transparent" }}
-                aria-expanded={animalOpen}
-                aria-label="Abrir Linha Animal"
-              >
-                <span
-                  className="
-                    pointer-events-none absolute inset-0 rounded-full
-                    border border-transparent
-                    bg-transparent
-                    transition-all duration-300
-                    group-hover:border-black/[0.08]
-                    group-hover:shadow-[0_10px_24px_rgba(0,0,0,0.08)]
-                  "
-                />
+            <DesktopDropdown
+              label="Saneamento™"
+              items={SANEAMENTO_NAV}
+              isOpen={saneamentoOpen}
+              setIsOpen={setSaneamentoOpen}
+              closeOther={() => setAnimalOpen(false)}
+              dropdownRef={saneamentoRef}
+              ariaLabel="Abrir Saneamento"
+            />
 
-                <span
-                  className="
-                    pointer-events-none absolute left-1/2 bottom-[7px] h-[1.5px] w-0
-                    -translate-x-1/2 rounded-full bg-black
-                    transition-all duration-300
-                    group-hover:w-[52%]
-                  "
-                />
+            <DesktopNavLink item={MAIN_NAV[1]} />
 
-                <span className="relative z-10 text-neutral-800">
-                  Linha Animal
-                </span>
-
-                <ChevronDown
-                  size={15}
-                  className={`
-                    relative z-10 text-neutral-800 transition-transform duration-300
-                    ${animalOpen ? "rotate-180" : "rotate-0"}
-                  `}
-                />
-              </motion.button>
-
-              <AnimatePresence>
-                {animalOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="
-                      absolute left-1/2 top-full z-[1000] mt-3 w-[190px]
-                      -translate-x-1/2 rounded-[22px]
-                      border border-black/[0.07]
-                      bg-white p-2
-                      shadow-[0_20px_45px_rgba(0,0,0,0.14),0_6px_16px_rgba(0,0,0,0.08)]
-                    "
-                  >
-                    <div className="absolute -top-3 left-0 h-3 w-full" />
-
-                    {ANIMAL_NAV.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setAnimalOpen(false)}
-                        className="
-                          group/item flex items-center justify-between
-                          rounded-2xl px-4 py-3
-                          text-[15px] font-semibold text-neutral-800
-                          transition-all duration-300
-                          hover:bg-neutral-100
-                          outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
-                        "
-                        style={{ WebkitTapHighlightColor: "transparent" }}
-                      >
-                        <span>{item.name}</span>
-                        <ArrowRight
-                          size={14}
-                          className="opacity-0 transition-all duration-300 group-hover/item:translate-x-1 group-hover/item:opacity-70"
-                        />
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <DesktopDropdown
+              label="Linha Animal"
+              items={ANIMAL_NAV}
+              isOpen={animalOpen}
+              setIsOpen={setAnimalOpen}
+              closeOther={() => setSaneamentoOpen(false)}
+              dropdownRef={animalRef}
+              ariaLabel="Abrir Linha Animal"
+            />
 
             {END_NAV.map((item) => (
               <DesktopNavLink key={item.name} item={item} />
             ))}
           </nav>
 
-          {/* LADO DIREITO: BOTÕES DESKTOP */}
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher className="shrink-0" />
 
@@ -314,7 +474,6 @@ export default function NavBar() {
             </motion.div>
           </div>
 
-          {/* BOTÃO MENU MOBILE */}
           <motion.button
             whileTap={{ scale: 0.94 }}
             className="relative z-50 xl:hidden flex items-center justify-center rounded-full border border-black/8 bg-white p-2.5 text-neutral-900 shadow-sm outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0"
@@ -326,7 +485,6 @@ export default function NavBar() {
           </motion.button>
         </div>
 
-        {/* MENU ABERTO MOBILE / TABLET */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -338,109 +496,67 @@ export default function NavBar() {
             >
               <div className="px-4 pb-4 pt-3">
                 <div className="rounded-[28px] bg-white p-2">
-                  {MAIN_NAV.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.04 }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="
-                          flex items-center justify-between
-                          rounded-2xl px-4 py-4
-                          text-[17px] font-semibold text-neutral-900
-                          transition-all duration-300
-                          hover:bg-neutral-100
-                          outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
-                        "
-                        style={{ WebkitTapHighlightColor: "transparent" }}
-                      >
-                        {item.name}
-                      </Link>
-                    </motion.div>
-                  ))}
-
-                  {/* DROPDOWN LINHA ANIMAL MOBILE */}
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: MAIN_NAV.length * 0.04 }}
+                    transition={{ delay: 0 }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => setMobileAnimalOpen((prev) => !prev)}
+                    <Link
+                      href={MAIN_NAV[0].href}
+                      onClick={() => setOpen(false)}
                       className="
-                        flex w-full items-center justify-between
+                        flex items-center justify-between
                         rounded-2xl px-4 py-4
-                        text-left text-[17px] font-semibold text-neutral-900
+                        text-[17px] font-semibold text-neutral-900
                         transition-all duration-300
                         hover:bg-neutral-100
                         outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
                       "
                       style={{ WebkitTapHighlightColor: "transparent" }}
-                      aria-expanded={mobileAnimalOpen}
                     >
-                      <span>Linha Animal</span>
-                      <ChevronDown
-                        size={19}
-                        className={`
-                          transition-transform duration-300
-                          ${mobileAnimalOpen ? "rotate-180" : "rotate-0"}
-                        `}
-                      />
-                    </button>
-
-                    <AnimatePresence>
-                      {mobileAnimalOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{
-                            duration: 0.24,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          className="overflow-hidden"
-                        >
-                          <div className="ml-3 mt-1 grid gap-1 border-l border-black/[0.08] pl-3">
-                            {ANIMAL_NAV.map((item, index) => (
-                              <motion.div
-                                key={item.name}
-                                initial={{ opacity: 0, x: -6 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.035 }}
-                              >
-                                <Link
-                                  href={item.href}
-                                  onClick={() => {
-                                    setOpen(false);
-                                    setMobileAnimalOpen(false);
-                                  }}
-                                  className="
-                                    flex items-center justify-between
-                                    rounded-2xl px-4 py-3
-                                    text-[16px] font-semibold text-neutral-800
-                                    transition-all duration-300
-                                    hover:bg-neutral-100
-                                    outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
-                                  "
-                                  style={{
-                                    WebkitTapHighlightColor: "transparent",
-                                  }}
-                                >
-                                  {item.name}
-                                  <ArrowRight size={15} className="opacity-60" />
-                                </Link>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      {MAIN_NAV[0].name}
+                    </Link>
                   </motion.div>
+
+                  <MobileDropdown
+                    label="Saneamento™"
+                    items={SANEAMENTO_NAV}
+                    isOpen={mobileSaneamentoOpen}
+                    setIsOpen={setMobileSaneamentoOpen}
+                    closeOther={() => setMobileAnimalOpen(false)}
+                    delay={0.04}
+                  />
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.08 }}
+                  >
+                    <Link
+                      href={MAIN_NAV[1].href}
+                      onClick={() => setOpen(false)}
+                      className="
+                        flex items-center justify-between
+                        rounded-2xl px-4 py-4
+                        text-[17px] font-semibold text-neutral-900
+                        transition-all duration-300
+                        hover:bg-neutral-100
+                        outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0
+                      "
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      {MAIN_NAV[1].name}
+                    </Link>
+                  </motion.div>
+
+                  <MobileDropdown
+                    label="Linha Animal"
+                    items={ANIMAL_NAV}
+                    isOpen={mobileAnimalOpen}
+                    setIsOpen={setMobileAnimalOpen}
+                    closeOther={() => setMobileSaneamentoOpen(false)}
+                    delay={0.12}
+                  />
 
                   {END_NAV.map((item, index) => (
                     <motion.div
@@ -448,7 +564,7 @@ export default function NavBar() {
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
-                        delay: (MAIN_NAV.length + 1 + index) * 0.04,
+                        delay: (4 + index) * 0.04,
                       }}
                     >
                       <Link

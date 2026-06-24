@@ -191,23 +191,23 @@ export default function CompostAntPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#111A14]/40 to-transparent lg:hidden" />
           </div>
 
-          {/* NOVO: PRODUTO FLUTUANTE NO ESPAÇO DIREITO CORRIGIDO */}
-          <motion.div
-            className="absolute top-[55%] left-1/2 z-30 hidden lg:block"
-            initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
-            animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Image
-              src="/images/compost-produto.webp"
-              alt="Bombona Compost Ant"
-              width={380}
-              height={480}
-              priority
-              quality={85}
-              className="object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.9)] hover:scale-105 transition-transform duration-700"
-            />
-          </motion.div>
+         {/* NOVO: PRODUTO FLUTUANTE NO ESPAÇO DIREITO CORRIGIDO */}
+<motion.div
+  className="absolute top-[48%] left-1/2 z-30 hidden lg:block"
+  initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
+  animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+  transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+>
+  <Image
+  src="/images/compost-produto.webp"
+  alt="Bombona Compost Ant"
+  width={470}
+  height={580}
+  priority
+  quality={90}
+  className="w-[78vw] max-w-[320px] md:max-w-[380px] lg:w-[clamp(390px,31vw,470px)] lg:max-w-none h-auto object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.9)] hover:scale-105 transition-transform duration-700"
+/>
+</motion.div>
 
           {/* Benefícios Integrados na base da Imagem */}
           <div className="relative z-20 w-full p-6 lg:p-12 bg-gradient-to-t from-[#111A14] via-[#111A14]/90 to-transparent pt-32 lg:pt-48 mt-auto">

@@ -157,14 +157,15 @@ export default function AgroAntPage() {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:w-1/2 flex justify-center lg:justify-end w-full relative"
             >
-              <Image
-                src="/images/agricultura.png"
-                alt="Bombona Agro Ant"
-                width={450}
-                height={550}
-                priority
-                className="w-[82vw] max-w-[330px] md:max-w-[380px] lg:max-w-[420px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
-              />
+             <Image
+  src="/images/agricultura.png"
+  alt="Bombona Agro Ant"
+  width={470}
+  height={580}
+  priority
+  quality={90}
+  className="w-[78vw] max-w-[320px] md:max-w-[380px] lg:w-[clamp(390px,31vw,470px)] lg:max-w-none h-auto object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.65)] transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
+/>
             </motion.div>
           </div>
 
