@@ -64,11 +64,11 @@ export default function ContatoPage() {
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Canais de Atendimento</p>
               
               <div className="space-y-3">
-                <a href="tel:+553120106080" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
-                  (31) 2010-6080
+                <a href="tel:+553499394444" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  (34) 99394444
                 </a>
-                <a href="https://wa.me/5531995235778" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
-                  WhatsApp (31) 99523-5778
+                <a href="https://wa.me/5531997611343" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
+                  WhatsApp (31) 997611343
                 </a>
                 <a href="mailto:vendas@antharsbiotechnologies.com.br" className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-slate-900 hover:text-slate-950 transition-colors">
                   <Mail size={16} /> vendas@antharsbiotechnologies.com.br
