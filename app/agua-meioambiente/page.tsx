@@ -69,6 +69,51 @@ const PROOF_CARDS = [
   },
 ];
 
+const PAMPULHA_CASE_METRICS = [
+  {
+    value: "3 meses",
+    label: "Acompanhamento operacional",
+    desc: "Avaliação conduzida na ETAF Pampulha, entre outubro de 2010 e janeiro de 2011.",
+    icon: Settings,
+  },
+  {
+    value: "4º dia",
+    label: "Odor perceptivelmente reduzido",
+    desc: "O relatório registra eliminação perceptível dos odores ofensivos a partir do quarto dia.",
+    icon: Wind,
+  },
+  {
+    value: "~1.000 m",
+    label: "Canal de lançamento",
+    desc: "Efeitos acompanhados ao longo do canal de lançamento até a Lagoa da Pampulha.",
+    icon: Waves,
+  },
+  {
+    value: "Classe III",
+    label: "DBO e fósforo",
+    desc: "Parâmetros monitorados ficaram compatíveis ou próximos ao enquadramento CONAMA citado.",
+    icon: BarChart3,
+  },
+];
+
+const PAMPULHA_CASE_NOTES = [
+  {
+    title: "Resposta ambiental visível",
+    desc: "Foram observadas maior transparência, menor formação de algas e presença de alevinos no trecho a jusante.",
+    icon: Droplets,
+  },
+  {
+    title: "Rotina operacional",
+    desc: "A equipe registrou menor incrustação de lodo nos canais e redução visual do material removido nas limpezas.",
+    icon: Recycle,
+  },
+  {
+    title: "Ressalva técnica",
+    desc: "A redução de coagulantes e polímeros testada pela COPASA não foi atribuída diretamente ao BIO-X pelo relatório.",
+    icon: ShieldCheck,
+  },
+];
+
 /* =========================================================================
    PÁGINA PRINCIPAL
    ========================================================================= */
@@ -377,7 +422,89 @@ export default function SeparAntPage() {
       </section>
 
       {/* ======================================================
-          6. DEPOIMENTO LADO-A-LADO (SIDE-BY-SIDE)
+          6. CASO TÉCNICO ETAF PAMPULHA
+      ====================================================== */}
+      <section className="bg-[#07131D] py-24 md:py-32 px-6 border-t border-white/10">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
+              <div className="mb-8 inline-flex items-center gap-3 rounded-sm border border-[#4BB1D3]/30 bg-white/5 px-5 py-2 text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#E0DED8]">
+                <Factory size={14} className="text-[#4BB1D3]" />
+                Caso técnico ETAF Pampulha
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-serif font-normal uppercase tracking-wide text-white leading-tight mb-8">
+                BIO-X Saneamento em <span className="italic text-[#4BB1D3]">operação real.</span>
+              </h2>
+
+              <p className="text-base md:text-lg font-light leading-relaxed text-[#B8C4CB] mb-8">
+                O relatório COPASA/DVTE acompanhou a aplicação da tecnologia BIO-X Saneamento na ETAF Pampulha, avaliando odor, aspecto do efluente e resposta ambiental no canal de lançamento.
+              </p>
+
+              <div className="rounded-sm border border-[#4BB1D3]/20 bg-white/[0.04] p-6">
+                <p className="text-sm font-light leading-relaxed text-[#E0DED8]">
+                  O estudo observou melhora perceptível de odores e sinais ambientais no trecho monitorado. Para DBO, DQO e sólidos, o relatório não registrou mudança significativa de eficiência operacional no curto período avaliado.
+                </p>
+                <p className="mt-4 text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-[#4BB1D3]">
+                  Fonte: COPASA/DVTE - ETAF Pampulha, mar. 2011
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {PAMPULHA_CASE_METRICS.map((metric, index) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="rounded-sm border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <metric.icon className="mb-5 text-[#4BB1D3]" size={30} strokeWidth={1.4} />
+                  <p className="text-3xl font-serif uppercase tracking-wide text-white mb-3">
+                    {metric.value}
+                  </p>
+                  <h3 className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] text-[#E0DED8] mb-3 leading-relaxed">
+                    {metric.label}
+                  </h3>
+                  <p className="text-xs font-light leading-relaxed text-[#B8C4CB]">
+                    {metric.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {PAMPULHA_CASE_NOTES.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="border-t border-[#4BB1D3]/40 pt-6"
+              >
+                <item.icon className="mb-4 text-[#4BB1D3]" size={26} strokeWidth={1.4} />
+                <h3 className="text-sm font-serif uppercase tracking-widest text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm font-light leading-relaxed text-[#B8C4CB]">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======================================================
+          7. DEPOIMENTO LADO-A-LADO (SIDE-BY-SIDE)
       ====================================================== */}
       <section id="depoimento" className="bg-[#FBFBF9] py-24 md:py-32 px-6 border-t border-[#E0DED8]">
         <div className="mx-auto max-w-7xl flex flex-col lg:flex-row items-center gap-16">
@@ -408,7 +535,7 @@ export default function SeparAntPage() {
                 src="/videos/sanitation-hero.mp4"
                 controls
                 preload="none"
-                poster="/images/sanitation-poster.webp"
+                poster="/images/sanitation-hero-bg.webp"
                 className="aspect-video w-full object-cover"
               />
             </div>

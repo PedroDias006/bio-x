@@ -12,7 +12,7 @@ const AREAS_ATUACAO = [
     role: "Agricultura Sustentável",
     bio: "Auxiliamos o manejo sustentável do solo e das culturas, promovendo melhores condições para o desenvolvimento das plantas e o uso eficiente de recursos.",
     // OTIMIZAÇÃO: Reduzido w=500, q=50 e forçado auto=format,compress
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format,compress&q=50&w=500&fit=crop"
+    image: "/images/agriculture-field.webp"
   },
   {
     name: "Separ Ant™",
@@ -79,7 +79,7 @@ export default function AntharsAboutPage() {
         <div className="absolute inset-0 z-0">
           {/* OTIMIZAÇÃO: fetchPriority high para carregar rápido, w=1600 e forte compressão */}
           <img 
-            src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format,compress&q=60&w=1600&fit=crop" 
+            src="/images/agriculture-field.webp" 
             alt="Laboratório e Campo Anthars Biotechnologies" 
             fetchPriority="high"
             decoding="async"

@@ -34,7 +34,7 @@ const NOVIDADES_CARDS = [
     id: 2,
     tag: "COMPOST ANT™",
     title: "Tecnologia que transforma matéria orgânica em recursos de alto valor.",
-    img: "/images/folders/espe-pride.png",
+    img: "/images/folders/pride-compost-folder.jpeg",
   },
   {
     id: 3,
@@ -119,7 +119,7 @@ const ACTIVE_REGIONS = [
     top: "25%",
     left: "73%",
     forte: "Expansão de Soja e Milho (Polo Matopiba)",
-    img: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-2.webp",
   },
   {
     id: "PI",
@@ -127,7 +127,7 @@ const ACTIVE_REGIONS = [
     top: "33%",
     left: "80%",
     forte: "Alta tecnologia em Soja e Algodão",
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-1.webp",
   },
   {
     id: "TO",
@@ -135,7 +135,7 @@ const ACTIVE_REGIONS = [
     top: "42%",
     left: "65%",
     forte: "Soja e Integração Lavoura-Pecuária",
-    img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-4.webp",
   },
   {
     id: "RO",
@@ -143,7 +143,7 @@ const ACTIVE_REGIONS = [
     top: "40%",
     left: "27%",
     forte: "Pecuária de Corte intensiva e Soja",
-    img: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-2.webp",
   },
   {
     id: "BA",
@@ -151,7 +151,7 @@ const ACTIVE_REGIONS = [
     top: "44%",
     left: "83%",
     forte: "Referência global em Algodão e Soja",
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-3.webp",
   },
   {
     id: "MT",
@@ -159,7 +159,7 @@ const ACTIVE_REGIONS = [
     top: "48%",
     left: "47%",
     forte: "Maior produtor nacional de Soja e Milho",
-    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-1.webp",
   },
   {
     id: "MG",
@@ -167,7 +167,7 @@ const ACTIVE_REGIONS = [
     top: "60%",
     left: "75%",
     forte: "Liderança em Café e forte produção de Grãos",
-    img: "https://images.unsplash.com/photo-1495908333425-29a1e0918c5f?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-5.webp",
   },
   {
     id: "ES",
@@ -175,7 +175,7 @@ const ACTIVE_REGIONS = [
     top: "61%",
     left: "90%",
     forte: "Referência em Café Conilon e Pimenta",
-    img: "https://images.unsplash.com/photo-1524486361537-8ad15938e1a3?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-6.webp",
   },
   {
     id: "MS",
@@ -184,7 +184,7 @@ const ACTIVE_REGIONS = [
     top: "64%",
     left: "50%",
     forte: "Polo de Soja, Milho e Pecuária Integrada",
-    img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-4.webp",
   },
   {
     id: "SP",
@@ -192,7 +192,7 @@ const ACTIVE_REGIONS = [
     top: "70%",
     left: "65%",
     forte: "Potência em Cana-de-açúcar e Citricultura",
-    img: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-3.webp",
   },
   {
     id: "SC",
@@ -200,7 +200,7 @@ const ACTIVE_REGIONS = [
     top: "83%",
     left: "66%",
     forte: "Excelência em Suinocultura, Aves e Cereais",
-    img: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&w=400&q=80",
+    img: "/images/region-agro-5.webp",
   },
 ];
 
