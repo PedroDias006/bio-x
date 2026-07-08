@@ -15,7 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
-// Importação Dinâmica do Carrossel (Só carrega quando o usuário chegar perto dele)
+// Importação Dinâmica do Carrossel
 const AppleCarouselPro = dynamic(() => import("@/app/components/AppleCarouselPro"), {
   ssr: false,
   loading: () => (
@@ -41,24 +41,31 @@ const NOVIDADES_CARDS = [
     tag: "SEPAR ANT™",
     title: "Manejo ambiental avançado para operações industriais.",
     subtitle: "Redução de odores, estabilização orgânica e eficiência operacional.",
-    img: "/images/sanitation-hero-bg.webp",
+    img: "/images/sanitationbg.webp",
   },
   {
     id: 4,
+    tag: "SANE ANT™",
+    title: "Tecnologia ambiental para saneamento, resíduos e controle de odores.",
+    subtitle: "Solução voltada ao manejo de ambientes, efluentes e operações sustentáveis.",
+    img: "/images/sanitation-hero-bg.webp",
+  },
+  {
+    id: 5,
     tag: "LIVESTOCK ANT™",
     title: "Performance ambiental para a pecuária moderna.",
     subtitle: "Ambiência, resíduos e performance operacional para bovinocultura.",
     img: "/images/livestock-hero-bg.webp",
   },
   {
-    id: 5,
+    id: 6,
     tag: "POULTRY ANT™",
     title: "Ambiência em equilíbrio para aviários modernos.",
     subtitle: "Apoio ao controle de odores, cama de aviário e conforto ambiental.",
     img: "/images/poultry-showcase.webp",
   },
   {
-    id: 6,
+    id: 7,
     tag: "SWINE ANT™",
     title: "Inteligência ambiental para granjas mais eficientes.",
     subtitle: "Manejo de instalações, dejetos e redução de odores na suinocultura.",
@@ -79,6 +86,13 @@ const SECTORS = [
     subtitle: "Manejo ambiental para efluentes, odores, resíduos e operações sustentáveis.",
     link: "/agua-meioambiente",
     image: "/images/sanitationbg.webp",
+    logo: "/images/icone-sane.png",
+  },
+  {
+    title: "Sane Ant™",
+    subtitle: "Tecnologia para saneamento, controle de odores e estabilidade ambiental.",
+    link: "/sane-ant",
+    image: "/images/sanitation-hero-bg.webp",
     logo: "/images/icone-sane.png",
   },
   {
@@ -111,7 +125,6 @@ const SECTORS = [
   },
 ];
 
-// LINKS DE IMAGENS CORRIGIDOS E ESTÁVEIS (100% AGRO)
 const ACTIVE_REGIONS = [
   {
     id: "MA",
@@ -213,24 +226,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-slate-900 font-sans selection:bg-emerald-900 selection:text-white overflow-x-hidden">
-      
-      {/* HERO SECTION 100% FULL SCREEN (HACK SAFARI iOS) */}
-      <section 
+      {/* HERO SECTION */}
+      <section
         className="relative w-full flex flex-col overflow-hidden bg-black"
-        style={{ 
-          height: "100lvh", /* Força a altura exata da tela */
-          minHeight: "-webkit-fill-available" /* Hack supremo que o Safari obedece cegamente */
+        style={{
+          height: "100lvh",
+          minHeight: "-webkit-fill-available",
         }}
       >
-        {/* CONTAINER DO VÍDEO */}
         <div className="absolute inset-0 z-0 bg-black">
           <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none">
-            <Image 
-              src="/images/hero-poster.jpg" 
-              alt="Preload" 
-              fill 
-              priority 
-              quality={80} 
+            <Image
+              src="/images/hero-poster.jpg"
+              alt="Preload"
+              fill
+              priority
+              quality={80}
             />
           </div>
 
@@ -248,21 +259,19 @@ export default function Home() {
               backgroundColor: "#000000",
               width: "100%",
               height: "100%",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
             className="opacity-40"
           />
         </div>
 
-        {/* CONTAINER DOS TEXTOS */}
-        <div 
+        <div
           className="relative z-10 w-[96%] max-w-[1240px] mx-auto px-4 md:px-8 lg:px-10 flex flex-col justify-between flex-1"
           style={{
             paddingTop: "max(130px, env(safe-area-inset-top) + 90px)",
-            paddingBottom: "max(40px, env(safe-area-inset-bottom) + 20px)"
+            paddingBottom: "max(40px, env(safe-area-inset-bottom) + 20px)",
           }}
         >
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -281,7 +290,9 @@ export default function Home() {
             className="w-full flex flex-col items-center text-center mt-auto"
           >
             <p className="text-slate-200 text-base md:text-xl lg:text-[22px] mb-8 max-w-5xl font-semibold leading-relaxed drop-shadow-lg">
-              Tecnologia de base orgânica para agricultura, saneamento, compostagem e pecuária. Soluções inteligentes que melhoram o manejo, reduzem impactos e geram valor produtivo.
+              Tecnologia de base orgânica para agricultura, saneamento,
+              compostagem e pecuária. Soluções inteligentes que melhoram o
+              manejo, reduzem impactos e geram valor produtivo.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
@@ -300,29 +311,37 @@ export default function Home() {
               </Link>
             </div>
           </motion.div>
-
         </div>
       </section>
 
       {/* FAIXA DE AUTORIDADE */}
       <section className="bg-black border-b border-white/5 py-3 md:py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
+          <div className="flex items-center justify-start md:justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-20 opacity-80 overflow-x-auto whitespace-nowrap hide-scrollbar">
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <Sprout className="w-4 h-4 md:w-6 md:h-6" /> Agro Ant™
             </div>
+
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Separ Ant™
             </div>
+
+            <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
+              <Droplets className="w-4 h-4 md:w-6 md:h-6" /> Sane Ant™
+            </div>
+
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <Recycle className="w-4 h-4 md:w-6 md:h-6" /> Compost Ant™
             </div>
+
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <ShieldCheck className="w-4 h-4 md:w-6 md:h-6" /> Livestock Ant™
             </div>
+
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <Wind className="w-4 h-4 md:w-6 md:h-6" /> Poultry Ant™
             </div>
+
             <div className="flex items-center gap-2 shrink-0 text-emerald-500 font-bold text-xs sm:text-base md:text-xl">
               <Headset className="w-4 h-4 md:w-6 md:h-6" /> Swine Ant™
             </div>
@@ -330,122 +349,123 @@ export default function Home() {
         </div>
       </section>
 
-     {/* DIVISÕES - CARDS MENORES E RESPONSIVOS */}
-<section
-  ref={divisoesRef}
-  className="py-14 md:py-18 bg-white relative z-10 border-t border-black/[0.04]"
->
-  <div className="max-w-6xl mx-auto px-5 md:px-6">
-    <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-12 gap-5">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="max-w-3xl"
+      {/* DIVISÕES */}
+      <section
+        ref={divisoesRef}
+        className="py-14 md:py-18 bg-white relative z-10 border-t border-black/[0.04]"
       >
-        <h2 className="text-[30px] md:text-[44px] leading-[1.04] tracking-[-0.045em] font-semibold text-slate-900 mb-3">
-          Linhas Anthars.{" "}
-          <span className="text-slate-500 font-medium">
-            Soluções para cada desafio.
-          </span>
-        </h2>
+        <div className="max-w-6xl mx-auto px-5 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-12 gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
+            >
+              <h2 className="text-[30px] md:text-[44px] leading-[1.04] tracking-[-0.045em] font-semibold text-slate-900 mb-3">
+                Linhas Anthars.{" "}
+                <span className="text-slate-500 font-medium">
+                  Soluções para cada desafio.
+                </span>
+              </h2>
 
-        <p className="text-[15px] md:text-[17px] text-slate-500 leading-relaxed font-normal max-w-2xl">
-          Seis frentes tecnológicas conectadas por uma mesma lógica:
-          compostos orgânicos funcionais, aplicação prática e responsabilidade ambiental.
-        </p>
-      </motion.div>
+              <p className="text-[15px] md:text-[17px] text-slate-500 leading-relaxed font-normal max-w-2xl">
+                Sete frentes tecnológicas conectadas por uma mesma lógica:
+                compostos orgânicos funcionais, aplicação prática e
+                responsabilidade ambiental.
+              </p>
+            </motion.div>
 
-      <Link
-        href="/sobre"
-        className="hidden md:flex items-center gap-2 text-emerald-600 font-medium hover:text-emerald-700 transition-colors tracking-wide text-[14px] pb-1 group"
-      >
-        Conheça a Anthars{" "}
-        <ArrowRight
-          size={15}
-          className="transition-transform duration-300 group-hover:translate-x-1"
-        />
-      </Link>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-      {SECTORS.map((sector, index) => (
-        <Link
-          key={index}
-          href={sector.link}
-          className="
-            group relative flex flex-col overflow-hidden rounded-[24px]
-            h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px]
-            bg-[#F5F5F7]
-            transition-all duration-500
-            shadow-[0_4px_18px_rgba(0,0,0,0.035)]
-            hover:shadow-[0_16px_34px_rgba(0,0,0,0.08)]
-            border border-black/[0.03]
-          "
-        >
-          <div className="relative z-20 px-6 pt-6 md:px-7 md:pt-7 flex-shrink-0">
-            <div className="mb-4 inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-full bg-white shadow-[0_7px_20px_rgba(0,0,0,0.07)] border border-black/[0.05]">
-              <Image
-                src={sector.logo}
-                alt={`Ícone ${sector.title}`}
-                width={30}
-                height={30}
-                className="object-contain brightness-0 opacity-90"
-              />
-            </div>
-
-            <h3 className="text-[23px] md:text-[25px] font-semibold tracking-[-0.02em] leading-tight text-neutral-900 mb-2">
-              {sector.title}
-            </h3>
-
-            <p className="text-[13px] md:text-[14px] leading-[1.45] text-neutral-500 max-w-[92%]">
-              {sector.subtitle}
-            </p>
-
-            <div className="mt-4 flex items-center gap-1.5 text-[13px] md:text-[14px] font-medium text-emerald-600 group-hover:text-emerald-700 transition-colors">
-              Explorar detalhes{" "}
+            <Link
+              href="/sobre"
+              className="hidden md:flex items-center gap-2 text-emerald-600 font-medium hover:text-emerald-700 transition-colors tracking-wide text-[14px] pb-1 group"
+            >
+              Conheça a Anthars{" "}
               <ArrowRight
                 size={15}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </div>
+            </Link>
           </div>
 
-          <div className="relative flex-1 mt-5 overflow-hidden rounded-b-[24px] min-h-[120px]">
-            <Image
-              src={sector.image}
-              alt={sector.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {SECTORS.map((sector, index) => (
+              <Link
+                key={index}
+                href={sector.link}
+                className="
+                  group relative flex flex-col overflow-hidden rounded-[24px]
+                  h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px]
+                  bg-[#F5F5F7]
+                  transition-all duration-500
+                  shadow-[0_4px_18px_rgba(0,0,0,0.035)]
+                  hover:shadow-[0_16px_34px_rgba(0,0,0,0.08)]
+                  border border-black/[0.03]
+                "
+              >
+                <div className="relative z-20 px-6 pt-6 md:px-7 md:pt-7 flex-shrink-0">
+                  <div className="mb-4 inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-full bg-white shadow-[0_7px_20px_rgba(0,0,0,0.07)] border border-black/[0.05]">
+                    <Image
+                      src={sector.logo}
+                      alt={`Ícone ${sector.title}`}
+                      width={30}
+                      height={30}
+                      className="object-contain brightness-0 opacity-90"
+                    />
+                  </div>
+
+                  <h3 className="text-[23px] md:text-[25px] font-semibold tracking-[-0.02em] leading-tight text-neutral-900 mb-2">
+                    {sector.title}
+                  </h3>
+
+                  <p className="text-[13px] md:text-[14px] leading-[1.45] text-neutral-500 max-w-[92%]">
+                    {sector.subtitle}
+                  </p>
+
+                  <div className="mt-4 flex items-center gap-1.5 text-[13px] md:text-[14px] font-medium text-emerald-600 group-hover:text-emerald-700 transition-colors">
+                    Explorar detalhes{" "}
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
+                </div>
+
+                <div className="relative flex-1 mt-5 overflow-hidden rounded-b-[24px] min-h-[120px]">
+                  <Image
+                    src={sector.image}
+                    alt={sector.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                </div>
+              </Link>
+            ))}
           </div>
-        </Link>
-      ))}
-    </div>
 
-    <div className="mt-9 md:hidden flex justify-center">
-      <Link
-        href="/sobre"
-        className="inline-flex items-center gap-2 text-emerald-600 font-medium transition-colors text-[15px] group"
-      >
-        Conheça a Anthars{" "}
-        <ArrowRight
-          size={16}
-          className="transition-transform duration-300 group-hover:translate-x-1"
-        />
-      </Link>
-    </div>
-  </div>
-</section>
+          <div className="mt-9 md:hidden flex justify-center">
+            <Link
+              href="/sobre"
+              className="inline-flex items-center gap-2 text-emerald-600 font-medium transition-colors text-[15px] group"
+            >
+              Conheça a Anthars{" "}
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* MAPA 3D BRANCO */}
+      {/* MAPA */}
       <section className="py-24 bg-[#F5F5F7] relative z-10 border-t border-black/[0.04]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -458,16 +478,16 @@ export default function Home() {
                   De ponta a ponta.
                 </span>
               </h2>
+
               <p className="text-[17px] md:text-[19px] text-slate-500 leading-relaxed font-normal max-w-2xl">
-                Nossa tecnologia orgânica funcional atua com excelência nos principais polos
-                agrícolas do Brasil. Interaja com o mapa para visualizar nossa
-                área de cobertura.
+                Nossa tecnologia orgânica funcional atua com excelência nos
+                principais polos agrícolas do Brasil. Interaja com o mapa para
+                visualizar nossa área de cobertura.
               </p>
             </motion.div>
           </div>
 
           <div className="bg-white rounded-[40px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-black/[0.02] flex flex-col lg:flex-row min-h-[650px]">
-            {/* Lista lateral */}
             <div className="w-full lg:w-[32%] p-10 md:p-14 bg-white z-10 shadow-[20px_0_40px_rgba(0,0,0,0.02)] rounded-t-[40px] lg:rounded-tr-none lg:rounded-l-[40px]">
               <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-600 mb-4">
                 <span className="relative flex h-2 w-2">
@@ -476,6 +496,7 @@ export default function Home() {
                 </span>
                 Raio de Atuação
               </div>
+
               <h3 className="text-3xl font-semibold text-slate-900 tracking-tight mb-8">
                 11 Estados Estratégicos.
               </h3>
@@ -489,6 +510,7 @@ export default function Home() {
                     <span className="text-[15px] font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors">
                       {region.name}
                     </span>
+
                     {region.detail && (
                       <span className="text-[12px] text-slate-400 mt-0.5 font-medium">
                         {region.detail}
@@ -499,8 +521,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mapa gigante */}
-            <div 
+            <div
               className="w-full lg:w-[68%] py-16 px-4 md:px-12 relative bg-[#FBFBFD] flex items-center justify-center rounded-b-[40px] lg:rounded-bl-none lg:rounded-r-[40px]"
               onClick={() => setActiveMapRegion(null)}
             >
@@ -537,7 +558,9 @@ export default function Home() {
                         }}
                         onClick={(e) => {
                           e.stopPropagation();
-                          setActiveMapRegion(activeMapRegion === region.id ? null : region.id);
+                          setActiveMapRegion(
+                            activeMapRegion === region.id ? null : region.id
+                          );
                         }}
                       >
                         <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg opacity-0 group-hover/node:opacity-100 transition-opacity duration-300 scale-[2.5]" />
@@ -549,18 +572,17 @@ export default function Home() {
                           </span>
                         </div>
 
-                        {/* CARD COM ALINHAMENTO DINÂMICO */}
-                        <div 
+                        <div
                           className={`absolute bottom-full mb-4 transition-all duration-300 w-[240px] z-50 ${
-                            activeMapRegion === region.id 
-                              ? "opacity-100 translate-y-0 pointer-events-auto" 
+                            activeMapRegion === region.id
+                              ? "opacity-100 translate-y-0 pointer-events-auto"
                               : "opacity-0 translate-y-3 pointer-events-none group-hover/node:opacity-100 group-hover/node:translate-y-0"
                           } ${
-                            isRightEdge 
-                              ? "right-[-16px]" 
-                              : isLeftEdge 
-                                ? "left-[-16px]" 
-                                : "left-1/2 -translate-x-1/2"
+                            isRightEdge
+                              ? "right-[-16px]"
+                              : isLeftEdge
+                              ? "left-[-16px]"
+                              : "left-1/2 -translate-x-1/2"
                           }`}
                         >
                           <div className="bg-white/95 backdrop-blur-xl border border-black/5 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col">
@@ -581,6 +603,7 @@ export default function Home() {
                               <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-600 mb-1.5">
                                 Polo Agrícola
                               </span>
+
                               <span className="text-[13px] font-medium text-slate-700 leading-snug">
                                 {region.forte}
                               </span>
@@ -595,14 +618,16 @@ export default function Home() {
                               )}
                             </div>
                           </div>
-                          
-                          <div className={`absolute top-full border-[8px] border-transparent border-t-white ${
-                            isRightEdge 
-                              ? "right-[8px]" 
-                              : isLeftEdge 
-                                ? "left-[8px]" 
+
+                          <div
+                            className={`absolute top-full border-[8px] border-transparent border-t-white ${
+                              isRightEdge
+                                ? "right-[8px]"
+                                : isLeftEdge
+                                ? "left-[8px]"
                                 : "left-1/2 -translate-x-1/2"
-                          }`} />
+                            }`}
+                          />
                         </div>
                       </motion.div>
                     );
@@ -617,7 +642,7 @@ export default function Home() {
       {/* NOVIDADES */}
       <section className="pt-24 pb-16 bg-[#F5F5F7] relative z-10 border-t border-black/[0.04]">
         <div className="max-w-[1400px] mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -694,7 +719,7 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -704,7 +729,8 @@ export default function Home() {
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
               Anthars Technology Platform
             </p>
-              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
+
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
               Transformando <span className="text-emerald-500">Ambientes</span>,
               <br />
               Gerando Valor.
@@ -724,9 +750,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Sprout className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
+
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Tecnologia Orgânica de Precisão
               </h3>
+
               <p className="text-slate-400 leading-relaxed text-[15px]">
                 Formulações à base de compostos orgânicos e extratos naturais
                 para apoiar processos produtivos mais estáveis e eficientes.
@@ -745,9 +773,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Headset className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
+
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Engenharia Agronômica Dedicada
               </h3>
+
               <p className="text-slate-400 leading-relaxed text-[15px]">
                 Suporte técnico para orientar aplicações em lavouras, granjas,
                 operações ambientais, compostagem e pecuária.
@@ -766,20 +796,25 @@ export default function Home() {
                 <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Recycle className="w-10 h-10 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] relative z-10" />
               </div>
+
               <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-4 tracking-tight leading-snug">
                 Soluções Ambientais de Amplo Espectro
               </h3>
+
               <p className="text-slate-400 leading-relaxed text-[15px]">
                 Tecnologias desenhadas para reduzir odores, estabilizar matéria
-                orgânica, otimizar recursos e elevar a sustentabilidade operacional.
+                orgânica, otimizar recursos e elevar a sustentabilidade
+                operacional.
               </p>
             </motion.div>
           </div>
 
           <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <p className="text-slate-300 text-lg md:text-xl font-medium">
-              Fale com um especialista Anthars e encontre a linha ideal para sua operação.
+              Fale com um especialista Anthars e encontre a linha ideal para sua
+              operação.
             </p>
+
             <Link
               href="/contato"
               className="inline-flex items-center gap-3 bg-transparent border border-white/20 text-white font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 text-xs md:text-sm uppercase tracking-widest"
