@@ -133,51 +133,6 @@ const PROOF_CARDS = [
   },
 ];
 
-const IPACER_CASE_METRICS = [
-  {
-    value: "2 etapas",
-    label: "Casa de vegetação + campo",
-    desc: "Ensaio colaborativo em batata Ágata tipo III, com leitura em vaso e cultivo comercial.",
-    icon: Microscope,
-  },
-  {
-    value: "62,48 t/ha",
-    label: "Produtividade total média",
-    desc: "Média observada no campo, sem diferença estatística entre os tratamentos avaliados.",
-    icon: BarChart3,
-  },
-  {
-    value: "61,01 t/ha",
-    label: "Produtividade comercial média",
-    desc: "Classificação e produtividade comercial permaneceram estatisticamente equivalentes.",
-    icon: TrendingUp,
-  },
-  {
-    value: "Nov/2024",
-    label: "Relatório IPACER",
-    desc: "Experimento conduzido para entender resposta, dose e melhores cenários de aplicação.",
-    icon: ShieldCheck,
-  },
-];
-
-const IPACER_CASE_FINDINGS = [
-  {
-    title: "Leitura responsável",
-    desc: "O estudo não indicou alteração estatística no vigor inicial, matéria seca de raízes ou produtividade nas condições testadas.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Base para ajuste técnico",
-    desc: "A conclusão recomenda ampliar a base de dados para calibrar uso por variedade, ambiente, tamanho e idade do tubérculo-semente.",
-    icon: Globe2,
-  },
-  {
-    title: "Próximos cenários",
-    desc: "O relatório sugere novos estudos com variedades como Atlantic, Cupido e Markies, em condições de tuberização distintas.",
-    icon: Leaf,
-  },
-];
-
 const YOUTUBE_VIDEOS = [
   {
     title: "Produtividade da Soja em Uberlândia",
@@ -590,112 +545,43 @@ export default function AgroAntPage() {
       </section>
 
       {/* ======================================================
-          5. VALIDAÇÃO IPACER
+          5. VÍDEO INFORMATIVO
       ====================================================== */}
-      <section className="bg-[#FBFBF9] py-24 md:py-32 px-6 border-t border-[#E0DED8]">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              <div className="mb-8 inline-flex items-center gap-3 rounded-sm border border-[#D4AF37]/30 bg-white px-5 py-2 shadow-sm text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#1A2E25]">
-                <Microscope size={14} className="text-[#D4AF37]" />
-                Validação IPACER
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-serif font-normal uppercase tracking-wide text-[#1A1A1A] leading-tight mb-8">
-                Ensaio em batata com{" "}
-                <span className="italic text-[#D4AF37]">
-                  leitura técnica.
-                </span>
-              </h2>
-
-              <p className="text-base md:text-lg font-light leading-relaxed text-[#666666] mb-8">
-                O Relatório Final IPACER - Experimento Batata BIO-X avaliou o
-                uso da tecnologia BIOX Agricultura Única em batata Ágata,
-                combinando etapa em casa de vegetação e cultivo em campo.
-              </p>
-
-              <div className="rounded-sm border-l-4 border-[#D4AF37] bg-white p-6 shadow-sm">
-                <p className="text-sm font-light leading-relaxed text-[#4A4A4A]">
-                  A conclusão técnica foi conservadora: nas condições testadas,
-                  o ensaio não apontou diferença estatística entre os
-                  tratamentos. O valor do estudo está em orientar dose, variedade
-                  e cenário de aplicação com base em dados reais.
-                </p>
-
-                <p className="mt-4 text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-[#1A2E25]/60">
-                  Fonte: Relatório Final IPACER - Experimento Batata BIO-X, nov.
-                  2024
-                </p>
-              </div>
-            </motion.div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {IPACER_CASE_METRICS.map((metric, index) => (
-                <motion.div
-                  key={metric.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="rounded-sm border border-[#E0DED8] bg-white p-6 shadow-sm"
-                >
-                  <metric.icon
-                    className="mb-5 text-[#D4AF37]"
-                    size={30}
-                    strokeWidth={1.4}
-                  />
-
-                  <p className="text-3xl font-serif uppercase tracking-wide text-[#1A2E25] mb-3">
-                    {metric.value}
-                  </p>
-
-                  <h3 className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-3 leading-relaxed">
-                    {metric.label}
-                  </h3>
-
-                  <p className="text-xs font-light leading-relaxed text-[#666666]">
-                    {metric.desc}
-                  </p>
-                </motion.div>
-              ))}
+      <section
+        id="depoimento"
+        className="bg-[#FBFBF9] py-24 md:py-32 px-6 border-t border-[#E0DED8]"
+      >
+        <div className="mx-auto max-w-6xl text-center">
+          <div className="mx-auto mb-16 max-w-3xl">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-sm border border-[#D4AF37]/30 bg-white px-5 py-2 shadow-sm text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-[#1A2E25]">
+              <Play size={14} fill="currentColor" className="text-[#D4AF37]" />
+              Resultado em Vídeo
             </div>
+
+            <h2 className="text-4xl md:text-5xl font-serif font-normal uppercase tracking-wide text-[#1A1A1A] mb-6">
+              Quem aplica no campo.
+            </h2>
+
+            <p className="text-lg font-light text-[#666666] leading-relaxed">
+              Acompanhe a experiência real com a tecnologia Anthars
+              Biotechnologies na prática.
+            </p>
           </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {IPACER_CASE_FINDINGS.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="border-t border-[#D4AF37]/50 pt-6"
-              >
-                <item.icon
-                  className="mb-4 text-[#1A2E25]"
-                  size={26}
-                  strokeWidth={1.4}
-                />
-
-                <h3 className="text-sm font-serif uppercase tracking-widest text-[#1A1A1A] mb-3">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm font-light leading-relaxed text-[#666666]">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+          <div className="overflow-hidden rounded-sm border border-[#E0DED8] bg-black shadow-2xl relative">
+            <video
+              src="/videos/depoimento-pride.mp4"
+              controls
+              preload="none"
+              poster="/images/depoimento-poster.jpg"
+              className="aspect-video w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
       {/* ======================================================
-          6. CONTEÚDOS EM VÍDEO
+          6. CONTEÚDOS NO YOUTUBE
       ====================================================== */}
       <section
         id="videos"

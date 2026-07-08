@@ -34,8 +34,8 @@ export default function Footer() {
           </p>
 
           <p className="text-slate-500 text-sm leading-relaxed mt-2">
-            (31) 2010-6080<br />
-            (31) 99523-5778<br />
+            (34) 99939-4444<br />
+            (31) 99761-1343<br />
             vendas@antharsbiotechnologies.com.br
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function Footer() {
             <a href="https://linkedin.com/company/antharsbiotechnologies" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-50 text-slate-500 hover:bg-[#0A66C2] hover:text-white transition-all duration-300">
               <FaLinkedinIn />
             </a>
-            <a href="https://wa.me/5531995235778" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-50 text-slate-500 hover:bg-[#25D366] hover:text-white transition-all duration-300">
+            <a href="https://wa.me/5531997611343" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-50 text-slate-500 hover:bg-[#25D366] hover:text-white transition-all duration-300">
               <FaWhatsapp />
             </a>
           </div>
