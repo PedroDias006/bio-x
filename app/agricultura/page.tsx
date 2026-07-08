@@ -124,6 +124,10 @@ const PROOF_CARDS = [
     desc: "Acompanhamento técnico em campo demonstrando a sanidade foliar das culturas.",
     image: "/images/agriculture-vigor.webp",
     icon: Leaf,
+    compareLabels: {
+      left: "Padrão Fazenda",
+      right: "Agro Ant",
+    },
   },
   {
     title: "Resultado na Colheita",
@@ -522,6 +526,22 @@ export default function AgroAntPage() {
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B140F] via-[#0B140F]/40 to-transparent opacity-90" />
+
+                {card.compareLabels && (
+                  <>
+                    <div className="absolute left-5 top-1/2 z-10 -translate-y-1/2 rounded-sm border border-white/15 bg-black/45 px-3 py-2 backdrop-blur-[2px]">
+                      <span className="text-[10px] md:text-xs font-sans font-semibold uppercase tracking-[0.18em] text-white">
+                        {card.compareLabels.left}
+                      </span>
+                    </div>
+
+                    <div className="absolute right-5 top-1/2 z-10 -translate-y-1/2 rounded-sm border border-[#D4AF37]/30 bg-black/45 px-3 py-2 backdrop-blur-[2px]">
+                      <span className="text-[10px] md:text-xs font-sans font-semibold uppercase tracking-[0.18em] text-[#D4AF37]">
+                        {card.compareLabels.right}
+                      </span>
+                    </div>
+                  </>
+                )}
 
                 <div className="absolute bottom-8 left-8 right-8">
                   <card.icon
