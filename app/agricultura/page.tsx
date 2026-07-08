@@ -516,16 +516,16 @@ export default function AgroAntPage() {
                 className="group relative h-[500px] overflow-hidden rounded-sm bg-black"
               >
                 <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  loading="lazy"
-                  quality={80}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                />
+  src={card.image}
+  alt={card.title}
+  fill
+  loading="lazy"
+  quality={90}
+  sizes="(max-width: 768px) 100vw, 33vw"
+  className="object-cover"
+/>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B140F] via-[#0B140F]/40 to-transparent opacity-90" />
+<div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0B140F]/95 via-[#0B140F]/55 to-transparent pointer-events-none" />
 
                 {card.compareLabels && (
                   <>
